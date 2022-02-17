@@ -67,6 +67,8 @@ if (!function_exists('fluentFormSanitizer')) {
                 return wp_kses_post($input);
             } else if (ArrayHelper::get($fields, $attribute . '.element') === 'textarea') {
                 $input = sanitize_textarea_field($input);
+            } else if (ArrayHelper::get($fields, $attribute . '.element') === 'input_email') {
+                $input = strtolower(sanitize_text_field($input));
             } else {
                 $input = sanitize_text_field($input);
             }
@@ -211,4 +213,21 @@ function fluentFormApi($module = 'forms')
     }
 
     throw new \Exception('No Module found with name '. $module);
+}
+
+function fluentFormGetRandomPhoto()
+{
+    $photos = [
+        'demo_1.jpg',
+        'demo_2.jpg',
+        'demo_3.jpg',
+        'demo_4.jpg',
+        'demo_5.jpg'
+    ];
+
+    $selected = array_rand($photos, 1);
+
+    $photoName = $photos[$selected];
+
+    return fluentformMix('img/conversational/' . $photoName);
 }

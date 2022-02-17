@@ -34,7 +34,6 @@ class Form
 
         // elements
         new WelcomeScreen();
-
     }
 
     public function pushDesignTab($menuItems, $formId)
@@ -43,13 +42,17 @@ class Form
             return $menuItems;
         }
 
-        $newItems = array_slice($menuItems, 0, 1, true) + [
-                'conversational_design' => array(
+        $newItems = $menuItems;
+
+        if (Acl::hasPermission('fluentform_forms_manager')) {
+            $newItems = array_slice($menuItems, 0, 1, true) + [
+                'conversational_design' => [
                     'slug'  => 'conversational_design',
                     'title' => __('Design', 'fluentform'),
                     'url'   => admin_url('admin.php?page=fluent_forms&form_id=' . $formId . '&route=conversational_design')
-                )
+                ]
             ] + array_slice($menuItems, 1, count($menuItems) - 1, true);
+        }
 
         return $newItems;
     }
@@ -160,7 +163,8 @@ class Form
             'background_image'      => '',
             'background_brightness' => 0,
             'disable_branding'      => 'no',
-            'hide_media_on_mobile'  => 'no'
+            'hide_media_on_mobile'  => 'no',
+            'key_hint'              => 'yes'
         ];
 
         return wp_parse_args($settings, $defaults);
@@ -187,8 +191,15 @@ class Form
                 'long_text_help'       => '<b>Shift ⇧</b> + <b>Enter ↵</b> to make a line break.',
                 'invalid_prompt'       => 'Please fill out the field correctly',
                 'default_placeholder'  => 'Type Your answer here',
+                'key_hint_text'        => 'Key',
+                'key_hint_tooltip'     => 'Press the key to select',
             ]
         ];
+
+        if ($settings && !isset($settings['i18n']['key_hint_text'])) {
+            $settings['i18n']['key_hint_text'] = $defaults['i18n']['key_hint_text'];
+            $settings['i18n']['key_hint_tooltip'] = $defaults['i18n']['key_hint_tooltip'];
+        }
 
         if (!$settings || empty($settings['title'])) {
             $form = wpFluent()->table('fluentform_forms')->find($formId);
@@ -576,22 +587,9 @@ class Form
         ];
     }
 
-    private function getRandomPhoto()
+    public function getRandomPhoto()
     {
-        $photos = [
-            'demo_1.jpg',
-            'demo_2.jpg',
-            'demo_3.jpg',
-            'demo_4.jpg',
-            'demo_5.jpg'
-        ];
-
-        $selected = array_rand($photos, 1);
-
-        $photoName = $photos[$selected];
-
-        return fluentformMix('img/conversational/' . $photoName);
-
+        return fluentFormGetRandomPhoto();
     }
 
     private function renderFormHtml($formId, $providedKey = '')
@@ -715,7 +713,7 @@ class Form
 
     /**
      * Get the payment configuration of this form.
-     * 
+     *
      * @param $form
      */
     private function getPaymentConfig($form)
@@ -741,7 +739,7 @@ class Form
                     'url'        => site_url(),
                     'partner_id' => 'pp_partner_FN62GfRLM2Kx5d'
                 ),
-                'i18n' => [
+                'i18n'              => [
                     'item'            => __('Item', 'fluentformpro'),
                     'price'           => __('Price', 'fluentformpro'),
                     'qty'             => __('Qty', 'fluentformpro'),

@@ -67,6 +67,13 @@ class Entries extends EntryQuery
             $query->where('fluentform_submissions.status', '!=', 'trashed');
         }
 
+
+        $dateRange = $this->request->get('date_range');
+        if ($dateRange) {
+            $query->where('fluentform_submissions.created_at', '>=', $dateRange[0] . ' 00:00:01');
+            $query->where('fluentform_submissions.created_at', '<=', $dateRange[1] . ' 23:59:59');
+        }
+
         if ($search) {
             $query->where('fluentform_submissions.response', 'LIKE', '%' . $search . '%');
             $query->orWhere('fluentform_forms.title', 'LIKE', '%' . $search . '%');
@@ -82,7 +89,8 @@ class Entries extends EntryQuery
         wp_send_json_success([
             'entries'   => $entries,
             'total'     => $total,
-            'last_page' => ceil($total / $limit)
+            'last_page' => ceil($total / $limit),
+            'available_forms' => $this->getAvailableForms()
         ]);
     }
 
@@ -787,11 +795,11 @@ class Entries extends EntryQuery
 
     public function getUsers()
     {
-        if (!current_user_can('list_users')) {
-            wp_send_json_error([
-                'message' => __('Sorry, You do not have permission to list users', 'fluentform')
-            ]);
-        }
+        // if (!current_user_can('list_users')) {
+        //     wp_send_json_error([
+        //         'message' => __('Sorry, You do not have permission to list users', 'fluentform')
+        //     ]);
+        // }
 
         $search = sanitize_text_field($this->request->get('search'));
 
@@ -874,5 +882,25 @@ class Entries extends EntryQuery
             ],
             'user_id' => $userId
         ]);
+    }
+
+    public function getAvailableForms()
+    {
+
+        $forms = wpFluent()->table('fluentform_forms')
+            ->select(array('id', 'title'))
+            ->orderBy('id', 'DESC')
+            ->get();
+
+        $formattedForms = [];
+        foreach ($forms as $form) {
+            $formattedForms[] = [
+                'id' => $form->id,
+                'title'   => $form->title
+            ];
+        }
+
+        return $formattedForms;
+
     }
 }

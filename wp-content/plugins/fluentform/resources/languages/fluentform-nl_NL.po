@@ -103,8 +103,8 @@ msgid "Add Note"
 msgstr ""
 
 #: app/Modules/Widgets/SidebarWidgets.php:12
-msgid "Add your form by WP Fluent Forms"
-msgstr "Voeg je formulier toe met WP Fluent Forms"
+msgid "Add your form by Fluent Forms"
+msgstr "Voeg je formulier toe met Fluent Forms"
 
 #: app/Modules/DocumentationModule.php:21
 msgid "Adding a new form"
@@ -1033,10 +1033,10 @@ msgstr ""
 #: app/Services/Integrations/MailChimp/MailChimpIntegration.php:50
 msgid ""
 "Enter your Mailchimp API Key, if you do not have <br>Please login to your "
-"MailChimp account and go to<br>Profile -> Extras -> Api Keys"
+"Mailchimp account and go to<br>Profile -> Extras -> Api Keys"
 msgstr ""
 "Voer je Mailchimp API-sleutel in, als je er geen <br> hebt. Log dan in bij "
-"je MailChimp-account en ga naar <br> Profiel -> Extra's -> Api Keys"
+"je Mailchimp-account en ga naar <br> Profiel -> Extra's -> Api Keys"
 
 #: app/Modules/Registerer/Menu.php:910
 msgid "Entity ID"
@@ -1188,8 +1188,8 @@ msgstr "Vijf koloms container"
 #: app/Modules/Widgets/FluentFormWidget.php:22
 #: app/Modules/Widgets/FluentFormWidget.php:81
 #: app/Modules/Widgets/FluentFormWidget.php:89
-msgid "Fluent Form"
-msgstr "Fluent Form"
+msgid "Fluent Forms"
+msgstr "Fluent Forms"
 
 #. Name of the plugin
 #: app/Modules/Registerer/Menu.php:284 resources/views/admin/global_menu.php:6
@@ -1938,28 +1938,28 @@ msgid "Mailchimp Feed"
 msgstr "Mailchimp feed"
 
 #: app/Modules/DocumentationModule.php:45
-msgid "MailChimp integration"
-msgstr "MailChimp-integratie"
+msgid "Mailchimp integration"
+msgstr "Mailchimp-integratie"
 
 #: app/Services/Integrations/MailChimp/MailChimpIntegration.php:43
 #, fuzzy
 #| msgid ""
 #| "Mailchimp is a marketing platform for small businesses. Send beautiful "
 #| "emails, connect your e-commerce store, advertise, and build your brand. "
-#| "Use Fluent Form to collect customer information and automatically add it "
+#| "Use Fluent Forms to collect customer information and automatically add it "
 #| "to your Mailchimp campaign list. If you don't have a Mailchimp account, "
 #| "you can <a href=\"http://www.mailchimp.com/\" target=\"_blank\">sign up "
 #| "for one here.</a>"
 msgid ""
 "Mailchimp is a marketing platform for small businesses. Send beautiful "
 "emails, connect your e-commerce store, advertise, and build your brand. Use "
-"Fluent Form to collect customer information and automatically add it to your "
+"Fluent Forms to collect customer information and automatically add it to your "
 "Mailchimp campaign list. If you don't have a Mailchimp account, you can <a "
 "href=\"https://mailchimp.com/\" target=\"_blank\">sign up for one here.</a>"
 msgstr ""
 "Mailchimp is een marketingplatform voor kleine bedrijven. Verzend prachtige "
 "e-mails, verbind je e-commerce winkel, adverteer en bouw je merk op. Gebruik "
-"Fluent Form om klantgegevens te verzamelen en deze automatisch toe te voegen "
+"Fluent Forms om klantgegevens te verzamelen en deze automatisch toe te voegen "
 "aan uw Mailchimp-campagnelijst. Als je geen Mailchimp-account hebt, kun je "
 "je hier <a href=\"https://www.mailchimp.com/\" target=\"_blank\">aanmelden."
 "</a>"
@@ -2852,7 +2852,7 @@ msgid "Select a button style from the dropdown"
 msgstr "Selecteer een knopstijl van de dropdown"
 
 #: app/Modules/Widgets/ElementorWidget.php:47
-msgid "Select a Fluent Form"
+msgid "Select a Fluent Forms"
 msgstr "Selecteer een formulier"
 
 #: app/Services/FormBuilder/ElementCustomization.php:442
@@ -3895,8 +3895,8 @@ msgid "WordPress Hook name to hook something in this place."
 msgstr "WordPress Hook-naam om iets op deze plek te haken."
 
 #: app/Modules/Widgets/SidebarWidgets.php:11
-msgid "WP Fluent Forms Widget"
-msgstr "WP Fluent Forms Widget"
+msgid "Fluent Forms Widget"
+msgstr "Fluent Forms Widget"
 
 #: app/Services/FormBuilder/ElementSettingsPlacement.php:480
 msgid "Write HTML content for GDPR agreement checkbox"

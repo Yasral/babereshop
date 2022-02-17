@@ -21,7 +21,7 @@ class Extractor
     protected $with;
 
     /**
-     * The supported form input types defined for Fluent Form.
+     * The supported form input types defined for Fluent Forms.
      *
      * @var array
      */

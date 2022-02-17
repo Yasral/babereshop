@@ -80,7 +80,7 @@ class Cookie_Law_Info_Uninstall_Feedback {
 					),
 				),
 			),
-            array(
+			array(
 				'id'          => 'found-better-plugin',
 				'text'        => __( 'I found a better plugin', 'cookie-law-info' ),
 				'type'        => 'text',
@@ -90,7 +90,7 @@ class Cookie_Law_Info_Uninstall_Feedback {
 				'id'   => 'upgrade-to-pro',
 				'text' => __( 'Upgrade to pro', 'cookie-law-info' ),
 			),
-            array(
+			array(
 				'id'   => 'temporary-deactivation',
 				'text' => __( 'It’s a temporary deactivation', 'cookie-law-info' ),
 			),
@@ -115,28 +115,28 @@ class Cookie_Law_Info_Uninstall_Feedback {
 		?>
 		<div class="<?php echo esc_attr( $this->plugin_id ); ?>-modal" id="<?php echo esc_attr( $this->plugin_id ); ?>-modal">
 			<div class="<?php echo esc_attr( $this->plugin_id ); ?>-modal-wrap">
-				<div class="<?php echo esc_attr(  $this->plugin_id ); ?>-modal-header">
-					<h3><?php _e( 'If you have a moment, please let us know why you are deactivating:', 'cookie-law-info' ); ?></h3>
+				<div class="<?php echo esc_attr( $this->plugin_id ); ?>-modal-header">
+					<h3><?php echo esc_html__( 'If you have a moment, please let us know why you are deactivating:', 'cookie-law-info' ); ?></h3>
 				</div>
 				<div class="<?php echo esc_attr( $this->plugin_id ); ?>-modal-body">
 					<ul class="reasons">
 					<?php
 					foreach ( $reasons as $reason ) :
-											$data_type   = ( isset( $reason['type'] ) ? 'data-type="' . esc_attr( $reason['type'] ) . '"' : '' );
-											$placeholder = ( isset( $reason['type'] ) ? 'data-placeholder="' . esc_attr( $reason['placeholder'] ) . '"' : '' );
+											$data_type   = ( isset( $reason['type'] ) ? $reason['type'] : '' );
+											$placeholder = ( isset( $reason['placeholder'] ) ? $reason['placeholder'] : '' );
 											$childs      = ( isset( $reason['child'] ) && is_array( $reason['child'] ) ) ? $reason['child'] : array();
 						?>
-							<li <?php echo $data_type; ?> <?php echo $placeholder; ?>>
-								<label><input type="radio" name="selected-reason" value="<?php echo $reason['id']; ?>"><?php echo $reason['text']; ?></label>
+							<li data-type="<?php echo esc_attr( $data_type ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>">
+								<label><input type="radio" name="selected-reason" value="<?php echo esc_attr( $reason['id'] ); ?>"><?php echo esc_html( $reason['text'] ); ?></label>
 								<?php if ( ! empty( $childs ) ) : ?>
 									<ul class="<?php echo esc_attr( $this->plugin_id ) . '-sub-reasons'; ?>">
 										<?php
 										foreach ( $childs as $child ) :
-													$data_type   = ( isset( $child['type'] ) ? 'data-type="' . esc_attr( $child['type'] ) . '"' : '' );
-													$placeholder = ( isset( $child['type'] ) ? 'data-placeholder="' . esc_attr( $child['placeholder'] ) . '"' : '' );
+													$data_type   = ( isset( $child['type'] ) ? $child['type'] : '' );
+													$placeholder = ( isset( $child['type'] ) ? $child['placeholder'] : '' );
 											?>
-											<li <?php echo $data_type; ?> <?php echo $placeholder; ?>>
-												<label><input type="radio" name="selected-reason" value="<?php echo $child['id']; ?>"><?php echo $child['text']; ?></label>
+											<li data-type="<?php echo esc_attr( $data_type ); ?>" data-placeholder="<?php echo esc_attr( $placeholder ); ?>">
+												<label><input type="radio" name="selected-reason" value="<?php echo esc_attr( $child['id'] ); ?>"><?php echo esc_html( $child['text'] ); ?></label>
 											<?php endforeach; ?>
 									</ul>
 								<?php endif; ?>
@@ -146,23 +146,23 @@ class Cookie_Law_Info_Uninstall_Feedback {
 					<?php endforeach; ?>
 					</ul>
 					<div class="wt-uninstall-feedback-privacy-policy">
-						<?php _e( "We do not collect any personal data when you submit this form. It's your feedback that we value.", 'cookie-law-info' ); ?>
-						<a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php _e( 'Privacy Policy', 'cookie-law-info' ); ?></a>
+						<?php esc_html__( "We do not collect any personal data when you submit this form. It's your feedback that we value.", 'cookie-law-info' ); ?>
+						<a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php echo esc_html__( 'Privacy Policy', 'cookie-law-info' ); ?></a>
 					</div>
 				</div>
 				<div class="<?php echo esc_attr( $this->plugin_id ); ?>-modal-footer">
 
 					<a class="button-primary" href="https://www.webtoffee.com/support/" target="_blank">
 						<span class="dashicons dashicons-external" style="margin-top:3px;"></span>
-						<?php _e( 'Go to support', 'cookie-law-info' ); ?></a>
-					<button class="button-primary <?php echo esc_attr( $this->plugin_id ); ?>-model-submit"><?php _e( 'Submit & Deactivate', 'cookie-law-info' ); ?></button>
-					<button class="button-secondary <?php echo esc_attr( $this->plugin_id ); ?>-model-cancel"><?php _e( 'Cancel', 'cookie-law-info' ); ?></button>
-					<a href="#" style="color: #737373;" class="dont-bother-me"><?php _e( 'I rather wouldn\'t say', 'cookie-law-info' ); ?></a>
+						<?php echo esc_html__( 'Go to support', 'cookie-law-info' ); ?></a>
+					<button class="button-primary <?php echo esc_attr( $this->plugin_id ); ?>-model-submit"><?php echo esc_html__( 'Submit & Deactivate', 'cookie-law-info' ); ?></button>
+					<button class="button-secondary <?php echo esc_attr( $this->plugin_id ); ?>-model-cancel"><?php echo esc_html__( 'Cancel', 'cookie-law-info' ); ?></button>
+					<a href="#" style="color: #737373;" class="dont-bother-me"><?php echo esc_html__( 'I rather wouldn\'t say', 'cookie-law-info' ); ?></a>
 				</div>
 			</div>
 		</div>
 		<style type="text/css">
-			.<?php echo $this->plugin_id; ?>-modal {
+			.cookielawinfo-modal {
 				position: fixed;
 				z-index: 99999;
 				top: 0;
@@ -173,48 +173,48 @@ class Cookie_Law_Info_Uninstall_Feedback {
 				display: none;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal.modal-active {
+			.cookielawinfo-modal.modal-active {
 				display: block;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal-wrap {
+			.cookielawinfo-modal-wrap {
 				width: 50%;
 				position: relative;
 				margin: 10% auto;
 				background: #fff;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal-header {
+			.cookielawinfo-modal-header {
 				border-bottom: 1px solid #eee;
 				padding: 8px 20px;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal-header h3 {
+			.cookielawinfo-modal-header h3 {
 				line-height: 150%;
 				margin: 0;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal-body {
+			.cookielawinfo-modal-body {
 				padding: 5px 20px 20px 20px;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal-body .input-text,
-			.<?php echo $this->plugin_id; ?>-modal-body textarea {
+			.cookielawinfo-modal-body .input-text,
+			.cookielawinfo-modal-body textarea {
 				width: 75%;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal-body .reason-input {
+			.cookielawinfo-modal-body .reason-input {
 				margin-top: 5px;
 				margin-left: 20px;
 			}
 
-			.<?php echo $this->plugin_id; ?>-modal-footer {
+			.cookielawinfo-modal-footer {
 				border-top: 1px solid #eee;
 				padding: 12px 20px;
 				text-align: left;
 			}
 
-			.<?php echo $this->plugin_id; ?>-sub-reasons {
+			.cookielawinfo-sub-reasons {
 				display: none;
 				padding-left: 20px;
 				padding-top: 10px;
@@ -239,7 +239,7 @@ class Cookie_Law_Info_Uninstall_Feedback {
 		<script type="text/javascript">
 			(function($) {
 				$(function() {
-					var plugin_id = '<?php echo $this->plugin_id; ?>';
+					var plugin_id = '<?php echo esc_js( $this->plugin_id ); ?>';
 					var modal = $('#' + plugin_id + '-modal');
 					var deactivateLink = '';
 					$('a.' + plugin_id + '-deactivate-link').click(function(e) {
@@ -286,7 +286,8 @@ class Cookie_Law_Info_Uninstall_Feedback {
 							data: {
 								action: plugin_id + '_submit_uninstall_reason',
 								reason_id: (0 === $radio.length) ? 'none' : $radio.val(),
-								reason_info: (0 !== $input.length) ? $input.val().trim() : ''
+								reason_info: (0 !== $input.length) ? $input.val().trim() : '',
+								_wpnonce: '<?php echo esc_js( wp_create_nonce( $this->plugin_id ) ); ?>',
 							},
 							beforeSend: function() {
 								button.addClass('disabled');
@@ -304,20 +305,20 @@ class Cookie_Law_Info_Uninstall_Feedback {
 	}
 
 	public function send_uninstall_reason() {
+		check_ajax_referer( $this->plugin_id, '_wpnonce' );
 		global $wpdb;
 		if ( ! isset( $_POST['reason_id'] ) ) {
 			wp_send_json_error();
 		}
-		// $current_user = wp_get_current_user();
 		$data = array(
-			'reason_id'                   => sanitize_text_field( $_POST['reason_id'] ),
+			'reason_id'                   => sanitize_text_field( wp_unslash( $_POST['reason_id'] ) ),
 			'plugin'                      => $this->plugin_id,
 			'auth'                        => $this->auth_key,
 			'date'                        => gmdate( 'M d, Y h:i:s A' ),
 			'url'                         => '',
 			'user_email'                  => '',
-			'reason_info'                 => isset( $_REQUEST['reason_info'] ) ? trim( stripslashes( $_REQUEST['reason_info'] ) ) : '',
-			'software'                    => $_SERVER['SERVER_SOFTWARE'],
+			'reason_info'                 => isset( $_REQUEST['reason_info'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['reason_info'] ) ) : '',
+			'software'                    => isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : '',
 			'php_version'                 => phpversion(),
 			'mysql_version'               => $wpdb->db_version(),
 			'wp_version'                  => get_bloginfo( 'version' ),

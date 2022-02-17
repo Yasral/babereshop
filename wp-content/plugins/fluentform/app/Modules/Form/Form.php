@@ -537,6 +537,28 @@ class Form
         }
     }
 
+    public function convertToConversational()
+    {
+        $formId = $this->request->get('form_id');
+        $form = $this->fetchForm($formId);
+
+
+        if (!$form) {
+            wp_send_json([
+                'message' => __('Form Not Found! Try Again.', 'fluentform')
+            ], 422);
+        }
+        $formConverted['form_fields'] = \FluentForm\App\Services\FluentConversational\Classes\Converter\Converter::convertExistingForm($form);
+
+        $this->model->where('id', $formId)->update($formConverted);
+
+
+        $this->updateMeta($formId, 'is_conversion_form', 'yes');
+        wp_send_json_success([
+            'message' => __('Form has been successfully converted to conversational form.', 'fluentform'),
+        ], 200);
+    }
+
     private function getAdminPermalink($route, $form)
     {
         $baseUrl = admin_url('admin.php?page=fluent_forms');

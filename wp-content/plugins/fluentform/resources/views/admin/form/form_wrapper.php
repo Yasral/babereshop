@@ -20,6 +20,10 @@
 		<div class="ff-navigation-right">
 			<?php do_action('fluentform_after_form_navigation', $form_id, $route); ?>
 			<?php do_action('fluentform_after_form_navigation_' . $route, $form_id); ?>
+
+			<div id="more-menu" class="pull-right">
+				<more-menu />
+			</div>
 		</div>
 	</div>
 

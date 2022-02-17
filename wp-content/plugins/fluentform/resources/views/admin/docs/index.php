@@ -58,7 +58,7 @@
                     <div style="margin-top: 20px;" class="ff_block_box">
                         <h3>User Guides</h3>
                         <p>Please check the following <b>Tutorials and Documentations</b> for getting started with
-                            Fluent Form</p>
+                            Fluent Forms</p>
                         <ul>
                             <?php foreach ($user_guides as $user_guide): ?>
                                 <li><a target="_blank"

@@ -77,9 +77,11 @@ class Cookie_Law_Info_Shortcode {
 					jQuery('#cookie-law-info-again').click();
 					setTimeout(function(){
 						if( jQuery('#cookie-law-info-bar').length > 0) {
-							jQuery(window).scrollTop(jQuery('#cookie-law-info-bar').offset().top);
+							jQuery('html, body').animate({
+								scrollTop: jQuery("#cookie-law-info-bar").offset().top
+							}, 300);
 						}
-					},1000);
+					},100);
 				});
 			});
 		</script>
@@ -104,7 +106,7 @@ class Cookie_Law_Info_Shortcode {
 		{
 			$html .= ' ' . __( 'No consent given.', 'cookie-law-info' );
 		}
-		$html .= ' <a class="cli_manage_current_consent" style="cursor:pointer;">' . __( 'Manage your consent.', 'cookie-law-info' ) . '</a> </div>';
+		$html .= ' <a class="cli_manage_current_consent" style="cursor:pointer;text-decoration:underline;">' . __( 'Manage your consent.', 'cookie-law-info' ) . '</a> </div>';
 		return $html;
 	}
 
@@ -270,7 +272,7 @@ class Cookie_Law_Info_Shortcode {
 					$ret .= '<td class="cookielawinfo-column-3">' . esc_html( $cookie_duration ) . '</td>';
 				}
 				if ( in_array( 'description', $columns ) ) {
-					$ret .= '<td class="cookielawinfo-column-4">' . wp_kses_post( $post->post_content ). '</td>';
+					$ret .= '<td class="cookielawinfo-column-4">' . wp_kses_post( $post->post_content ) . '</td>';
 				}
 				$ret  = apply_filters( 'cli_new_column_values_to_audit_table', $ret, $custom );
 				$ret .= '</tr>';
@@ -533,7 +535,7 @@ class Cookie_Law_Info_Shortcode {
 		}
 		$manage_consent_link = '';
 		$manage_consent_text = ( isset( $this->cookie_options['showagain_text'] ) ? $this->cookie_options['showagain_text'] : '' );
-		$manage_consent_link = '<a href="javascript:void(0)" class="wt-cli-manage-consent-link">' . esc_html( $manage_consent_text ) . '</a>';
+		$manage_consent_link = '<a class="wt-cli-manage-consent-link">' . esc_html( $manage_consent_text ) . '</a>';
 
 		return $manage_consent_link;
 	}
@@ -552,7 +554,7 @@ class Cookie_Law_Info_Shortcode {
 		} else {
 			$class = ' class="wt-cli-element cli-plugin-main-button wt-cli-accept-all-btn cookie_action_close_header cli_action_button" ';
 		}
-		$url = ( $settings['button_7_action'] == 'CONSTANT_OPEN_URL' && $settings['button_7_url'] != '#' ) ? 'href="' . esc_url( $settings['button_7_url'] ) . '"': "role='button'";
+		$url = ( $settings['button_7_action'] == 'CONSTANT_OPEN_URL' && $settings['button_7_url'] != '#' ) ? 'href="' . esc_url( $settings['button_7_url'] ) . '"' : "role='button'";
 
 		$link_tag  = '<a id="wt-cli-accept-all-btn" tabindex="0" ' . $url . ' data-cli_action="accept_all" ';
 		$link_tag .= ( $settings['button_7_new_win'] ) ? ' target="_blank" ' : '';

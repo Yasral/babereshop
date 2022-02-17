@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		padding-left: 15px;
 	}
 	.wt-cli-notice-actions {
-    	padding: 10px 0;
+		padding: 10px 0;
 	}
 	.wt-cli-cookie-scan-bar {
 		display: flex;
@@ -162,37 +162,37 @@ table.wt-cli-table {
 	display: flex;
 }
 .wt-cli-scan-result-import-section p {
-    font-weight: 500;
+	font-weight: 500;
 }
 .wt-cli-scan-result-import-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0 15px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0 15px 0;
 }
 .wt-cli-scan-result-actions .button-primary {
-    color: #0071a1;
-    border-color: #0071a1;
-    background: #f3f5f6;
+	color: #0071a1;
+	border-color: #0071a1;
+	background: #f3f5f6;
 }
 .wt-cli-cookie-scan-notice {
 	width:100%;
 }
 .wt-cli-cookie-scan-features-section .wt-cli-callout.wt-cli-callout-success {
-    background: #eff7ed;
+	background: #eff7ed;
 }
 .wt-cli-inline-notice {
 	padding: 15px 0;
 }
 .wt-cli-inline-notice.wt-cli-inline-notice-error {
-    color: #ff0000;
+	color: #ff0000;
 }
 .wt-cli-inline-notice.wt-cli-inline-notice-success {
-    color: #3e9429;
+	color: #3e9429;
 }
 </style>
 <div class="wrap">
-	<h2><?php _e( 'Cookie scanner', 'cookie-law-info' );  // phpcs:ignore WordPress.Security.EscapeOutput ?></h2> 
+	<h2><?php echo esc_html__( 'Cookie scanner', 'cookie-law-info' ); ?></h2> 
 	<?php do_action( 'wt_cli_before_cookie_scanner_header' ); ?>
 	<div class="wt-cli-cookie-scan-bar">
 		<div class="wt-cli-cookie-scan-notice">

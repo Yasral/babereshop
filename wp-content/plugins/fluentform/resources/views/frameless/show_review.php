@@ -88,7 +88,7 @@
         </div>
     </div>
     <div class="ff_preview_footer">
-        <p>You are seeing preview version of WP Fluent Forms. This form is only accessible for Admin users. Other users
+        <p>You are seeing preview version of Fluent Forms. This form is only accessible for Admin users. Other users
             may not access this page. To use this for in a page please use the following shortcode: [fluentform
             id='<?php echo $form_id ?>']</p>
     </div>

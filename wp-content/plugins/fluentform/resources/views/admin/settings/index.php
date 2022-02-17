@@ -13,12 +13,20 @@ use FluentForm\Framework\Helpers\ArrayHelper;
             <?php do_action('fluentform_before_global_settings_wrapper'); ?>
             <div class="ff_settings_sidebar">
                 <ul class="ff_settings_list">
-                    <li class="<?php echo Helper::getHtmlElementClass('settings', $currentComponent); ?>">
+                    <li>
                         <a data-hash="settings"
                            href="<?php echo Helper::makeMenuUrl('fluent_forms_settings', [
                                'hash' => 'settings'
                            ]); ?>">
                             <?php echo __('Settings'); ?>
+                        </a>
+                    </li>
+                    <li class="<?php echo Helper::getHtmlElementClass('managers', $currentComponent); ?> ff_menu_item_managers">
+                        <a data-hash="managers"
+                           href="<?php echo Helper::makeMenuUrl('fluent_forms_settings', [
+                               'hash' => 'managers'
+                           ]); ?>">
+                            <?php echo __('Managers'); ?>
                         </a>
                     </li>
                     <li class="<?php echo Helper::getHtmlElementClass('double_optin_settings', $currentComponent); ?> ff_menu_item_double_optin">

@@ -175,21 +175,56 @@ class Report
             ->get();
 
 
+        return $this->getFormattedReportsForSubInputs($reports, $formId, $whereClasuses);
+    }
+
+    protected function getFormattedReportsForSubInputs($reports, $formId, $whereClasuses)
+    {
+        if (!count($reports)) {
+            return [];
+        }
+
         $formattedReports = [];
+
         foreach ($reports as $report) {
-            $filedValue = maybe_unserialize($report->field_value);
-            if(is_array($filedValue)) {
-                $filedValue = implode(', ', $filedValue);
-            }
-            $formattedReports[$report->field_name]['reports'][] = [
-                'value'     => $report->sub_field_name . ' : ' . $filedValue,
-                'count'     => $report->total_count,
-                'sub_field' => $report->sub_field_name,
-            ];
-            $formattedReports[$report->field_name]['total_entry'] = $this->getEntryTotal($report->field_name, $formId, $whereClasuses);
+            $this->setReportForSubInput((array) $report, $formattedReports);
+        }
+
+        foreach ($formattedReports as $fieldName => $val) {
+            $formattedReports[$fieldName]['total_entry'] = $this->getEntryTotal(
+                $report->field_name, $formId, $whereClasuses
+            );
+
+            $formattedReports[$fieldName]['reports'] = array_values(
+                $formattedReports[$fieldName]['reports']
+            );
         }
 
         return $formattedReports;
+    }
+
+    protected function setReportForSubInput($report, &$formattedReports)
+    {
+        $filedValue = maybe_unserialize($report['field_value']);
+
+        if (is_array($filedValue)) {
+            foreach ($filedValue as $fVal) {
+                $this->setReportForSubInput(
+                    array_merge($report, ['field_value' => $fVal]),
+                    $formattedReports
+                );
+            }
+        } else {
+            $value = $report['sub_field_name'] . ' : ' . $filedValue;
+            $count = ArrayHelper::get($formattedReports, $report['field_name'] . '.reports.' . $value . '.count');
+            $count = $count ? $count + $report['total_count'] : $report['total_count'];
+
+            $formattedReports[$report['field_name']]['reports'][$value] = [
+                'value'     => $value,
+                'count'     => $count,
+                'sub_field' => $report['sub_field_name'],
+            ];
+        }
     }
 
     public function getEntryTotal($fieldName, $formId, $whereClasuses)

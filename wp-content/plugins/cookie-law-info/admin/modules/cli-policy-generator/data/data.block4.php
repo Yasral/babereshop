@@ -5,7 +5,7 @@
 <p><span style="font-weight:bold;">Marketing:</span> Our website displays advertisements. These cookies are used to personalize the advertisements that we show to you so that they are meaningful to you. These cookies also help us keep track of the efficiency of these ad campaigns.</p>
 <p>The information stored in these cookies may also be used by the third-party ad providers to show you ads on other websites on the browser as well.</p>
 
-<p><span style="font-weight:bold;">Functional:</span> TThese are the cookies that help certain non-essential functionalities on our website. These functionalities include embedding content like videos or sharing content of the website on social media platforms.</p>
+<p><span style="font-weight:bold;">Functional:</span> These are the cookies that help certain non-essential functionalities on our website. These functionalities include embedding content like videos or sharing content of the website on social media platforms.</p>
 
 <p><span style="font-weight:bold;">Preferences:</span> These cookies help us store your settings and browsing preferences like language preferences so that you have a better and efficient experience on future visits to the website.</p>
 [cookie_audit columns="cookie,description" heading="The below list details the cookies used in our website."]

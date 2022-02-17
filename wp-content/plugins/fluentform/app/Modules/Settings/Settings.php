@@ -264,7 +264,7 @@ class Settings
             ], 400);
         }
 
-        // MailChimp key is verified now, Proceed now
+        // Mailchimp key is verified now, Proceed now
 
         $mailChimpSettings = [
             'apiKey' => sanitize_text_field($mailChimp['apiKey']),

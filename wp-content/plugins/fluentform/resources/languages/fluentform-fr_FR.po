@@ -106,8 +106,8 @@ msgstr ""
 
 #: app/Modules/Widgets/SidebarWidgets.php:12
 #, fuzzy
-msgid "Add your form by WP Fluent Forms"
-msgstr "Ajoutez votre formulaire par WP Fluent Forms"
+msgid "Add your form by Fluent Forms"
+msgstr "Ajoutez votre formulaire par Fluent Forms"
 
 #: app/Modules/DocumentationModule.php:21
 msgid "Adding a new form"
@@ -1049,10 +1049,10 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Enter your Mailchimp API Key, if you do not have <br>Please login to your "
-"MailChimp account and go to<br>Profile -> Extras -> Api Keys"
+"Mailchimp account and go to<br>Profile -> Extras -> Api Keys"
 msgstr ""
 "Entrez votre clé aPI Mailchimp, si vous n’avez pas<br>S’il vous plaît "
-"connectez-vous à votre compte MailChimp et aller à<br>Profil -- Extras -- "
+"connectez-vous à votre compte Mailchimp et aller à<br>Profil -- Extras -- "
 "Api Keys"
 
 #: app/Modules/Registerer/Menu.php:910
@@ -1206,7 +1206,7 @@ msgstr "Conteneur de cinq colonnes"
 #: app/Modules/Widgets/FluentFormWidget.php:22
 #: app/Modules/Widgets/FluentFormWidget.php:81
 #: app/Modules/Widgets/FluentFormWidget.php:89
-msgid "Fluent Form"
+msgid "Fluent Forms"
 msgstr ""
 
 #. Name of the plugin
@@ -1967,22 +1967,22 @@ msgid "Mailchimp Feed"
 msgstr "Alimentation Mailchimp"
 
 #: app/Modules/DocumentationModule.php:45
-msgid "MailChimp integration"
-msgstr "Intégration MailChimp"
+msgid "Mailchimp integration"
+msgstr "Intégration Mailchimp"
 
 #: app/Services/Integrations/MailChimp/MailChimpIntegration.php:43
 #, fuzzy
 #| msgid ""
 #| "Mailchimp is a marketing platform for small businesses. Send beautiful "
 #| "emails, connect your e-commerce store, advertise, and build your brand. "
-#| "Use Fluent Form to collect customer information and automatically add it "
+#| "Use Fluent Forms to collect customer information and automatically add it "
 #| "to your Mailchimp campaign list. If you don't have a Mailchimp account, "
 #| "you can <a href=\"http://www.mailchimp.com/\" target=\"_blank\">sign up "
 #| "for one here.</a>"
 msgid ""
 "Mailchimp is a marketing platform for small businesses. Send beautiful "
 "emails, connect your e-commerce store, advertise, and build your brand. Use "
-"Fluent Form to collect customer information and automatically add it to your "
+"Fluent Forms to collect customer information and automatically add it to your "
 "Mailchimp campaign list. If you don't have a Mailchimp account, you can <a "
 "href=\"https://mailchimp.com/\" target=\"_blank\">sign up for one here.</a>"
 msgstr ""
@@ -2916,7 +2916,7 @@ msgid "Select a button style from the dropdown"
 msgstr "Sélectionnez un style bouton à partir de la baisse"
 
 #: app/Modules/Widgets/ElementorWidget.php:47
-msgid "Select a Fluent Form"
+msgid "Select a Fluent Forms"
 msgstr ""
 
 #: app/Services/FormBuilder/ElementCustomization.php:442
@@ -4019,7 +4019,7 @@ msgstr "Nom WordPress Hook pour accrocher quelque chose dans cet endroit."
 
 #: app/Modules/Widgets/SidebarWidgets.php:11
 #, fuzzy
-msgid "WP Fluent Forms Widget"
+msgid "Fluent Forms Widget"
 msgstr "WP Formes fluent Widget"
 
 #: app/Services/FormBuilder/ElementSettingsPlacement.php:480

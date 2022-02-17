@@ -64,8 +64,9 @@ $app->addAction('fluentform_global_menu', function () use ($app) {
 });
 
 $app->addAction('wp_dashboard_setup', function () {
-    $roleManager = new \FluentForm\App\Modules\Acl\RoleManager();
-    if (!$roleManager->currentUserFormFormCapability()) {
+    $roleManager = new \FluentForm\App\Modules\Acl\Acl();
+
+    if (!$roleManager->getCurrentUserCapability()) {
         return;
     }
     wp_add_dashboard_widget('fluentform_stat_widget', __('Fluent Forms Latest Form Submissions', 'fluentform'), function () {

@@ -163,7 +163,7 @@ if ( ! defined( 'WPINC' ) ) {
   </table>
 </div>
 <p class="text-right" style="margin-top: 25px;"><a
-	href="https://www.webtoffee.com/product/gdpr-cookie-consent/?utm_source=free_pro-comparison&utm_medium=gdpr_basic&utm_campaign=GDPR&utm_content=<?php echo esc_attr( CLI_VERSION );?>"
+	href="https://www.webtoffee.com/product/gdpr-cookie-consent/?utm_source=free_pro-comparison&utm_medium=gdpr_basic&utm_campaign=GDPR&utm_content=<?php echo esc_attr( CLI_VERSION ); ?>"
 	class="wt-primary-btn crown-icon" target="_blank" style="text-transform:uppercase;margin-bottom:0px"><?php echo esc_html( __( 'Upgrade to premium', 'cookie-law-info' ) ); ?></a></p>
 
 <!------ stop copying -- (frame 10 : table)-------->

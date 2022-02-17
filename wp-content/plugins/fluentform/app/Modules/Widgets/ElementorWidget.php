@@ -44,7 +44,7 @@ class ElementorWidget
         $forms = array();
 
         if ($ff_list) {
-            $forms[0] = esc_html__('Select a Fluent Form', 'fluentform');
+            $forms[0] = esc_html__('Select a Fluent Forms', 'fluentform');
             foreach ($ff_list as $form) {
                 $forms[$form->id] = $form->title .' ('.$form->id.')';
             }

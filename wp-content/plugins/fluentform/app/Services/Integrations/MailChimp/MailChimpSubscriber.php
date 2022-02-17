@@ -98,6 +98,38 @@ trait MailChimpSubscriber
         ];
 
         if ($mergeFields) {
+            // Process merge field for address
+            $mergeFieldsSettings = $this->findMergeFields(
+                ArrayHelper::get($feed, 'settings.list_id')
+            );
+
+            foreach ($mergeFieldsSettings as $fieldSettings) {
+                if ($fieldSettings['type'] == 'address') {
+                    $fieldName = $fieldSettings['tag'];
+
+                    $formFieldName = ArrayHelper::get($feed, 'settings.merge_fields.' . $fieldName);
+
+                    if ($formFieldName) {
+                        preg_match('/{+(.*?)}/', $formFieldName, $matches);
+
+                        $formFieldName = substr($matches[1], strlen('inputs.'));
+
+                        $formFieldValue = ArrayHelper::get($formData, $formFieldName);
+
+                        if ($formFieldValue) {
+                            $mergeFields[$fieldName] = [
+                                'addr1'   => ArrayHelper::get($formFieldValue, 'address_line_1'),
+                                'addr2'   => ArrayHelper::get($formFieldValue, 'address_line_2'),
+                                'city'    => ArrayHelper::get($formFieldValue, 'city'),
+                                'state'   => ArrayHelper::get($formFieldValue, 'state'),
+                                'zip'     => ArrayHelper::get($formFieldValue, 'zip'),
+                                'country' => ArrayHelper::get($formFieldValue, 'country'),
+                            ];
+                        }
+                    }
+                }
+            }
+            
             $arguments['merge_fields'] = (object)$mergeFields;
         }
 

@@ -47,7 +47,7 @@ class MailChimps
             ],
             [
                 'name.required'              => 'The Name field is required.',
-                'list.required'              => 'The MailChimp List field is required.',
+                'list.required'              => 'The Mailchimp List field is required.',
                 'fieldEmailAddress.required' => 'The Email Address field is required.',
             ]
         ];

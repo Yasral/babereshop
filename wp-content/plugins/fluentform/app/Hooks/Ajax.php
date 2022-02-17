@@ -39,7 +39,7 @@ $app->addAdminAjaxAction('fluentform-form-store', function () use ($app) {
 });
 
 $app->addAdminAjaxAction('fluentform-form-find', function () use ($app) {
-    Acl::verify('fluentform_forms_manager');
+    Acl::verify('fluentform_dashboard_access');
     (new \FluentForm\App\Modules\Form\Form($app))->find();
 });
 
@@ -56,6 +56,11 @@ $app->addAdminAjaxAction('fluentform-form-delete', function () use ($app) {
 $app->addAdminAjaxAction('fluentform-form-duplicate', function () use ($app) {
     Acl::verify('fluentform_forms_manager');
     (new \FluentForm\App\Modules\Form\Form($app))->duplicate();
+});
+
+$app->addAdminAjaxAction('fluentform-convert-to-conversational', function () use ($app) {
+    Acl::verify('fluentform_forms_manager');
+    (new \FluentForm\App\Modules\Form\Form($app))->convertToConversational();
 });
 
 $app->addAdminAjaxAction('fluentform_get_all_entries', function () use ($app) {
@@ -174,7 +179,6 @@ $app->addAdminAjaxAction('fluentform-get-users', function () use ($app) {
     (new \FluentForm\App\Modules\Entries\Entries())->getUsers();
 });
 
-
 $app->addAdminAjaxAction('fluentform-get-entry-notes', function () use ($app) {
     Acl::verify('fluentform_entries_viewer');
     (new \FluentForm\App\Modules\Entries\Entries())->getNotes();
@@ -218,28 +222,27 @@ $app->addAdminAjaxAction('fluentform_retry_api_action', function () use ($app) {
 });
 
 $app->addAdminAjaxAction('fluentform_delete_logs_by_ids', function () use ($app) {
-    Acl::verify('fluentform_entries_viewer');
+    Acl::verify('fluentform_manage_entries');
     (new \FluentForm\App\Modules\Logger\DataLogger($app))->deleteLogsByIds();
 });
 
 $app->addAdminAjaxAction('fluentform_delete_api_logs_by_ids', function () use ($app) {
-    Acl::verify('fluentform_entries_viewer');
+    Acl::verify('fluentform_manage_entries');
     (new \FluentForm\App\Modules\Logger\DataLogger($app))->deleteApiLogsByIds();
 });
 
 $app->addAdminAjaxAction('fluentform-reset-analytics', function () use ($app) {
-    Acl::verify('fluentform_entries_viewer');
+    Acl::verify('fluentform_manage_entries');
     (new \FluentForm\App\Modules\Form\Analytics($app))->resetFormAnalytics();
 });
 
-
 $app->addAdminAjaxAction('fluentform-change-entry-status', function () use ($app) {
-    Acl::verify('fluentform_entries_viewer');
+    Acl::verify('fluentform_manage_entries');
     (new \FluentForm\App\Modules\Entries\Entries())->changeEntryStatus();
 });
 
 $app->addAdminAjaxAction('fluentform-delete-entry', function () use ($app) {
-    Acl::verify('fluentform_entries_viewer');
+    Acl::verify('fluentform_manage_entries');
     (new \FluentForm\App\Modules\Entries\Entries())->deleteEntry();
 });
 
@@ -249,7 +252,7 @@ $app->addAdminAjaxAction('fluentform-change-entry-favorites', function () use ($
 });
 
 $app->addAdminAjaxAction('fluentform-do_entry_bulk_actions', function () use ($app) {
-    Acl::verify('fluentform_entries_viewer');
+    Acl::verify('fluentform_manage_entries');
     (new \FluentForm\App\Modules\Entries\Entries())->handleBulkAction();
 });
 
@@ -285,14 +288,13 @@ $app->addAdminAjaxAction(
     }
 );
 
-
 $app->addAdminAjaxAction('fluentform_notice_action_track_yes', function () use ($app) {
     Acl::hasAnyFormPermission();
     (new FluentForm\App\Modules\Track\TrackModule())->sendInitialInfo();
 });
 
 $app->addAdminAjaxAction('fluentform_install_fluentsmtp', function () {
-    Acl::hasAnyFormPermission();
+    Acl::verify('fluentform_settings_manager');
     (new FluentForm\App\Modules\Track\SetupModule())->installPlugin('fluent-smtp');
 });
 
@@ -342,6 +344,21 @@ $app->addAdminAjaxAction('fluentform_set_access_roles', function () {
     Acl::verify('fluentform_full_access');
     $roleManager = new \FluentForm\App\Modules\Acl\RoleManager();
     $roleManager->setRoles();
+});
+
+$app->addAdminAjaxAction('fluentform_get_managers', function () {
+    Acl::verify('fluentform_full_access');
+    (new \FluentForm\App\Modules\Acl\Managers())->get();
+});
+
+$app->addAdminAjaxAction('fluentform_set_managers', function () {
+    Acl::verify('fluentform_full_access');
+    (new \FluentForm\App\Modules\Acl\Managers())->store();
+});
+
+$app->addAdminAjaxAction('fluentform_del_managers', function () {
+    Acl::verify('fluentform_full_access');
+    (new \FluentForm\App\Modules\Acl\Managers())->remove();
 });
 
 

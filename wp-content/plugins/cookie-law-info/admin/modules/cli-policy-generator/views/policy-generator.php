@@ -18,27 +18,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 .cli_pg_content_hid, .cli_pg_samplehid_block{ display:none; }
 </style>
 <div class="wrap">
-	<h1><?php _e('Policy generator', 'cookie-law-info'); ?></h1>
+	<h1><?php echo esc_html__( 'Policy generator', 'cookie-law-info' ); ?></h1>
 	<div class="cli_pg_samplehid_block">
 		<div class="cli_pg_left_menu">
 			<input type="checkbox" name="cli_pg_enabled_block_checkbox" checked="checked">
-			<span class="cli_pg_content_hd"><?php _e('Sample heading','cookie-law-info'); ?></span>
-			<div class="cli_pg_content_hid"><?php _e('Sample content','cookie-law-info'); ?></div>
-			<span class="dashicons dashicons-trash cli_pg_content_delete" style="float:right;" title="<?php _e('Delete','cookie-law-info');?>"></span>
+			<span class="cli_pg_content_hd"><?php echo esc_html__( 'Sample heading', 'cookie-law-info' ); ?></span>
+			<div class="cli_pg_content_hid"><?php echo esc_html__( 'Sample content', 'cookie-law-info' ); ?></div>
+			<span class="dashicons dashicons-trash cli_pg_content_delete" style="float:right;" title="<?php echo esc_html__( 'Delete', 'cookie-law-info' ); ?>"></span>
 		</div>
 	</div>
 	<div class="cli_pg_main">
 		<div class="cli_pg_left">
 			<?php
-			if(isset($default_data))
-			{
-				foreach($default_data as $data)
-				{
+			if ( isset( $default_data ) ) {
+				foreach ( $default_data as $data ) {
 					?>
 					<div class="cli_pg_left_menu">
 						<input type="checkbox" name="cli_pg_enabled_block_checkbox" checked="checked">
-						<span class="cli_pg_content_hd"><?php echo $data['head'];?></span>
-						<div class="cli_pg_content_hid"><?php echo $data['body'];?></div>
+						<span class="cli_pg_content_hd"><?php echo esc_html( $data['head'] ); ?></span>
+						<div class="cli_pg_content_hid"><?php echo wp_kses_post( $data['body'] ); ?></div>
 					</div>
 					<?php
 				}
@@ -46,50 +44,56 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<button class="cli_pg_addnew_hd_btn button-secondary">
 				<span class="dashicons dashicons-plus" style="line-height:28px;"></span>
-				<?php _e('Add new','cookie-law-info');?></button>
+				<?php echo esc_html__( 'Add new', 'cookie-law-info' ); ?></button>
 		</div>	
 		<div class="cli_pg_right">
 			<div class="cli_pg_formrow">
-				<label><?php _e('Heading','cookie-law-info');?></label>
+				<label><?php echo esc_html__( 'Heading', 'cookie-law-info' ); ?></label>
 				<input type="text" class="cli_pg_txt_field" name="cli_pg_hd_field">
 			</div>
 			<div class="cli_pg_formrow">
-				<label><?php _e('Description','cookie-law-info');?></label>				
+				<label><?php echo esc_html__( 'Description', 'cookie-law-info' ); ?></label>				
 				<?php
-				wp_editor('','cli_pg_content',array('textarea_name'=>'cli_pg_content','editor_class'=>'cli_pg_txt_field','editor_height'=>250));
+				wp_editor(
+					'',
+					'cli_pg_content',
+					array(
+						'textarea_name' => 'cli_pg_content',
+						'editor_class'  => 'cli_pg_txt_field',
+						'editor_height' => 250,
+					)
+				);
 				?>
 			</div>
 		</div>
 		<div class="cli_pg_footer">
 			<div style="float:right; width:75%;">
-				<p><input type="checkbox" id="enable_webtofee_powered_by" name="enable_webtofee_powered_by"> <label for="enable_webtofee_powered_by"><?php _e('Enabling this option will help us spread the word by placing a credit to WebToffee at the very end of the Cookie Policy page.','cookie-law-info');?></label></p>
+				<p><input type="checkbox" id="enable_webtofee_powered_by" name="enable_webtofee_powered_by"> <label for="enable_webtofee_powered_by"><?php echo esc_html__( 'Enabling this option will help us spread the word by placing a credit to WebToffee at the very end of the Cookie Policy page.', 'cookie-law-info' ); ?></label></p>
 
 				<?php
-				$policy_pageid=$this->get_cookie_policy_pageid();
-				$update_exists_page_visibility='display:none;';
-				if($policy_pageid)
-				{
-					$policy_page_status=get_post_status($policy_pageid);
-					if($policy_page_status && $policy_page_status!='trash')
-					{
-						$update_exists_page_visibility='';
+				$policy_pageid                 = $this->get_cookie_policy_pageid();
+				$update_exists_page_visibility = 'display:none;';
+				if ( $policy_pageid ) {
+					$policy_page_status = get_post_status( $policy_pageid );
+					if ( $policy_page_status && $policy_page_status != 'trash' ) {
+						$update_exists_page_visibility = '';
 					}
 				}
 				?>
 
-				<a name="cli_pg_save_currentpage" style="<?php echo $update_exists_page_visibility;?>" class="button-primary cli_pg_main_buttons">
+				<a name="cli_pg_save_currentpage" style="<?php echo esc_attr( $update_exists_page_visibility ); ?>" class="button-primary cli_pg_main_buttons">
 					<span class="dashicons dashicons-yes" style="line-height: 28px;"></span>
-					<?php _e('Update existing Cookie Policy page','cookie-law-info');?>
+					<?php echo esc_html__( 'Update existing Cookie Policy page', 'cookie-law-info' ); ?>
 				</a>
 
-				<input type="hidden" name="cli_pg_policy_pageid" value="<?php echo $policy_pageid ? esc_attr( $policy_pageid ) : 0 ?>">
+				<input type="hidden" name="cli_pg_policy_pageid" value="<?php echo $policy_pageid ? esc_attr( $policy_pageid ) : 0; ?>">
 				<a name="cli_pg_save_newpage" class="button-primary cli_pg_main_buttons">
 					<span class="dashicons dashicons-welcome-add-page" style="line-height: 28px;"></span>
-					<?php _e('Create Cookie Policy page','cookie-law-info');?>
+					<?php echo esc_html__( 'Create Cookie Policy page', 'cookie-law-info' ); ?>
 				</a>
 				<a name="cli_pg_live_preview" class="button-secondary cli_pg_main_buttons" href="<?php echo esc_url( $preview_url ); ?>" target="_blank">
 					<span class="dashicons dashicons-external" style="line-height: 28px;"></span>
-					<?php _e('Live preview','cookie-law-info');?>
+					<?php echo esc_html__( 'Live preview', 'cookie-law-info' ); ?>
 				</a>
 			</div>		
 		</div>	

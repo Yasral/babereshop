@@ -29,9 +29,7 @@ class Cookie_Law_Info_Deactivator {
 	 *
 	 * @since    1.6.6
 	 */
-	public static function deactivate() 
-	{
-		
+	public static function deactivate() {
 	}
 
 }

@@ -5,7 +5,7 @@ Tags: GDPR, CCPA, cookie notice, DSGVO, RGPD, LGPD, PIPEDA, POPIA, cookies , coo
 Requires at least: 4.4.0
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.0.9
+Stable tag: 2.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -190,6 +190,15 @@ For every update of the plugin, you will be notified of the installed plugins pa
 13. Add a privacy policy overview
 
 == Changelog ==
+
+= 2.1.1 =
+
+* Fix - Compatibility issue with PHP 7.3.0 and below.
+
+= 2.1.0 =
+
+* Improved: Validation & escaping for Security Enhancement.
+
 
 = 2.0.9 =
 
@@ -546,7 +555,6 @@ For every update of the plugin, you will be notified of the installed plugins pa
 
 == Upgrade Notice ==
 
-= 2.0.9 =
+= 2.1.1 =
 
-* Fix - Removed cache flush helper functions
-* Tested ok with WordPress version 5.9
+* Fix - Compatibility issue with PHP 7.3.0 and below.

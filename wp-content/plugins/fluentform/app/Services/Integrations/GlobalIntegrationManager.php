@@ -56,7 +56,7 @@ class GlobalIntegrationManager
 
         // Someone should catch that above action and send response
         wp_send_json_error([
-            'message' => __('Sorry, no Integration found. Please make sure that latest version of WP Fluent Form pro installed', 'wpfluentform')
+            'message' => __('Sorry, no Integration found. Please make sure that latest version of Fluent Forms pro installed', 'wpfluentform')
         ], 423);
 
     }
@@ -197,7 +197,7 @@ class GlobalIntegrationManager
             $settings['enabled'] = false;
         }
 
-        $settingsFields = apply_filters('fluentform_get_integration_settings_fields_' . $integrationName, [], $formId, $settings);
+        $settingsFields = apply_filters('fluentform_get_integration_settings_fields_' . $integrationName, $settings, $formId, $settings);
 
 
         wp_send_json_success([

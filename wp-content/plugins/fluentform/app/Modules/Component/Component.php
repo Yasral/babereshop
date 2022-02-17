@@ -19,6 +19,13 @@ class Component
     protected $app = null;
 
     /**
+     * Determine whether to register Elementor PopUp handler.
+     *
+     * @var bool
+     */
+    protected $elementorPopUpHandler = false;
+
+    /**
      * Biuld the instance of this class
      *
      * @param \FluentForm\Framework\Foundation\Application $app
@@ -869,9 +876,15 @@ class Component
      */
     private function addInlineVars()
     {
-        if (!defined('ELEMENTOR_PRO_VERSION')) {
+        if (!defined('ELEMENTOR_PRO_VERSION') || $this->elementorPopUpHandler) {
             return '';
         }
+
+        // Previously this handler was registered for every form
+        // in a single page. So multiple event handlers were
+        // registered. This flag ensures the handler is
+        // registered just once, since one is enough!
+        $this->elementorPopUpHandler = true;
 
         $actionName = 'wp_footer';
         if (is_admin()) {

@@ -7,14 +7,14 @@ use FluentForm\App\Services\Parser\Form as FormParser;
 /**
  * @method array getShortCodeInputs(\stdClass $form, array $with = ['admin_label'])
  * @method array getValidations(\stdClass $form, array $inputs, array $fields = [])
- * @method array getElement(\stdClass $form, string $name, array $with = [])
+ * @method array getElement(\stdClass $form, string|array $name, array $with = [])
  * @method boolean hasElement(\stdClass $form, string $name)
  * @method boolean hasPaymentFields(\stdClass $form)
  * @method array getPaymentFields(\stdClass $form, $with = [])
  * @method array getPaymentInputFields(\stdClass $form, $with = [])
  * @method array getAttachmentInputFields(\stdClass $form, $with = [])
  * @method boolean hasRequiredFields(\stdClass $form, array $fields)
- * @method array getInputsByElementTypes(\stdClass $form, array $elements)
+ * @method array getInputsByElementTypes(\stdClass $form, array $elements, array $with = [])
  * @method array|null getField(\stdClass $form, string|array $element, string|array $attribute, array $with = [])
  */
 class FormFieldsParser
@@ -99,10 +99,17 @@ class FormFieldsParser
         // The first item of the parameters is expected to contain the form object.
         $form = array_shift($parameters);
 
+        $forceFreshValue = [
+            'getField',
+            'getElement',
+            'hasElement',
+            'getInputsByElementTypes',
+        ];
+
         // If the store doesn't have the requested result we'll
         // deletegate the method call to the Parser method.
         // Set the store before returning it to the dev.
-        if (!isset(static::$forms[$form->id][$method])) {
+        if (in_array($method, $forceFreshValue) || !isset(static::$forms[$form->id][$method])) {
             $parser = new FormParser($form);
 
             static::$forms[$form->id][$method] = call_user_func_array([$parser, $method], $parameters);

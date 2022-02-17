@@ -16,7 +16,7 @@
  * Plugin Name:       GDPR Cookie Consent
  * Plugin URI:        https://www.webtoffee.com/product/gdpr-cookie-consent/
  * Description:       A simple way to show your website complies with the EU Cookie Law / GDPR.
- * Version:           2.0.9
+ * Version:           2.1.1
  * Author:            WebToffee
  * Author URI:        https://www.webtoffee.com/
  * License:           GPLv3
@@ -70,7 +70,7 @@ define( 'CLI_ACTIVATION_ID', 'wtgdprcookieconsent' );
  * Currently plugin version.
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'CLI_VERSION', '2.0.9' );
+define( 'CLI_VERSION', '2.1.1' );
 
 function wt_cookie_law_info_update_message( $data, $response ) {
 	if ( isset( $data['upgrade_notice'] ) ) {
@@ -81,7 +81,7 @@ function wt_cookie_law_info_update_message( $data, $response ) {
         #cookie-law-info-update ul{ list-style:disc; margin-left:30px;}
         .wf-update-message{ padding-left:30px;}
         </style>
-        <div class="update-message wf-update-message"><div style="color: #f56e28;">' . __( 'Please make sure the cache is cleared after each plugin update especially if you have minified JS and/or CSS files.', 'cookie-law-info' ) . '</div>' . wpautop( $msg ) . '</div>';
+        <div class="update-message wf-update-message"><div style="color: #f56e28;">' . esc_html__( 'Please make sure the cache is cleared after each plugin update especially if you have minified JS and/or CSS files.', 'cookie-law-info' ) . '</div>' . wp_kses_post( wpautop( $msg ) ) . '</div>';
 	}
 }
 function wt_cookie_law_info_plugin_screen_update_js() {     ?>

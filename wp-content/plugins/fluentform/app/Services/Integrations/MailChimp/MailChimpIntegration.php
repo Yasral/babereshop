@@ -18,14 +18,14 @@ class MailChimpIntegration extends IntegrationManager
     {
         parent::__construct(
             $application,
-            'MailChimp',
+            'Mailchimp',
             'mailchimp',
             '_fluentform_mailchimp_details',
             'mailchimp_feeds',
             12
         );
 
-        $this->description = 'WP Fluent Forms Mailchimp module allows you to create Mailchimp newsletter signup forms in WordPress';
+        $this->description = 'Fluent Forms Mailchimp module allows you to create Mailchimp newsletter signup forms in WordPress';
 
         $this->logo = $this->app->url('public/img/integrations/mailchimp.png');
         $this->registerAdminHooks();
@@ -40,14 +40,14 @@ class MailChimpIntegration extends IntegrationManager
         return [
             'logo'             => $this->logo,
             'menu_title'       => __('Mailchimp Settings', 'fluentform'),
-            'menu_description' => __('Mailchimp is a marketing platform for small businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand. Use Fluent Form to collect customer information and automatically add it to your Mailchimp campaign list. If you don\'t have a Mailchimp account, you can <a href="https://mailchimp.com/" target="_blank">sign up for one here.</a>', 'fluentform'),
+            'menu_description' => __('Mailchimp is a marketing platform for small businesses. Send beautiful emails, connect your e-commerce store, advertise, and build your brand. Use Fluent Forms to collect customer information and automatically add it to your Mailchimp campaign list. If you don\'t have a Mailchimp account, you can <a href="https://mailchimp.com/" target="_blank">sign up for one here.</a>', 'fluentform'),
             'valid_message'    => __('Your Mailchimp API Key is valid', 'fluentform'),
             'invalid_message'  => __('Your Mailchimp API Key is not valid', 'fluentform'),
             'save_button_text' => __('Save Settings', 'fluentform'),
             'fields'           => [
                 'apiKey' => [
                     'type'       => 'text',
-                    'label_tips' => __("Enter your Mailchimp API Key, if you do not have <br>Please login to your MailChimp account and go to<br>Profile -> Extras -> Api Keys", 'fluentform'),
+                    'label_tips' => __("Enter your Mailchimp API Key, if you do not have <br>Please login to your Mailchimp account and go to<br>Profile -> Extras -> Api Keys", 'fluentform'),
                     'label'      => __('Mailchimp API Key', 'fluentform'),
                 ]
             ],
@@ -105,7 +105,7 @@ class MailChimpIntegration extends IntegrationManager
             ], 400);
         }
 
-        // MailChimp key is verified now, Proceed now
+        // Mailchimp key is verified now, Proceed now
 
         $mailChimpSettings = [
             'apiKey' => sanitize_text_field($mailChimp['apiKey']),
@@ -185,7 +185,7 @@ class MailChimpIntegration extends IntegrationManager
                     'key'                => 'merge_fields',
                     'require_list'       => true,
                     'label'              => 'Map Fields',
-                    'tips'               => 'Associate your Mailchimp merge tags to the appropriate Fluent Form fields by selecting the appropriate form field from the list.',
+                    'tips'               => 'Associate your Mailchimp merge tags to the appropriate Fluent Forms fields by selecting the appropriate form field from the list.',
                     'component'          => 'map_fields',
                     'field_label_remote' => 'Mailchimp Field',
                     'field_label_local'  => 'Form Field',
@@ -214,7 +214,7 @@ class MailChimpIntegration extends IntegrationManager
                     'key' => 'tags',
                     'require_list' => true,
                     'label' => 'Tags',
-                    'tips' => 'Associate tags to your MailChimp contacts with a comma separated list (e.g. new lead, FluentForms, web source). Commas within a merge tag value will be created as a single tag.',
+                    'tips' => 'Associate tags to your Mailchimp contacts with a comma separated list (e.g. new lead, FluentForms, web source). Commas within a merge tag value will be created as a single tag.',
                     'component'    => 'selection_routing',
                     'simple_component' => 'value_text',
                     'routing_input_type' => 'text',
@@ -341,19 +341,9 @@ class MailChimpIntegration extends IntegrationManager
         if (!$this->isConfigured()) {
             return false;
         }
-        $settings = get_option('_fluentform_mailchimp_details');
 
-        try {
-            $MailChimp = new MailChimp($settings['apiKey']);
-            $list = $MailChimp->get('lists/' . $listId . '/merge-fields', array('count' => 9999));
-            if (!$MailChimp->success()) {
-                return false;
-            }
-        } catch (\Exception $exception) {
-            return false;
-        }
+        $mergedFields = $this->findMergeFields($listId);
 
-        $mergedFields = $list['merge_fields'];
         $fields = array();
 
         foreach ($mergedFields as $merged_field) {
@@ -361,6 +351,25 @@ class MailChimpIntegration extends IntegrationManager
         }
 
         return $fields;
+    }
+
+    public function findMergeFields($listId)
+    {
+        $settings = get_option('_fluentform_mailchimp_details');
+
+        try {
+            $MailChimp = new MailChimp($settings['apiKey']);
+
+            $list = $MailChimp->get('lists/' . $listId . '/merge-fields', array('count' => 9999));
+
+            if (!$MailChimp->success()) {
+                return false;
+            }
+        } catch (\Exception $exception) {
+            return false;
+        }
+
+        return $list['merge_fields'];
     }
 
     public function fetchInterestGroups()
@@ -452,7 +461,7 @@ class MailChimpIntegration extends IntegrationManager
         $response = $this->subscribe($feed, $formData, $entry, $form);
         
         if ($response == true) {
-            do_action('ff_integration_action_result', $feed, 'success', 'MailChimp feed has been successfully initialed and pushed data');
+            do_action('ff_integration_action_result', $feed, 'success', 'Mailchimp feed has been successfully initialed and pushed data');
         } else {
             $message = 'Mailchimp feed has been failed to deliver feed';
             if (is_wp_error($response)) {

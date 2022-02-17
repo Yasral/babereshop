@@ -1,6 +1,6 @@
 /**
  Responsive table courtesy of Mark Wiltshire: mark@bamboorocketapps.com (thanks!)
- 
+
  For more styles try: http://icant.co.uk/csstablegallery/
  ----
  Generic styles:
@@ -50,9 +50,9 @@ table.cookielawinfo-classic tr.odd th, table.cookielawinfo-classic tr.odd td {ba
 
 /* "Winter Blues" CSS theme for CSS Table Gallery (http://icant.co.uk/csstablegallery/) by Gunta Klavina (http://www.klavina.com) */
 table.cookielawinfo-winter {font: 85% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;padding: 0; margin: 10px 0 20px; border-collapse: collapse; color: #333; background: #F3F5F7;}
-table.cookielawinfo-winter a {color: #3A4856; text-decoration: none; border-bottom: 1px solid #C6C8CB;}  
+table.cookielawinfo-winter a {color: #3A4856; text-decoration: none; border-bottom: 1px solid #C6C8CB;}
 table.cookielawinfo-winter a:visited {color: #777;}
-table.cookielawinfo-winter a:hover {color: #000;}  
+table.cookielawinfo-winter a:hover {color: #000;}
 table.cookielawinfo-winter caption {text-align: left; text-transform: uppercase;  padding-bottom: 10px; font: 200% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;}
 table.cookielawinfo-winter thead th {background: #3A4856; padding: 15px 10px; color: #fff; text-align: left; font-weight: normal;}
 table.cookielawinfo-winter tbody {border-left: 1px solid #EAECEE; border-right: 1px solid #EAECEE;}
@@ -65,27 +65,26 @@ table.cookielawinfo-winter tfoot td, table.cookielawinfo-winter tfoot th, table.
 
 /** 27/05/2013: responsive table by Mark Wiltshire */
 @media(max-width:800px) {
-        table.cookielawinfo-row-cat-table td, table.cookielawinfo-row-cat-table th
-        {
-          width:23%;
-          font-size:12px;
-          word-wrap: break-word;
-        }       
-        table.cookielawinfo-row-cat-table .cookielawinfo-column-4, table.cookielawinfo-row-cat-table .cookielawinfo-column-4
-        {
-          width:45%;
-        }
+		table.cookielawinfo-row-cat-table td, table.cookielawinfo-row-cat-table th
+		{
+		  width:23%;
+		  font-size:12px;
+		  word-wrap: break-word;
+		}
+		table.cookielawinfo-row-cat-table .cookielawinfo-column-4, table.cookielawinfo-row-cat-table .cookielawinfo-column-4
+		{
+		  width:45%;
+		}
 }
 
 .cookielawinfo-row-cat-title{
-    border-bottom: 1px solid #eee;
-    text-align: center;
+	border-bottom: 1px solid #eee;
+	text-align: center;
 }
 .cookielawinfo-row-cat-title-head{
-    text-align: center;
+	text-align: center;
 }
 .cookielawinfo-row-cat-table{
-    width: 99%;
-    margin-left: 5px;
+	width: 99%;
+	margin-left: 5px;
 }
-

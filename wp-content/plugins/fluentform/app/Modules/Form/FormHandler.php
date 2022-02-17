@@ -32,7 +32,7 @@ class FormHandler
     protected $formData;
 
     /**
-     * The fluent form object.
+     * The Fluent Forms object.
      *
      * @var \stdClass
      */

@@ -65,14 +65,11 @@ class Cookie_Law_Info_Cookies {
 	}
 
 	public function wp_term_is_shared( $term_id ) {
-		 global $wpdb;
-
+		global $wpdb;
 		if ( get_option( 'finished_splitting_shared_terms' ) ) {
 			return false;
 		}
-
 		$tt_count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $wpdb->term_taxonomy WHERE term_id = %d", $term_id ) );
-
 		return $tt_count > 1;
 	}
 
@@ -151,7 +148,6 @@ class Cookie_Law_Info_Cookies {
 				'delete_post'         => 'manage_options',
 				'read_post'           => 'manage_options',
 			),
-			/** done editing */
 			'menu_icon'           => plugin_dir_url( __FILE__ ) . 'images/cli_icon.png',
 			'hierarchical'        => false,
 			'menu_position'       => null,
@@ -163,24 +159,20 @@ class Cookie_Law_Info_Cookies {
 
 	public function add_category_meta( $term_id ) {
 		$this->cookie_save_defaultstate( $term_id );
-		// $this->save_status_meta( $term_id );
 		$this->save_scripts_meta( $term_id );
 		$this->save_priority_meta( $term_id );
 	}
 	public function edit_category_meta( $term_id ) {
 		$this->cookie_save_defaultstate( $term_id );
 		$this->save_scripts_meta( $term_id );
-		// $this->save_status_meta( $term_id );
 	}
 	public function add_category_form_fields( $term ) {
 		$this->cookie_add_defaultstate( $term );
 		$this->add_scripts_meta( $term );
-		// $this->add_status_meta( $term );
 	}
 	public function edit_category_form_fields( $term ) {
 		$this->cookie_edit_defaultstate( $term );
 		$this->edit_scripts_meta( $term );
-		// $this->edit_status_meta( $term );
 	}
 	public function add_meta_box() {
 
@@ -195,7 +187,7 @@ class Cookie_Law_Info_Cookies {
 		$custom        = get_post_custom( $post->ID );
 		$cookie_slugid = ( isset( $custom['_cli_cookie_slugid'][0] ) ) ? $custom['_cli_cookie_slugid'][0] : '';
 		?>
-		<label><?php echo __( 'Cookie ID', 'cookie-law-info' ); ?></label>
+		<label><?php echo esc_html__( 'Cookie ID', 'cookie-law-info' ); ?></label>
 		<input name="_cli_cookie_slugid" value="<?php echo esc_attr( sanitize_text_field( $cookie_slugid ) ); ?>" style="width:95%;" />
 		<?php
 	}
@@ -206,7 +198,7 @@ class Cookie_Law_Info_Cookies {
 		$custom      = get_post_custom( $post->ID );
 		$cookie_type = ( isset( $custom['_cli_cookie_type'][0] ) ) ? $custom['_cli_cookie_type'][0] : '';
 		?>
-		<label><?php echo __( 'Cookie Type: (persistent, session, third party )', 'cookie-law-info' ); ?></label>
+		<label><?php echo esc_html__( 'Cookie Type: (persistent, session, third party )', 'cookie-law-info' ); ?></label>
 		<input name="_cli_cookie_type" value="<?php echo esc_attr( sanitize_text_field( $cookie_type ) ); ?>" style="width:95%;" />
 		<?php
 	}
@@ -218,7 +210,7 @@ class Cookie_Law_Info_Cookies {
 		$cookie_duration = ( isset( $custom['_cli_cookie_duration'][0] ) ) ? $custom['_cli_cookie_duration'][0] : '';
 		?>
 		
-		<label><?php echo __( 'Cookie Duration:', 'cookie-law-info' ); ?></label>
+		<label><?php echo esc_html__( 'Cookie Duration:', 'cookie-law-info' ); ?></label>
 		<input name="_cli_cookie_duration" value="<?php echo esc_attr( sanitize_text_field( $cookie_duration ) ); ?>" style="width:95%;" />
 		<?php
 	}
@@ -229,7 +221,7 @@ class Cookie_Law_Info_Cookies {
 		$custom             = get_post_custom( $post->ID );
 		$cookie_sensitivity = ( isset( $custom['_cli_cookie_sensitivity'][0] ) ) ? $custom['_cli_cookie_sensitivity'][0] : '';
 		?>
-		<label><?php echo __( 'Cookie Sensitivity: ( necessary , non-necessary )', 'cookie-law-info' ); ?></label>
+		<label><?php echo esc_html__( 'Cookie Sensitivity: ( necessary , non-necessary )', 'cookie-law-info' ); ?></label>
 		<input name="_cli_cookie_sensitivity" value="<?php echo esc_attr( sanitize_text_field( $cookie_sensitivity ) ); ?>" style="width:95%;" />
 		<?php
 	}
@@ -352,7 +344,7 @@ class Cookie_Law_Info_Cookies {
 		$necessory_categories   = self::get_strictly_necessory_categories();
 		$necessory_category_ids = array();
 		foreach ( $necessory_categories as $category ) {
-			$term = $this->get_term_data_from_db( 'slug', $category );
+			$term = $this->get_term_data_by_slug( $category );
 			if ( false !== $term ) {
 				$necessory_category_ids[] = $term->term_id;
 			}
@@ -605,10 +597,10 @@ class Cookie_Law_Info_Cookies {
 	public function cookie_add_defaultstate( $term ) {
 		?>
 		<div class="form-field term-defaultstate-field">
-			<label for="CLIdefaultstate"><?php _e( 'Category default state', 'cookie-law-info' ); ?></label>
-			<input type="radio" name="CLIdefaultstate" value="enabled"  /><?php _e( 'Enabled', 'cookie-law-info' ); ?>
-			<input type="radio" name="CLIdefaultstate" value="disabled" checked /><?php _e( 'Disabled', 'cookie-law-info' ); ?>	
-			<p class="description"><?php _e( 'If you enable this option, the category toggle button will be in the active state for cookie consent.', 'cookie-law-info' ); ?></p>
+			<label for="CLIdefaultstate"><?php echo esc_html__( 'Category default state', 'cookie-law-info' ); ?></label>
+			<input type="radio" name="CLIdefaultstate" value="enabled"  /><?php echo esc_html__( 'Enabled', 'cookie-law-info' ); ?>
+			<input type="radio" name="CLIdefaultstate" value="disabled" checked /><?php echo esc_html__( 'Disabled', 'cookie-law-info' ); ?>	
+			<p class="description"><?php echo esc_html__( 'If you enable this option, the category toggle button will be in the active state for cookie consent.', 'cookie-law-info' ); ?></p>
 		</div>
 		<?php
 	}
@@ -624,17 +616,17 @@ class Cookie_Law_Info_Cookies {
 	*/
 	public function cookie_edit_defaultstate( $term ) {
 		// put the term ID into a variable
-		$t_id                 = $term->term_id;
-		$term_CLIdefaultstate = $this->get_term_meta( $t_id, 'CLIdefaultstate', true );
+		$t_id               = $term->term_id;
+		$term_default_state = $this->get_term_meta( $t_id, 'CLIdefaultstate', true );
 
 		if ( $this->check_strictly_necessary_category( $t_id ) === false ) {
 			?>
 		<tr class="form-field term-defaultstate-field">
-			<th><label for="CLIdefaultstate"><?php _e( 'Category default state', 'cookie-law-info' ); ?></label></th>			 
+			<th><label for="CLIdefaultstate"><?php echo esc_html__( 'Category default state', 'cookie-law-info' ); ?></label></th>			 
 			<td>
-				<input type="radio" name="CLIdefaultstate" value="enabled" <?php checked( $term_CLIdefaultstate, 'enabled' ); ?>/><label><?php _e( 'Enabled', 'cookie-law-info' ); ?></label>
-				<input type="radio" name="CLIdefaultstate" value="disabled" <?php checked( $term_CLIdefaultstate, 'disabled' ); ?>/><label><?php _e( 'Disabled', 'cookie-law-info' ); ?></label>		 
-				<p class="description"><?php _e( 'If you enable this option, the category toggle button will be in the active state for cookie consent.', 'cookie-law-info' ); ?></p>
+				<input type="radio" name="CLIdefaultstate" value="enabled" <?php checked( $term_default_state, 'enabled' ); ?>/><label><?php echo esc_html__( 'Enabled', 'cookie-law-info' ); ?></label>
+				<input type="radio" name="CLIdefaultstate" value="disabled" <?php checked( $term_default_state, 'disabled' ); ?>/><label><?php echo esc_html__( 'Disabled', 'cookie-law-info' ); ?></label>		 
+				<p class="description"><?php echo esc_html__( 'If you enable this option, the category toggle button will be in the active state for cookie consent.', 'cookie-law-info' ); ?></p>
 			</td>
 		</tr>
 			<?php
@@ -646,10 +638,10 @@ class Cookie_Law_Info_Cookies {
 	*/
 	public function cookie_save_defaultstate( $term_id ) {
 		if ( isset( $_POST['CLIdefaultstate'] ) ) {
-			$term_CLIdefaultstate = sanitize_text_field( wp_unslash( $_POST['CLIdefaultstate'] ) );
+			$term_default_state = sanitize_text_field( wp_unslash( $_POST['CLIdefaultstate'] ) );
 
-			if ( $term_CLIdefaultstate ) {
-				$this->update_term_meta( $term_id, 'CLIdefaultstate', $term_CLIdefaultstate );
+			if ( $term_default_state ) {
+				$this->update_term_meta( $term_id, 'CLIdefaultstate', $term_default_state );
 			}
 		} else {
 			$this->update_term_meta( $term_id, 'CLIdefaultstate', 'disabled' );
@@ -661,14 +653,14 @@ class Cookie_Law_Info_Cookies {
 		?>
 		<div class="form-field term-head-scripts-field">
 			<p>	
-				<label><b><?php _e( 'Head scripts', 'cookie-law-info' ); ?></b></label>
+				<label><b><?php echo esc_html__( 'Head scripts', 'cookie-law-info' ); ?></b></label>
 				<label>Script: eg:-  &lt;script&gt; enableGoogleAnalytics(); &lt;/script&gt; </label><br />
 				<textarea id="_cli_cookie_head_scripts" rows=5 name="_cli_cookie_head_scripts" class="wt-cli-code-editor"></textarea>
 			</p>
 		</div>
 		<div class="form-field term-body-scripts-field">
 			<p>	
-				<label><b><?php _e( 'Body scripts', 'cookie-law-info' ); ?></b></label>
+				<label><b><?php echo esc_html__( 'Body scripts', 'cookie-law-info' ); ?></b></label>
 				<label>Script: eg:-  &lt;script&gt; enableGoogleAnalytics(); &lt;/script&gt; </label><br />
 				<textarea id="_cli_cookie_body_scripts" rows="5" name="_cli_cookie_body_scripts" class="wt-cli-code-editor" ></textarea>
 			</p>
@@ -684,7 +676,7 @@ class Cookie_Law_Info_Cookies {
 		?>
 		<tr class="form-field term-body-scripts-field">
 			<th>
-				<label for="_cli_cookie_head_scripts"><?php _e( 'Head scripts', 'cookie-law-info' ); ?></label>
+				<label for="_cli_cookie_head_scripts"><?php echo esc_html__( 'Head scripts', 'cookie-law-info' ); ?></label>
 			</th>			 
 			<td>
 				<textarea id="_cli_cookie_head_scripts" rows="5" name="_cli_cookie_head_scripts" class="wt-cli-code-editor"><?php echo wp_unslash( $head_scripts ); ?></textarea>
@@ -692,7 +684,7 @@ class Cookie_Law_Info_Cookies {
 		</tr>
 		<tr class="form-field term-head-scripts-field">
 			<th>
-				<label for="_cli_cookie_body_scripts"><?php _e( 'Body scripts', 'cookie-law-info' ); ?></label>
+				<label for="_cli_cookie_body_scripts"><?php echo esc_html__( 'Body scripts', 'cookie-law-info' ); ?></label>
 			</th>			 
 			<td>
 				<textarea  id="_cli_cookie_body_scripts" rows="5" name="_cli_cookie_body_scripts" class="wt-cli-code-editor"><?php echo wp_unslash( $body_scripts ); ?></textarea>
@@ -710,42 +702,6 @@ class Cookie_Law_Info_Cookies {
 
 	}
 
-	public function add_status_meta() {
-		?>
-		<div class="form-field term-status-field" style="display:none;">
-			<label for="wt-cli-cookie-status"><?php _e( 'Status', 'cookie-law-info' ); ?></label>
-			<input type="checkbox" name="_cli_cookie_status" id="wt-cli-cookie-status" value="1" checked="checked">
-		</div>
-		<?php
-	}
-
-	public function edit_status_meta( $term ) {
-		// put the term ID into a variable
-		$t_id                   = $term->term_id;
-		$term_cli_cookie_status = $this->get_term_meta( $t_id, '_cli_cookie_status', true );
-
-		// if( $this->check_strictly_necessary_category( $t_id ) === false ){
-		?>
-		<tr class="form-field term-status-field">
-			<th><label for="wt-cli-cookie-status"><?php _e( 'Active', 'cookie-law-info' ); ?></label></th>			 
-			<td>	 
-				<input type="checkbox" name="_cli_cookie_status" id="wt-cli-cookie-status" value="1" <?php echo $term_cli_cookie_status == 1 ? 'checked="checked"' : ''; ?>>
-				<p class="description"><?php _e( 'Turing off the category will remove it from the settings popup. Any scripts added under the category will not be rendered on the browser.', 'cookie-law-info' ); ?></p>
-			</td>
-		</tr>
-		<?php
-		// }
-	}
-	public function save_status_meta( $term_id ) {
-		if ( isset( $_POST['_cli_cookie_status'] ) ) {
-			$term_cli_cookie_status = sanitize_text_field( wp_unslash(  $_POST['_cli_cookie_status'] ) );
-			if ( $term_cli_cookie_status ) {
-				$this->update_term_meta( $term_id, '_cli_cookie_status', $term_cli_cookie_status );
-			}
-		} else {
-			$this->update_term_meta( $term_id, '_cli_cookie_status', 0 );
-		}
-	}
 	public function migrate() {
 		global $wp_version;
 		if ( isset( $_GET['cat-migrate'] ) && $_GET['cat-migrate'] === 'yes' ) {
@@ -753,9 +709,9 @@ class Cookie_Law_Info_Cookies {
 			if ( check_admin_referer( 'migrate', 'cookie_law_info_nonce' ) && current_user_can( 'manage_options' ) ) {
 				if ( version_compare( $wp_version, '4.4', '<' ) ) {
 					echo '<div class="fade error"><p><strong>';
-					echo __( 'WordPress 4.4 or higher is the required version. Please consider upgrading the WordPress before migrating the cookie categories.', 'cookie-law-info' );
+					echo esc_html__( 'WordPress 4.4 or higher is the required version. Please consider upgrading the WordPress before migrating the cookie categories.', 'cookie-law-info' );
 					echo '</strong></p></div>';
-					if ( ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) {
+					if ( ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ) ) == 'xmlhttprequest' ) {
 						exit();
 					}
 				} else {
@@ -771,7 +727,7 @@ class Cookie_Law_Info_Cookies {
 
 	public function admin_non_necessary_cookie_page() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( __( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) );
+			wp_die( esc_html__( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) );
 		}
 		if ( isset( $_POST['update_thirdparty_settings_form'] ) || isset( $_POST['cli_non-necessary_ajax_update'] ) ) {
 			check_admin_referer( 'cookielawinfo-update-thirdparty' );
@@ -784,7 +740,7 @@ class Cookie_Law_Info_Cookies {
 	}
 	public function admin_necessary_cookie_page() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( __( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) );
+			wp_die( esc_html__( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) );
 		}
 		if ( isset( $_POST['update_necessary_settings_form'] ) || isset( $_POST['cli_necessary_ajax_update'] ) ) {
 
@@ -820,9 +776,9 @@ class Cookie_Law_Info_Cookies {
 	public function finish_request() {
 
 		echo '<div class="updated"><p><strong>';
-		echo __( 'Settings Updated.', 'cookie-law-info' );
+		echo esc_html__( 'Settings Updated.', 'cookie-law-info' );
 		echo '</strong></p></div>';
-		if ( ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) {
+		if ( ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ) ) == 'xmlhttprequest' ) {
 			exit();
 		}
 	}
@@ -843,16 +799,16 @@ class Cookie_Law_Info_Cookies {
 		 <div class="notice notice-warning">
 				 <div class="wt-cli-admin-notice-wrapper">
 					<div class="wt-cli-notice-content">
-						<p style="font-weight:500;font-size:1.05em;"><?php _e( 'Clicking “Migrate cookie categories” will auto migrate your existing cookie categories (Necessary and Non-necessary) to our new Cookie Category taxonomy. This action is required to enable the cookie scanner.', 'cookie-law-info' ); ?></p>
-						<h3 style="font-size:1.05em;"><?php echo __( 'What happens after migration?', 'cookie-law-info' ); ?></h3>
+						<p style="font-weight:500;font-size:1.05em;"><?php echo esc_html__( 'Clicking “Migrate cookie categories” will auto migrate your existing cookie categories (Necessary and Non-necessary) to our new Cookie Category taxonomy. This action is required to enable the cookie scanner.', 'cookie-law-info' ); ?></p>
+						<h3 style="font-size:1.05em;"><?php echo esc_html__( 'What happens after migration?', 'cookie-law-info' ); ?></h3>
 						<ul>
-							<li><?php echo __( 'You no longer need to manage static cookie categories. After the migration, new cookie categories (Necessary, Functional, Analytics, Performance, Advertisement, and Others) will be created automatically. Also, you can easily add custom cookie categories and edit/delete the existing categories including the custom categories.', 'cookie-law-info' ); ?></li>
-							<li><?php echo __( 'If you have made any changes to the existing "Non-necessary" category we will migrate it to the newly created “Cookie Category” section. If not, we will delete the "Non-necessary" category automatically.', 'cookie-law-info' ); ?></li>
-							<li><?php echo __( 'During the migration phase your existing cookie category translations will be lost. Hence we request you to add it manually soon after the migration. You can access the existing translations by navigating to the string translation settings of your translator plugin.', 'cookie-law-info' ); ?></li>
+							<li><?php echo esc_html__( 'You no longer need to manage static cookie categories. After the migration, new cookie categories (Necessary, Functional, Analytics, Performance, Advertisement, and Others) will be created automatically. Also, you can easily add custom cookie categories and edit/delete the existing categories including the custom categories.', 'cookie-law-info' ); ?></li>
+							<li><?php echo esc_html__( 'If you have made any changes to the existing "Non-necessary" category we will migrate it to the newly created “Cookie Category” section. If not, we will delete the "Non-necessary" category automatically.', 'cookie-law-info' ); ?></li>
+							<li><?php echo esc_html__( 'During the migration phase your existing cookie category translations will be lost. Hence we request you to add it manually soon after the migration. You can access the existing translations by navigating to the string translation settings of your translator plugin.', 'cookie-law-info' ); ?></li>
 						</ul>
 					</div>
 					<div class="wt-cli-notice-actions">
-						<a href="<?php echo wp_nonce_url( $url, 'migrate', 'cookie_law_info_nonce' ); ?>" class="button button-primary"><?php echo __( 'Migrate cookie categories', 'cookie-law-info' ); ?></a>
+						<a href="<?php echo esc_attr( wp_nonce_url( $url, 'migrate', 'cookie_law_info_nonce' ) ); ?>" class="button button-primary"><?php echo esc_html__( 'Migrate cookie categories', 'cookie-law-info' ); ?></a>
 					</div>
 				</div>
 		 </div>
@@ -1105,7 +1061,7 @@ class Cookie_Law_Info_Cookies {
 	public function get_meta_data_from_db( $term_id, $meta_key ) {
 		global $wpdb;
 		$term_value = false;
-		$term_meta  = $wpdb->get_row( $wpdb->prepare( "SELECT meta_value FROM $wpdb->termmeta WHERE term_id = %d AND meta_key = %s", $term_id, $meta_key ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.NotPrepared
+		$term_meta  = $wpdb->get_row( $wpdb->prepare( "SELECT meta_value FROM $wpdb->termmeta WHERE term_id = %d AND meta_key = %s", $term_id, $meta_key ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		if ( $term_meta ) {
 			$term_value = $term_meta->meta_value;
 		}
@@ -1118,9 +1074,9 @@ class Cookie_Law_Info_Cookies {
 	 * @param string $value value of the corresponding key.
 	 * @return array
 	 */
-	public function get_term_data_from_db( $key, $value ) {
+	public function get_term_data_by_slug( $value ) {
 		global $wpdb;
-		$term_data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->terms WHERE $key = %s", $value ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.NotPrepared
+		$term_data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->terms WHERE slug = %s", $value ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		if ( $term_data && is_object( $term_data ) ) {
 			return $term_data;
 		}
@@ -1163,12 +1119,12 @@ class Cookie_Law_Info_Cookies {
 			array_merge(
 				wp_kses_allowed_html( 'post' ),
 				array(
-					'script' => array(
-						'type' => array(),
-						'src' => array(),
+					'script'   => array(
+						'type'    => array(),
+						'src'     => array(),
 						'charset' => array(),
-						'async' => array(),
-						'defer' => array(),
+						'async'   => array(),
+						'defer'   => array(),
 					),
 					'noscript' => array(),
 				)

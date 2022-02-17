@@ -6,14 +6,21 @@ use FluentForm\Framework\Helpers\ArrayHelper;
 
 class Acl
 {
+    static $capability = '';
+    
+    static $role = '';
+
     public static function getPermissionSet()
     {
         return apply_filters('fluentform_permission_set', [
-            'fluentform_full_access',
-            'fluentform_settings_manager',
             'fluentform_dashboard_access',
             'fluentform_forms_manager',
-            'fluentform_entries_viewer'
+            'fluentform_entries_viewer',
+            'fluentform_manage_entries',
+            'fluentform_view_payments',
+            'fluentform_manage_payments',
+            'fluentform_settings_manager',
+            'fluentform_full_access',
         ]);
     }
 
@@ -33,9 +40,11 @@ class Acl
         // to attach the permission set.
         $role = get_role('administrator');
 
-        // Looping through permission set to add to the role.
-        foreach ($permissions as $permission) {
-            $role->add_cap($permission);
+        if ($role) {
+            // Looping through permission set to add to the role.
+            foreach ($permissions as $permission) {
+                $role->add_cap($permission);
+            }
         }
 
         // Fire an event letting others know that fluentform is
@@ -62,7 +71,8 @@ class Acl
     {
     	static::verifyNonce();
 
-        $allowed = self::hasPermission($permission, $formId);
+        $allowed = static::hasPermission($permission, $formId);
+        
         if (!$allowed) {
             if ($json) {
                 wp_send_json_error([
@@ -74,51 +84,93 @@ class Acl
         }
     }
 
-    public static function hasPermission($permission, $formId = false)
+    public static function hasPermission($permissions, $formId = false)
     {
-        if (current_user_can('fluentform_full_access')) {
-            return true;
-        }
+        $userCapability = static::getCurrentUserCapability();
+        
+        if ($userCapability) {
+            return $userCapability;
+        } else {
+            if (current_user_can('fluentform_full_access')) {
+                return true;
+            }
 
-        $allowed = current_user_can('fluentform_full_access');
-        if ($allowed) {
-            return true;
-        }
+            $permissions = (array) $permissions;
 
-        if (is_array($permission)) {
-            foreach ($permission as $eachPermission) {
-                $allowed = current_user_can($eachPermission);
+            foreach ($permissions as $permission) {
+                $allowed = current_user_can($permission);
+
                 if ($allowed) {
-                    return apply_filters('fluentform_verify_user_permission_' . $eachPermission, $allowed, $formId);
-                } else {
-                    $isHookAllowed = apply_filters('fluentform_permission_callback', false, $eachPermission, $formId);
-                    if ($isHookAllowed) {
-                        return true;
-                    }
+                    return apply_filters('fluentform_verify_user_permission_' . $permission, $allowed, $formId);
                 }
             }
+
             return false;
         }
-
-        $allowed = current_user_can($permission);
-        $allowed = apply_filters('fluentform_verify_user_permission_' . $permission, $allowed, $formId);
-
-        if ($allowed) {
-            return true;
-        }
-
-        return apply_filters('fluentform_permission_callback', false, $permission, $formId);
     }
 
     public static function hasAnyFormPermission($form_id = false)
     {
-        $allPermissions = self::getPermissionSet();
+        $allPermissions = static::getPermissionSet();
+
         foreach ($allPermissions as $permission) {
-            if (self::hasPermission($permission, $form_id)) {
+            if (static::hasPermission($permission, $form_id)) {
                 return true;
             }
         }
+
         return false;
+    }
+
+    public static function getCurrentUserCapability()
+    {
+        if (static::$capability) {
+            return static::$capability;
+        }
+
+        if (is_user_logged_in()) {
+            static::$capability = static::findUserCapability(wp_get_current_user());
+        } else {
+            static::$capability = false;
+        }
+
+        return apply_filters('fluentform/current_user_capability', static::$capability);
+    }
+
+    public static function findUserCapability($user)
+    {
+        if (!$user) {
+            return false;
+        }
+
+        if (static::isSuperMan($user)) {
+            return 'manage_options';
+        }
+
+        $capabilities = get_option('_fluentform_form_permission');
+        
+        if (is_string($capabilities)) {
+            $capabilities = (array) $capabilities;
+        }
+        
+        if (!$capabilities) {
+            return false;
+        }
+        
+        foreach ($capabilities as $capability) {
+            if ($user->has_cap($capability)) {
+                return $capability;
+            }
+        }
+
+        return false;
+    }
+
+    public static function getCurrentUserRole()
+    {
+        $user = wp_get_current_user();
+
+        return static::$role = $user->roles[0];
     }
 
 	public static function verifyNonce($key = 'fluent_forms_admin_nonce')
@@ -137,4 +189,123 @@ class Acl
 			], 422);
 		}
 	}
+
+    public static function getReadablePermissions()
+    {
+        return [
+            'fluentform_dashboard_access' => [
+                'title' => __('View Forms', 'fluentform'),
+                'depends' => []
+            ],
+            'fluentform_forms_manager' => [
+                'title' => __('Manage Forms', 'fluentform'),
+                'depends' => [
+                    'fluentform_dashboard_access'
+                ]
+            ],
+            'fluentform_entries_viewer' => [
+                'title' => __('View Entries', 'fluentform'),
+                'depends' => [
+                    'fluentform_dashboard_access'
+                ]
+            ],
+            'fluentform_manage_entries' => [
+                'title' => __('Manage Entries', 'fluentform'),
+                'depends' => [
+                    'fluentform_entries_viewer'
+                ]
+            ],
+            'fluentform_view_payments' => [
+                'title' => __('View Payments', 'fluentform'),
+                'depends' => [
+                    'fluentform_dashboard_access',
+                    'fluentform_entries_viewer'
+                ]
+            ],
+            'fluentform_manage_payments' => [
+                'title' => __('Manage Payments', 'fluentform'),
+                'depends' => [
+                    'fluentform_view_payments'
+                ]
+            ],
+            'fluentform_settings_manager' => [
+                'title' => __('Manage Settings', 'fluentform'),
+                'depends' => []
+            ],
+            'fluentform_full_access' => [
+                'title'   => __('Full Access', 'fluent-crm'),
+                'depends' => []
+            ],
+        ];
+    }
+
+    public static function getUserPermissions($user = false)
+    {
+        if (is_numeric($user)) {
+            $user = get_user_by('ID', $user);
+        }
+
+        if (!$user) {
+            return [];
+        }
+
+        $permissionSet = static::getPermissionSet();
+        $isSuperMan = static::isSuperMan($user);
+        $capability = static::findUserCapability($user);
+
+        if ($isSuperMan || $capability) {
+            if ($isSuperMan) {
+                // $permissionSet[] = 'administrator';
+            }
+
+            return $permissionSet;
+        }
+
+        $userPermissions = array_values(array_intersect(array_keys($user->allcaps), $permissionSet));
+
+        return apply_filters('fluentform/current_user_permissions', $userPermissions);
+    }
+
+    public static function isSuperMan($user = false)
+    {
+        if ($user) {
+            return $user->has_cap('manage_options');
+        } else {
+            return current_user_can('manage_options');
+        }
+    }
+
+    public static function getCurrentUserPermissions()
+    {
+        return static::getUserPermissions(wp_get_current_user());
+    }
+
+    public static function attachPermissions($user, $permissions)
+    {
+        if (is_numeric($user)) {
+            $user = get_user_by('ID', $user);
+        }
+
+        if (!$user) {
+            return false;
+        }
+
+        if (user_can($user, 'manage_options')) {
+            return $user;
+        }
+
+        $allPermissions = static::getPermissionSet();
+
+        foreach ($allPermissions as $permission) {
+            $user->remove_cap($permission);
+        }
+
+        $permissions = array_intersect($allPermissions, $permissions);
+
+        foreach ($permissions as $permission) {
+            $user->add_cap($permission);
+        }
+
+        return $user;
+    }
 }

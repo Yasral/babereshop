@@ -355,7 +355,7 @@ ul.wt-gdprpro-features {
 		<div class="wt-bg">
 		  <h3 class="wt-sidebar-title text-center"><?php echo esc_html( _e( 'Get access to advanced features for GDPR compliance', 'cookie-law-info' ) ); ?></h3>
 		  <p class="text-center my-0"><a
-			  href="https://www.webtoffee.com/product/gdpr-cookie-consent/?utm_source=free_plugin_sidebar&utm_medium=gdpr_basic&utm_campaign=GDPR&utm_content=<?php echo esc_attr( CLI_VERSION );?>"
+			  href="https://www.webtoffee.com/product/gdpr-cookie-consent/?utm_source=free_plugin_sidebar&utm_medium=gdpr_basic&utm_campaign=GDPR&utm_content=<?php echo esc_attr( CLI_VERSION ); ?>"
 			  class="wt-primary-btn crown-icon" target="_blank" style="text-transform:uppercase;"><?php echo esc_html( _e( 'Upgrade to premium', 'cookie-law-info' ) ); ?></a></p>
 
 		</div>
@@ -372,11 +372,12 @@ ul.wt-gdprpro-features {
 		<ul class="wt-gdprpro-features">
 		  <li><b><?php echo esc_html( __( 'Enhanced cookie scanning:', 'cookie-law-info' ) ); ?></b> <?php echo esc_html( __( 'Scan up to 2000 URLs in a go.', 'cookie-law-info' ) ); ?></li>
 		  <li>
-			<b><?php echo esc_html( __( 'Auto-block cookies from popular third-party services & plugins:', 'cookie-law-info' ) ); ?></b>                						  <?php
-						echo esc_html(
-							__( 'Supports Google analytics, Facebook pixel, Google tag manager, Hotjar analytics, +20 more.', 'cookie-law-info' )
-						);
-						?>
+			<b><?php echo esc_html( __( 'Auto-block cookies from popular third-party services & plugins:', 'cookie-law-info' ) ); ?></b>                						  
+						  <?php
+							echo esc_html(
+								__( 'Supports Google analytics, Facebook pixel, Google tag manager, Hotjar analytics, +20 more.', 'cookie-law-info' )
+							);
+							?>
 			</li>
 		  <li>
 			<b><?php echo esc_html( __( 'Be consent proof ready:', 'cookie-law-info' ) ); ?></b>
@@ -443,7 +444,7 @@ ul.wt-gdprpro-features {
 		  </li>
 		</ul>
 		<p class="text-center my-0"><a
-			href="https://www.webtoffee.com/product/gdpr-cookie-consent/?utm_source=free_plugin_sidebar&utm_medium=gdpr_basic&utm_campaign=GDPR&utm_content=<?php echo esc_attr( CLI_VERSION );?>"
+			href="https://www.webtoffee.com/product/gdpr-cookie-consent/?utm_source=free_plugin_sidebar&utm_medium=gdpr_basic&utm_campaign=GDPR&utm_content=<?php echo esc_attr( CLI_VERSION ); ?>"
 			class="wt-secondary-btn crown-icon" target="_blank" style="text-transform:uppercase;"><?php echo esc_html( __( 'Upgrade to premium', 'cookie-law-info' ) ); ?></a></p>
 		<p class="text-center my-0"> <a id="cky-table-comparison-link" class="wt-link"><?php echo esc_html( __( 'Compare Free and Premium', 'cookie-law-info' ) ); ?></a></p>
 	  </div>

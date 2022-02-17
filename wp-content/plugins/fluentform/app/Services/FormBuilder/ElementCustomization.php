@@ -503,7 +503,7 @@ $element_customization_settings = array(
     ),
     'calculation_settings' => array(
         'template' => (defined('FLUENTFORMPRO')) ? 'inputCalculationSettings' : 'infoBlock',
-        'text' => '<b>Calculation Field Settings</b><br />Calculate the value based on other numeric field is available on pro version of WP Fluent Forms. Please install WP Fluent Forms Pro to use this feature',
+        'text' => '<b>Calculation Field Settings</b><br />Calculate the value based on other numeric field is available on pro version of Fluent Forms. Please install Fluent Forms Pro to use this feature',
         'label' => 'Calculation Field Settings',
         'status_label' => 'Enable Calculation',
         'formula_label' => 'Calculation Expression',

@@ -19,7 +19,7 @@ class FluentFormWidget extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Fluent Form', 'fluentform' );
+        return __( 'Fluent Forms', 'fluentform' );
     }
 
     public function get_icon() {
@@ -78,7 +78,7 @@ class FluentFormWidget extends Widget_Base {
         $this->start_controls_section(
             'section_fluent_form',
             [
-                'label' => __('Fluent Form', 'fluentform'),
+                'label' => __('Fluent Forms', 'fluentform'),
             ]
         );
 
@@ -86,7 +86,7 @@ class FluentFormWidget extends Widget_Base {
         $this->add_control(
             'form_list',
             [
-                'label' => esc_html__('Fluent Form', 'fluentform'),
+                'label' => esc_html__('Fluent Forms', 'fluentform'),
                 'type' => Controls_Manager::SELECT,
                 'label_block' => true,
                 'options' => ElementorWidget::getForms(),

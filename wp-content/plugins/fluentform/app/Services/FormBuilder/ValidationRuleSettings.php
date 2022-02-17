@@ -70,6 +70,23 @@ $validation_rule_settings = array(
                     ),
                 ),
         ),
+    'valid_phone_number' =>
+        array(
+            'template' => 'inputRadio',
+            'label' => __('Validate Phone Number', 'fluentform'),
+            'help_text' => __('Select whether the phone number should be validated or not.', 'fluentform'),
+            'options' =>
+                array(
+                    array(
+                        'value' => true,
+                        'label' => __('Yes', 'fluentform'),
+                    ),
+                    array(
+                        'value' => false,
+                        'label' => __('No', 'fluentform'),
+                    ),
+                ),
+        ),
     'email' =>
         array(
             'template' => 'inputRadio',

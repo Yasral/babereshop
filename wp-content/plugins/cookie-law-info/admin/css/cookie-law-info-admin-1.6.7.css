@@ -66,22 +66,22 @@
 }
 .cli-plugin-toolbar.bottom {
 	margin-top: 12px;
-    background: #f5f5f5;
-    border-top: 1px solid #ddd;
-    margin-left: -15px;
-    margin-right: -15px;
-    margin-bottom: -15px;
-    padding:15px;
+	background: #f5f5f5;
+	border-top: 1px solid #ddd;
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-bottom: -15px;
+	padding:15px;
 }
 .cli-plugin-toolbar.top {
-    margin-top:-15px;
-    background: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    border-top: 1px solid #ddd;
-    margin-left: -15px;
-    margin-right: -15px;
-    margin-bottom: -15px;
-    padding:15px;
+	margin-top:-15px;
+	background: #f5f5f5;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-bottom: -15px;
+	padding:15px;
 }
 #header_on_off_field_warning {
 	margin-left: 30px;
@@ -128,115 +128,115 @@
 
 
 table.cli_script_items{
-    position:relative
+	position:relative
 }
 table.cli_script_items td,table.cli_script_items th{
-    display:table-cell!important;
-    padding:1em!important;
-    vertical-align:top;
-    line-height:1.75em
+	display:table-cell!important;
+	padding:1em!important;
+	vertical-align:top;
+	line-height:1.75em
 }
 table.wc_emails.wc_emails td,table.cli_script_items.wc_emails td,table.wc_shipping.wc_emails td{
-    vertical-align:middle
+	vertical-align:middle
 }
 table.cli_script_items tr:nth-child(odd) td{
-    background:#f9f9f9
+	background:#f9f9f9
 }
 table.cli_script_items td.name{
-    font-weight:700
+	font-weight:700
 }
 table.wc_emails .settings,table.cli_script_items .settings,table.wc_shipping .settings{
-    text-align:right
+	text-align:right
 }
 table.wc_emails .default,table.wc_emails .radio,table.wc_emails .status,table.cli_script_items .default,table.cli_script_items .radio,table.cli_script_items .status,table.wc_shipping .default,table.wc_shipping .radio,table.wc_shipping .status{
-    text-align:center
+	text-align:center
 }
 table.wc_emails .default .tips,table.wc_emails .radio .tips,table.wc_emails .status .tips,table.cli_script_items .default .tips,table.cli_script_items .radio .tips,table.cli_script_items .status .tips,table.wc_shipping .default .tips,table.wc_shipping .radio .tips,table.wc_shipping .status .tips{
-    margin:0 auto
+	margin:0 auto
 }
 table.wc_emails .default input,table.wc_emails .radio input,table.wc_emails .status input,table.cli_script_items .default input,table.cli_script_items .radio input,table.cli_script_items .status input,table.wc_shipping .default input,table.wc_shipping .radio input,table.wc_shipping .status input{
-    margin:0
+	margin:0
 }
 table.wc_emails td.sort,table.cli_script_items td.sort,table.wc_shipping td.sort{
-    cursor:move;
-    font-size:15px;
-    text-align:center
+	cursor:move;
+	font-size:15px;
+	text-align:center
 }
 table.wc_emails td.sort::before,table.cli_script_items td.sort::before,table.wc_shipping td.sort::before{
-    content:'\f333';
-    font-family:Dashicons;
-    text-align:center;
-    line-height:1;
-    color:#999;
-    display:block;
-    width:17px;
-    float:left;
-    height:100%;
-    line-height:24px
+	content:'\f333';
+	font-family:Dashicons;
+	text-align:center;
+	line-height:1;
+	color:#999;
+	display:block;
+	width:17px;
+	float:left;
+	height:100%;
+	line-height:24px
 }
 table.wc_emails .wc-payment-gateway-method-name,table.cli_script_items .wc-payment-gateway-method-name,table.wc_shipping .wc-payment-gateway-method-name{
-    font-weight:400
+	font-weight:400
 }
 table.wc_emails .wc-email-settings-table-name,table.cli_script_items .wc-email-settings-table-name,table.wc_shipping .wc-email-settings-table-name{
-    font-weight:700
+	font-weight:700
 }
 table.wc_emails .wc-email-settings-table-name span,table.cli_script_items .wc-email-settings-table-name span,table.wc_shipping .wc-email-settings-table-name span{
-    font-weight:400;
-    color:#999;
-    margin:0 0 0 4px!important
+	font-weight:400;
+	color:#999;
+	margin:0 0 0 4px!important
 }
 table.wc_emails .wc-payment-gateway-method-toggle-disabled,table.wc_emails .cli-script-items-toggle-enabled,table.cli_script_items .wc-payment-gateway-method-toggle-disabled,table.cli_script_items .cli-script-items-toggle-enabled,table.wc_shipping .wc-payment-gateway-method-toggle-disabled,table.wc_shipping .cli-script-items-toggle-enabled{
-    padding-top:1px;
-    display:block;
-    outline:0;
-    -webkit-box-shadow:none;
-    box-shadow:none
+	padding-top:1px;
+	display:block;
+	outline:0;
+	-webkit-box-shadow:none;
+	box-shadow:none
 }
 table.wc_emails .wc-email-settings-table-status,table.cli_script_items .wc-email-settings-table-status,table.wc_shipping .wc-email-settings-table-status{
-    text-align:center;
-    width:1em
+	text-align:center;
+	width:1em
 }
 table.wc_emails .wc-email-settings-table-status .tips,table.cli_script_items .wc-email-settings-table-status .tips,table.wc_shipping .wc-email-settings-table-status .tips{
-    margin:0 auto
+	margin:0 auto
 }
 .cli-input-toggle{
-    height:16px;
-    width:32px;
-    border:2px solid #935687;
-    background-color:#935687;
-    display:inline-block;
-    text-indent:-9999px;
-    border-radius:10em;
-    position:relative;
-    margin-top:-1px;
-    vertical-align:text-top
+	height:16px;
+	width:32px;
+	border:2px solid #935687;
+	background-color:#935687;
+	display:inline-block;
+	text-indent:-9999px;
+	border-radius:10em;
+	position:relative;
+	margin-top:-1px;
+	vertical-align:text-top
 }
 .cli-input-toggle:before{
-    content:"";
-    display:block;
-    width:16px;
-    height:16px;
-    background:#fff;
-    position:absolute;
-    top:0;
-    right:0;
-    border-radius:100%
+	content:"";
+	display:block;
+	width:16px;
+	height:16px;
+	background:#fff;
+	position:absolute;
+	top:0;
+	right:0;
+	border-radius:100%
 }
 .cli-input-toggle.cli-input-toggle--disabled{
-    border-color:#999;
-    background-color:#999
+	border-color:#999;
+	background-color:#999
 }
 .cli-input-toggle.cli-input-toggle--disabled:before{
-    right:auto;
-    left:0
+	right:auto;
+	left:0
 }
 .cli-input-toggle.cli-input-toggle--loading{
-    opacity:.5
+	opacity:.5
 }
 .cookie-law-info-tab-head{ margin-right:20px;}
 .cookie-law-info-tab-container{
-    padding:15px;
-    background: #fff; box-shadow:0px 2px 2px #ccc; float: left; box-sizing:border-box; width:100%; height:auto;
+	padding:15px;
+	background: #fff; box-shadow:0px 2px 2px #ccc; float: left; box-sizing:border-box; width:100%; height:auto;
 }
 .cookie-law-info-tab-head .nav-tab-active{ background: #fff; border-bottom: solid 1px #fff; }
 .cookie-law-info-tab-head .nav-tab:focus{ box-shadow:none;}
@@ -251,7 +251,7 @@ table.wc_emails .wc-email-settings-table-status .tips,table.cli_script_items .wc
 .cli-help-links li{ float:left; padding:40px; margin:20px; display: inline-block; text-align: center; box-shadow:1px 1px 5px 1px rgba(0,0,0,.1); width: 185px; height: 245px;}
 .cli-help-links li a{ text-decoration: none; height: 28px !important; margin-top: 20px; }
 .cli-help-links li img{
-    margin-top: 15px;   
+	margin-top: 15px;
 }
 /* copied from bootstrap */
 .cli_sub_tab_container input[type="text"], .cli_sub_tab_container select {
@@ -269,15 +269,15 @@ table.wc_emails .wc-email-settings-table-status .tips,table.cli_script_items .wc
 }
 .cookie-law-info-tab-container .button-primary
 {
-    height:34px;
+	height:34px;
 }
 .notify_msg{ position:fixed; width:300px; padding:15px; color:#fff; right:60px; top:0px; opacity:0; box-shadow:0px 2px 2px #ccc; border-radius:5px;}
 .cli-indent-15{  }
 .cli-indent-15 th{ padding-left: 15px; }
 .cli_notify_table{ height:60px;}
 .cookie-law-info-form-container{
-    padding:15px;
-    background: #fff; box-shadow:0px 2px 2px #ccc;
+	padding:15px;
+	background: #fff; box-shadow:0px 2px 2px #ccc;
 }
 .cli_non_necessary_form label{ width:100%; display: inline-block; font-weight: bold; margin-bottom: 10px; margin-top: 15px;  }
 .cli_non_necessary_form .cli_form_help{ color: #aaa; font-style: italic; font-weight:250; font-size: 12px; }
@@ -289,6 +289,6 @@ table.wc_emails .wc-email-settings-table-status .tips,table.cli_script_items .wc
 
 
 @media screen and (max-width:1210px) {
-    .cli_settings_left{ width:100%;}
-    .cli_settings_right{ padding-left:0px; width:100%;}
+	.cli_settings_left{ width:100%;}
+	.cli_settings_right{ padding-left:0px; width:100%;}
 }

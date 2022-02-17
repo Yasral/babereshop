@@ -30,7 +30,7 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 		);
 		if ( isset( $_POST['cli_scaner_action'] ) ) {
 
-			$cli_scan_action = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( wp_unslash( $_POST['cli_scaner_action'] ) );
+			$cli_scan_action = sanitize_text_field( wp_unslash( $_POST['cli_scaner_action'] ) );
 			$allowed_actions = array(
 				'get_pages',
 				'scan_pages',
@@ -123,17 +123,16 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 
 		$wt_cli_site_host = $this->wt_cli_get_host( get_site_url() );
 
-		$out = array(
+		$out               = array(
 			'log'     => array(),
 			'total'   => 0,
 			'limit'   => $page_limit,
 			'scan_id' => 0,
 			'status'  => false,
 		);
+		$post_types        = $this->get_exclude_post_types();
 
-		$sql = $this->get_scan_pages_query();
-
-		$total_rows = $wpdb->get_row( 'SELECT COUNT(ID) AS ttnum' . $sql . " ORDER BY post_type='page' DESC LIMIT $page_limit", ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.NotPrepared
+		$total_rows = $wpdb->get_row( $wpdb->prepare( "SELECT COUNT(ID) AS ttnum FROM {$wpdb->prefix}posts WHERE post_type IN( '" . implode( "','", array_map( 'esc_sql', array_keys( $post_types ) ) ) . "' ) AND post_status='publish' ORDER BY post_type='page' DESC LIMIT %d", $page_limit ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 		$total      = $total_rows ? $total_rows['ttnum'] + 1 : 1; // always add 1 becuase home url is there.
 
 		$this->set_ckyes_scan_status( 0 );
@@ -144,9 +143,7 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 
 		$this->insert_url( $scan_id, get_home_url() );
 
-		$sql = 'SELECT post_name,post_title,post_type,ID' . $sql . " ORDER BY post_type='page' DESC LIMIT $page_limit";
-
-		$data = $wpdb->get_results( $sql, ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.NotPrepared
+		$data = $wpdb->get_results( $wpdb->prepare( "SELECT post_name,post_title,post_type,ID FROM {$wpdb->prefix}posts WHERE post_type IN( '" . implode( "','", array_map( 'esc_sql', array_keys( $post_types ) ) ) . "' ) AND post_status='publish' ORDER BY post_type='page' DESC LIMIT %d", $page_limit ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		if ( ! empty( $data ) ) {
 			foreach ( $data as $value ) {
@@ -176,11 +173,12 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 	 * @return void
 	 */
 	public function bulk_scan() {
+		check_ajax_referer( 'cli_cookie_scaner', 'security' );
 
 		include plugin_dir_path( __FILE__ ) . 'class-cookie-law-info-cookie-scanner-api.php';
 
-		$scan_id = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( ( isset( $_POST['scan_id'] ) ? $_POST['scan_id'] : 0 ), 'int' ); // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$total   = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( ( isset( $_POST['total'] ) ? $_POST['total'] : 0 ), 'int' );  // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$scan_id = isset( $_POST['scan_id'] ) ? absint( $_POST['scan_id'] ) : 0;
+		$total   = isset( $_POST['total'] ) ? absint( $_POST['total'] ) : 0;
 
 		$data_arr = array(
 			'current_action' => 'bulk_scan',
@@ -286,8 +284,8 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 	 */
 	public function get_total_page_count() {
 		global $wpdb;
-		$sql        = $this->get_scan_pages_query();
-		$total_rows = $wpdb->get_row( 'SELECT COUNT(ID) AS ttnum' . $sql, ARRAY_A );
+		$post_types = $this->get_exclude_post_types();
+		$total_rows = $wpdb->get_row( "SELECT COUNT(ID) AS ttnum FROM {$wpdb->prefix}posts WHERE post_type IN( '" . implode( "','", array_map( 'esc_sql', array_keys( $post_types ) ) ) . "' ) AND post_status='publish'", ARRAY_A );
 		$pages      = ( isset( $total_rows ) ? $total_rows : 0 );
 		$page_count = intval( ( isset( $pages['ttnum'] ) ? $pages['ttnum'] : 0 ) );
 		return $page_count;
@@ -330,11 +328,10 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 	/**
 	 * Returns the query to get the pages to be scanned
 	 *
-	 * @return string
+	 * @return array
 	 */
-	public function get_scan_pages_query() {
+	public function get_exclude_post_types() {
 		global $wpdb;
-		$post_table = $wpdb->prefix . 'posts';
 		$post_types = get_post_types(
 			array(
 				'public' => true,
@@ -346,8 +343,7 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 		unset( $post_types['customize_changeset'] );
 		unset( $post_types['user_request'] );
 
-		$sql = " FROM $post_table WHERE post_type IN('" . implode( "','", $post_types ) . "') AND post_status='publish'";
-		return $sql;
+		return $post_types;
 	}
 	/**
 	 * Returns the total URLs to be scanned.
@@ -358,9 +354,7 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 	public function get_urls( $scan_id ) {
 		global $wpdb;
 		$urls         = array();
-		$url_table    = $wpdb->prefix . $this->url_table;
-		$sql          = $wpdb->prepare( "SELECT id_cli_cookie_scan_url,url FROM $url_table WHERE id_cli_cookie_scan=%d ORDER BY id_cli_cookie_scan_url ASC", $scan_id );
-		$urls_from_db = $wpdb->get_results( $sql, ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.NotPrepared
+		$urls_from_db = $wpdb->get_results( $wpdb->prepare( "SELECT id_cli_cookie_scan_url,url FROM {$wpdb->prefix}cli_cookie_scan_url WHERE id_cli_cookie_scan=%d ORDER BY id_cli_cookie_scan_url ASC", $scan_id ), ARRAY_A ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( ! empty( $urls_from_db ) ) {
 			foreach ( $urls_from_db as $data ) {
@@ -408,7 +402,9 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 	 */
 	public function import_now() {
 
-		$scan_id = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( ( isset( $_POST['scan_id'] ) ? wp_unslash( $_POST['scan_id'] ) : 0 ), 'int' ); // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		check_ajax_referer( 'cli_cookie_scaner', 'security' );
+		
+		$scan_id = isset( $_POST['scan_id'] ) ? absint( wp_unslash( $_POST['scan_id'] ) ) : 0;
 		$out     = array(
 			'response' => false,
 			'scan_id'  => $scan_id,
@@ -421,8 +417,8 @@ class Cookie_Law_Info_Cookie_Scanner_Ajax extends Cookie_Law_Info_Cookie_Scaner 
 		$deleted       = 0;
 		$skipped       = 0;
 		$added         = 0;
-		$scan_id       = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( ( isset( $_POST['scan_id'] ) ? wp_unslash( $_POST['scan_id'] ) : 0 ), 'int' ); // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$import_option = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( ( isset( $_POST['import_option'] ) ? wp_unslash( $_POST['import_option'] ) : 2 ), 'int' ); // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$scan_id       = isset( $_POST['scan_id'] ) ? absint( wp_unslash( $_POST['scan_id'] ) ) : 0;
+		$import_option = isset( $_POST['import_option'] ) ? absint( wp_unslash( $_POST['import_option'] ) ) : 2;
 
 		if ( $scan_id > 0 ) {
 			$cookies = $this->get_scan_cookies( $scan_id, 0, -1 ); // taking cookies.

@@ -796,7 +796,7 @@ abstract class BaseMigrator
                 'settings'       => [
                     'container_class'     => '',
                     'placeholder'         => '',
-                    'int_tel_number'      => 'no',
+                    // 'int_tel_number'      => 'no',
                     'auto_select_country' => 'no',
                     'label'               => $args['label'],
                     'label_placement'     => $args['label_placement'],

@@ -42,7 +42,7 @@ class DocumentationModule
 				'link' => 'https://wpmanageninja.com/docs/fluent-form/getting-started/email-notification/'
 			),
 			array(
-				'title' => __('MailChimp integration', 'fluentform'),
+				'title' => __('Mailchimp integration', 'fluentform'),
 				'link' => 'https://wpmanageninja.com/docs/fluent-form/integrations-availabel-in-wp-fluent-form/mailchimp-integration/'
 			),
             array(

@@ -121,12 +121,13 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 		 * @return void
 		 */
 		public function ajax_main_controller() {
-			if ( ! Wt_Cookie_Law_Info_Security_Helper::check_write_access( CLI_PLUGIN_FILENAME, $this->module_id ) ) {
-				wp_die( __( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+			check_ajax_referer( $this->module_id, '_wpnonce' );
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) );
 			}
-			if ( isset( $_POST['sub_action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			if ( isset( $_POST['sub_action'] ) ) {
 
-				$sub_action = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( $_POST['sub_action'] ); // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				$sub_action = sanitize_text_field( wp_unslash( $_POST['sub_action'] ) ); // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 				if ( in_array( $sub_action, $this->ckyes_actions, true ) && method_exists( $this, $sub_action ) ) {
 
@@ -265,13 +266,13 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 									</style>
 				<div class='wt-cli-modal' id='wt-cli-ckyes-modal-password-reset'>
 					<div class="wt-cli-modal-header">
-						<h4><?php echo __( 'Reset Password', 'cookie-law-info' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h4>
+						<h4><?php echo esc_html__( 'Reset Password', 'cookie-law-info' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h4>
 					</div>
 					<div class="wt-cli-modal-body">
 						<form id="wt-cli-ckyes-form-password-reset">
-							<input type="email" name="ckyes-reset-email" class="wt-cli-form-input" placeholder="<?php echo __( 'Email', 'cookie-law-info' ); ?>" value="<?php echo esc_attr( $this->get_user_email() ); ?>" />
+							<input type="email" name="ckyes-reset-email" class="wt-cli-form-input" placeholder="<?php echo esc_attr__( 'Email', 'cookie-law-info' ); ?>" value="<?php echo esc_attr( $this->get_user_email() ); ?>" />
 							<div class="wt-cli-action-container">
-								<button id="wt-cli-ckyes-password-reset-btn" class="wt-cli-action button button-primary"><?php echo __( 'Send password reset email', 'cookie-law-info' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+								<button id="wt-cli-ckyes-password-reset-btn" class="wt-cli-action button button-primary"><?php echo esc_html__( 'Send password reset email', 'cookie-law-info' ); ?></button>
 							</div>
 
 						</form>
@@ -279,14 +280,14 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 				</div>
 				<div class='wt-cli-modal' id='wt-cli-ckyes-modal-register'>
 					<span class="wt-cli-modal-js-close">×</span>
-					<div class="wt-cli-modal-header"><h4><?php echo __( 'Welcome to CookieYes', 'cookie-law-info' ); ?></h4></div>
+					<div class="wt-cli-modal-header"><h4><?php echo esc_html__( 'Welcome to CookieYes', 'cookie-law-info' ); ?></h4></div>
 					<div class="wt-cli-modal-body">
-						<p><?php echo __( 'Enter your email to create an account with CookieYes. By clicking “Connect”, your CookieYes account will be created automatically and you can start scanning your website for cookies right away!', 'cookie-law-info' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
+						<p><?php echo esc_html__( 'Enter your email to create an account with CookieYes. By clicking “Connect”, your CookieYes account will be created automatically and you can start scanning your website for cookies right away!', 'cookie-law-info' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
 						<form id="wt-cli-ckyes-form-register">
-							<input type="email" name="ckyes-email" class="wt-cli-form-input" placeholder="<?php echo __( 'Email', 'cookie-law-info' ); ?>" value = "<?php echo esc_attr( $this->get_user_email() ); ?>" />
+							<input type="email" name="ckyes-email" class="wt-cli-form-input" placeholder="<?php echo esc_attr__( 'Email', 'cookie-law-info' ); ?>" value = "<?php echo esc_attr( $this->get_user_email() ); ?>" />
 							<div class="wt-cli-action-container">
 								<div class="wt-cli-action-group">
-									<button id="wt-cli-ckyes-register-btn" class="wt-cli-action button button-primary"><?php echo __( 'Connect', 'cookie-law-info' );  // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+									<button id="wt-cli-ckyes-register-btn" class="wt-cli-action button button-primary"><?php echo esc_html__( 'Connect', 'cookie-law-info' ); ?></button>
 								</div>
 							</div>
 						</form>
@@ -352,7 +353,7 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 				$cookieyes_options = $this->get_cookieyes_options();
 				$this->user_email  = ( isset( $cookieyes_options['email'] ) ? $cookieyes_options['email'] : '' );
 			}
-			return $this->user_email;
+			return sanitize_email( $this->user_email );
 		}
 		/**
 		 * Get CookieYes access token
@@ -562,11 +563,13 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 		 * @return array
 		 */
 		public function register() {
+			check_ajax_referer( $this->module_id, '_wpnonce' );
+
 			$api_response = $this->get_default_response();
 			$endpoint     = $this->get_base_path() . 'users/register';
 
 			$url              = $this->get_website_url();
-			$email            = isset( $_POST['email'] ) ? wp_unslash( $_POST['email'] ) : $email; // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$email            = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
 			$this->user_email = $email;
 			if ( empty( $email ) || empty( $url ) ) {
 				$api_response['code'] = 101;
@@ -608,17 +611,15 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 		 */
 		public function login() {
 
+			check_ajax_referer( $this->module_id, '_wpnonce' );
 			$api_response = $this->get_default_response();
-
-			$endpoint = $this->get_base_path() . 'users/login';
+			$endpoint     = $this->get_base_path() . 'users/login';
 
 			$url   = $this->get_website_url();
 			$email = $this->get_user_email();
 
-			$email    = isset( $_POST['email'] ) ? $_POST['email'] : $email; // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$email    = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : $email;
 			$password = isset( $_POST['password'] ) ? $_POST['password'] : ''; // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-			$email = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( $email );
 
 			if ( empty( $email ) || empty( $url ) || empty( $password ) ) {
 				$api_response['code'] = 101;
@@ -717,12 +718,12 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 		 * @return array
 		 */
 		public function reset_password() {
+			check_ajax_referer( $this->module_id, '_wpnonce' );
 			$api_response = $this->get_default_response();
 
 			$endpoint = $this->get_base_path() . 'password/reset';
 
-			$email = isset( $_POST['email'] ) ? wp_unslash( $_POST['email'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$email = Wt_Cookie_Law_Info_Security_Helper::sanitize_item( $email );
+			$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			if ( empty( $email ) ) {
 				$api_response['code'] = 101;
@@ -774,14 +775,14 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 		 * @return array
 		 */
 		public function connect_disconnect() {
-
+			check_ajax_referer( $this->module_id, '_wpnonce' );
 			$api_response = array(
 				'status'  => false,
 				'code'    => 100,
 				'message' => '',
 			);
 			$message      = __( 'Successfully disconnected with Cookieyes', 'cookie-law-info' );
-			$action       = isset( $_POST['account_action'] ) ? wp_unslash( $_POST['account_action'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$action       = isset( $_POST['account_action'] ) ? sanitize_text_field( wp_unslash( $_POST['account_action'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			if ( empty( $action ) ) {
 				$api_response['message'] = __( 'Could not identify the action', 'cookie-law-info' );
 				return $api_response;
@@ -896,10 +897,10 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 				</table>
 				<div class='wt-cli-modal' id='wt-cli-ckyes-modal-delete-account'>
 					<span class="wt-cli-modal-js-close">×</span>
-					<div class="wt-cli-modal-header"><h4><?php echo __( 'Do you really want to delete your website from CookieYes', 'cookie-law-info' ); ?></h4></div>
+					<div class="wt-cli-modal-header"><h4><?php echo esc_html__( 'Do you really want to delete your website from CookieYes', 'cookie-law-info' ); ?></h4></div>
 					<div class="wt-cli-modal-body">
-						<p><?php echo __( 'This action will clear all your website data from CookieYes. If you have multiple websites added to your CookieYes account, then only the data associated with this website get deleted. Otherwise, your entire account will be deleted.', 'cookie-law-info' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
-						<button class="wt-cli-action wt-cli-ckyes-delete-btn button button-primary" data-action="delete-account" ><?php echo __( 'Delete this website', 'cookie-law-info' );  // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+						<p><?php echo esc_html__( 'This action will clear all your website data from CookieYes. If you have multiple websites added to your CookieYes account, then only the data associated with this website get deleted. Otherwise, your entire account will be deleted.', 'cookie-law-info' ); ?></p>
+						<button class="wt-cli-action wt-cli-ckyes-delete-btn button button-primary" data-action="delete-account" ><?php echo esc_html__( 'Delete this website', 'cookie-law-info' ); ?></button>
 					</div>
 				</div>
 				<?php
@@ -913,7 +914,7 @@ if ( ! class_exists( 'Cookie_Law_Info_Cookieyes' ) ) {
 		public function ckyes_save_settings() {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+				wp_die( esc_html__( 'You do not have sufficient permission to perform this operation', 'cookie-law-info' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 			check_admin_referer( 'cookielawinfo-update-' . CLI_SETTINGS_FIELD );
 			if ( isset( $_POST['wt-cli-ckyes-branding'] ) && 'yes' === $_POST['wt-cli-ckyes-branding'] ) {

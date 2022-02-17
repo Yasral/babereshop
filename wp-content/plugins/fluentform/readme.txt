@@ -2,9 +2,9 @@
 Contributors: techjewel,adreastrian,heera,wpmanageninja
 Tags: contact form, contact forms, wp forms, forms, form builder, contact form builder, fluent forms
 Requires at least: 4.5
-Tested up to: 5.8.3
+Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 4.3.0
+Stable tag: 4.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ The Fastest Contact Form Builder Plugin for WordPress. Drag and drop contact for
 
 = The Best and Fastest Contact Form Builder Plugin by Fluent Forms =
 
-**WP Fluent Forms** is the ultimate user-friendly, **customizable drag-and-drop WordPress Contact Form Plugin** that offers you all the premium features, plus many more completely unique additional features. A perfect **WordPress Form builder** plugin should be developed in a way, so that you don’t have to code every time you need to integrate a form in your website, but can be set up in minutes. And that’s why, we have developed WP Fluent Forms for you.
+**Fluent Forms** is the ultimate user-friendly, **customizable drag-and-drop WordPress Contact Form Plugin** that offers you all the premium features, plus many more completely unique additional features. A perfect **WordPress Form builder** plugin should be developed in a way, so that you don’t have to code every time you need to integrate a form in your website, but can be set up in minutes. And that’s why, we have developed Fluent Forms for you.
 
 [youtube https://www.youtube.com/watch?v=FFR2ZZaVF3g]
 
@@ -44,21 +44,21 @@ Fluent Forms helps you create hassle-free contact forms, subscription forms, or 
 * In-Depth Analytics where you can see how many times it's displayed and how many leads were captured from Contact Forms.
 * Set Default Value On Contact Form Fields or you can populate from URL parameters
 * Export/Import Contact Forms
-* MailChimp Integration - Add Lead/Contact on MailChimp on form submission
+* Mailchimp Integration - Add Lead/Contact on Mailchimp on form submission
 * Slack Integration - Send Slack notification of Contact Form Submission.
 * Export Data - You can export data as CSV/Exel/ODS or JSON format.
 * Advanced Data Filtering where you can see data by status and also by date range.
 
-What a good Contact Form builder plugin is if the users can’t use it with ease and the way they want. And deep inside, you know too as well, how important it is to present your audience a website that is designed keeping in mind the audience’s need and necessity first. So in times, you might as well feel like customizing a contact form or subscription form suitable for a specific portion of your audience. And this is where you will find that WP Fluent Forms is the most powerful and flexible form builder tool developed so far.
+What a good Contact Form builder plugin is if the users can’t use it with ease and the way they want. And deep inside, you know too as well, how important it is to present your audience a website that is designed keeping in mind the audience’s need and necessity first. So in times, you might as well feel like customizing a contact form or subscription form suitable for a specific portion of your audience. And this is where you will find that Fluent Forms is the most powerful and flexible form builder tool developed so far.
 
 And not only that, this form builder is so easy to use, even a complete beginner will be able to create and publish forms in less than 5 minutes!
 
-As responsiveness is a must for any online tool these days, WP Fluent Forms is developed as a 100% mobile responsive contact form builder, so that your forms look great on all kinds of devices (mobiles, tablets, laptops, and desktops).
+As responsiveness is a must for any online tool these days, Fluent Forms is developed as a 100% mobile responsive contact form builder, so that your forms look great on all kinds of devices (mobiles, tablets, laptops, and desktops).
 
-Here goes a list of all the Premium features you will be enjoying in WP Fluent Forms:
+Here goes a list of all the Premium features you will be enjoying in Fluent Forms:
 
 == Super Fast Contact Forms ==
-WP Fluent Forms is built for speed. It does not slow down your site nor load lots of css & js. A standard form only loads less than 30KB css and js combined, which is the lowest among all the form builders out there. WP Fluent Forms will outperform a big way if you compare with all the form builders plugin. Most of the form builders plugin loads at least 300KB assets to load a simple form where WP Fluent Forms load 10% of the average size. Build the fastest contact forms and web forms in minutes.
+Fluent Forms is built for speed. It does not slow down your site nor load lots of css & js. A standard form only loads less than 30KB css and js combined, which is the lowest among all the form builders out there. Fluent Forms will outperform a big way if you compare with all the form builders plugin. Most of the form builders plugin loads at least 300KB assets to load a simple form where Fluent Forms load 10% of the average size. Build the fastest contact forms and web forms in minutes.
 
 == Conversational Forms ==
 Fluent Forms v4.0 is live, and it's more powerful than ever! With the most awaited Conversational Forms, the plugin became your no. 1 choice to build next-level WordPress forms.
@@ -73,8 +73,8 @@ Starting from v4.3.0, Conversational Forms got even more powerful. Now you have 
 In version 3.0.0, we have added the most exciting features that no other form plugins provide, and that is built-in data visualization tool. Using the data visualization module, you can analyze your data from your web and contact forms, analyze the data using a pie-chart, bar chart, tabular view. Using Ninja Tables plugin you can even show the submitted data in the frontend.
 
 == Best Contact Form Plugin in WordPress ==
-WP Fluent Forms is an extremely feature-rich plugin that delivers a beautiful and bright user interface. Everything works with drag-and-drop, which makes creating new forms slightly quicker and more accessible, You will get all the premium components like conditional logics, more than 30 custom fields, 3rd party integrations, built-in entry management system, etc.
-WP Fluent Forms can be used for your regular contact forms, event forms, online forms and any data collection form. You can connect the form data with many 3rd party CRM without writing a single line of code. And the Best thing is this is entirely free, and it always is free and opensource.
+Fluent Forms is an extremely feature-rich plugin that delivers a beautiful and bright user interface. Everything works with drag-and-drop, which makes creating new forms slightly quicker and more accessible, You will get all the premium components like conditional logics, more than 30 custom fields, 3rd party integrations, built-in entry management system, etc.
+Fluent Forms can be used for your regular contact forms, event forms, online forms and any data collection form. You can connect the form data with many 3rd party CRM without writing a single line of code. And the Best thing is this is entirely free, and it always is free and opensource.
 
 == DRAG & DROP CONTACT FORM BUILDER ==
 Our powerful drag & drop contact form builder allows you to easily create WordPress contact forms and other online forms in just a few minutes without writing any code. Building forms is now easier for you than writing and drawing it on a piece of paper!
@@ -86,34 +86,34 @@ Already using a form plugin? If you are looking forward to switching to Fluent F
 == MULTI-COLUMN FORM LAYOUT ==
 We have all faced the hassle of long forms, filling out which seems like meeting a Dementor from the Harry Potter series that might suck the soul out of you and leave you dead. These “long” forms are often nothing more than just mismanagement of space. Say, you are showing your potential lead a form that has ten input fields in it. Now stacking these 10 fields one after one makes it a long, tedious, and scary form. But if you cleverly stack them 2 or 3 columns, the whole thing looks compact, smart, and not that much scary at all!
 
-This is the most unique feature that helps WP Fluent Forms stand out from the herd. The **Multi-column form layout** option is a feature that you won’t even find in the premium form builder plugins! And also if you find any, those will not be as fluent, intuitive and easy to use as our one does.
+This is the most unique feature that helps Fluent Forms stand out from the herd. The **Multi-column form layout** option is a feature that you won’t even find in the premium form builder plugins! And also if you find any, those will not be as fluent, intuitive and easy to use as our one does.
 
 == 100% RESPONSIVE MOBILE-FRIENDLY CONTACT FORMS FOR YOUR AUDIENCE ==
-As of the current user behavior throughout the world, a significant portion of your visitors will be visiting your website with their handheld devices. And you do not want to disappoint them with some disoriented contact form. Keeping that in mind, WP Fluent Forms was developed to make sure that it satisfies devices of all sizes of display.
+As of the current user behavior throughout the world, a significant portion of your visitors will be visiting your website with their handheld devices. And you do not want to disappoint them with some disoriented contact form. Keeping that in mind, Fluent Forms was developed to make sure that it satisfies devices of all sizes of display.
 
 == CONDITIONAL LOGICS ==
 Why irritate your users with unnecessary fields that they do not need? Use WP Fluent Form’s Conditional Logic feature to make your forms more efficient and user-friendly. Show and hide specific fields according to users’ behavior so that they do not have to be bothered with unnecessary fields they do not need to fill up. You can show and hide entire sections or steps (in step forms) if you need using WP Fluent Form’s Conditional Logic.
-Whereas, in most of the Contact Form Plugins available, this Conditional Logic is a Premium Feature. But in WP Fluent Form, you can enjoy this feature in our free version!
+Whereas, in most of the Contact Form Plugins available, this Conditional Logic is a Premium Feature. But in Fluent Forms, you can enjoy this feature in our free version!
 
 == CONDITIONAL CONFIRMATION ==
 Along with Conditional Logics, we have introduced Conditional Confirmations (pro) as well. It allows admins to convey to users customized messages if they do not comply with specific logics, or fail to achieve certain values while filling out forms. For an example, you are looking for a value of equal to or more than 2 in a certain field of your form. But what if they put 0 or 1 in that field? In that case, using a conditional confirmation feature, you can let your users know of what went wrong and how to fix it. Remember, this is an entirely different feature than the usual error messages.
 
 == GET REAL TIME EMAIL NOTIFICATION ==
-Get notified every time someone fills up a form with entry details. With WP Fluent Forms, you can also inform your team members every time someone fills up a form and also send back a confirmation email to the new subscriber. WP Fluent Forms also enables you to automatically send out certain submissions from the email notification process if they fail to comply with specific conditions set by the admin.
+Get notified every time someone fills up a form with entry details. With Fluent Forms, you can also inform your team members every time someone fills up a form and also send back a confirmation email to the new subscriber. Fluent Forms also enables you to automatically send out certain submissions from the email notification process if they fail to comply with specific conditions set by the admin.
 
 == REUSABLE FORM TEMPLATES ==
 Why do the same thing over and over again? Isn’t it madness?
-WP Fluent Forms enables you to reuse the same contact form again and again. You can copy the whole setup with a click and make necessary tweaks in a short time, which will be saving your precious time.
+Fluent Forms enables you to reuse the same contact form again and again. You can copy the whole setup with a click and make necessary tweaks in a short time, which will be saving your precious time.
 
 == FLEXIBLE CUSTOMIZATION ==
 Customizing your subscription forms has never been easier. According to your need, you can create forms with HTML blocks, tooltips, suitable orientations, and custom CSS, etc.
 If you are interested in having a peak under the hood and see if it can be made more useful, we have that option too!
 
 == MANAGE YOUR SUBSCRIPTIONS SMARTLY ==
-You are not installing a form builder plugin to lure in 5-10 subscribers, right? What do you do when thousands of visitors subscribe to your website? You will need a smart system to handle such an influx. That is where WP Fluent Forms can help you manage things easily. Managing your submitted data has never been easier!
-With WP Fluent Forms, you can organize your submitted entries according to their value and export the whole list with just a click, or you can integrate with **slack**, **MailChimp**, and 16 more.
+You are not installing a form builder plugin to lure in 5-10 subscribers, right? What do you do when thousands of visitors subscribe to your website? You will need a smart system to handle such an influx. That is where Fluent Forms can help you manage things easily. Managing your submitted data has never been easier!
+With Fluent Forms, you can organize your submitted entries according to their value and export the whole list with just a click, or you can integrate with **slack**, **Mailchimp**, and 16 more.
 
-== Form Fields available in WP Fluent Forms ==
+== Form Fields available in Fluent Forms ==
 - Name Fields
 - Email Address
 - Simple Text
@@ -202,25 +202,25 @@ Here are the few forms from those that we have packed for you:
 
 ==Pro Integrations ==
 <ul>
-<li>Zapier Integration - Connect your WP Fluent Forms data with Zapier and push data to thousands of online softwares</li>
+<li>Zapier Integration - Connect your Fluent Forms data with Zapier and push data to thousands of online softwares</li>
 <li>WebHook - Broadcast your WP Forms Submission to any web api endpoint with powerful webhook module.</li>
 <li>Google Sheet - Directly push your form entries to google sheet.</li>
 <li>ActiveCampaign - WordPress Forms ActiveCampaign Module allows you to create ActiveCampaign list signup forms in WordPress, so you can grow your email list.</li>
-<li>CampaignMonitor - WP Fluent Forms Campaign Monitor module allows you to create Campaign Monitor newsletter signup forms in WordPress, so you can grow your email list.</li>
-<li>ConstantContact - Connect ConstantContact with your WP Forms and create subscriptions forms right into WordPress and grow your list.</li>
+<li>Campaign Monitor - Fluent Forms Campaign Monitor module allows you to create Campaign Monitor newsletter signup forms in WordPress, so you can grow your email list.</li>
+<li>Constant Contact - Connect Constant Contact with your WP Forms and create subscriptions forms right into WordPress and grow your list.</li>
 <li>ConvertKit - Connect ConvertKit with your WP Forms and create subscriptions forms right into WordPress and grow your list.</li>
-<li>GetResponse - WP Fluent Forms GetResponse module allows you to create GetResponse newsletter signup forms in WordPress, so you can grow your email list.</li>
+<li>GetResponse - Fluent Forms GetResponse module allows you to create GetResponse newsletter signup forms in WordPress, so you can grow your email list.</li>
 <li>HubSpot - Connect HubSpot with Your WP Forms and subscribe a contact when a form is submitted</li>
 <li>iContact - Connect iContact with your WP Forms and subscribe a contact when a form is submitted</li>
 <li>MooSend - Connect MooSend with WP Forms and subscribe a contact when a form is submitted</li>
 <li>SendFox - Connect SendFox with WP Forms and subscribe a contact when a form is submitted</li>
 <li>MailerLite - Connect your WP Forms with MailerLite and add subscribers easily</li>
-<li>MooSend - Connect MooSend with WP Fluent Forms and subscribe a contact when a form is submitted.</li>
-<li>SMS Notification - Send SMS when new submission will be happened in real time with Twillio</li>
+<li>MooSend - Connect MooSend with Fluent Forms and subscribe a contact when a form is submitted.</li>
+<li>SMS Notification - Send SMS when new submission will be happened in real time with Twilio</li>
 <li>Platform.ly - Connect Your WordPress form with Platform.ly</li>
 <li>Trello - Create Trello Cards in your boards on form submission</li>
-<li>Drip - WP Fluent Forms Drip Module allows you to create Drip subscribers from WordPress, so you can grow your email list.</li>
-<li>iContact - Connect iContact with WP Fluent Forms and subscribe a contact when a form is submitted.</li>
+<li>Drip - Fluent Forms Drip Module allows you to create Drip subscribers from WordPress, so you can grow your email list.</li>
+<li>iContact - Connect iContact with Fluent Forms and subscribe a contact when a form is submitted.</li>
 <li>SendinBlue - Connect Your Contact Forms with SendinBlue CRM</li>
 <li>Automizy - Connect Your Contact Forms with Automizy Marketing Solution</li>
 <li>User Registration - Create WordPress users from fluent form submissions</li>
@@ -232,6 +232,10 @@ Here are the few forms from those that we have packed for you:
 <li>Paystack - Easily collect credit card payments, donations, and online orders with Fluent Forms Pro. No Extra addon requires</li>
 <li>Discord - Get automated form notifications on your Discord server</li>
 <li>Salesflare - Connection with the Salesflare CRM got more 'Fluent' with this integration</li>
+<li>AffiliateWP – Generate referrals when users complete a payment with your forms</li>
+<li>Zoho CRM – A business tool to manage online sales, marketing, and customer support</li>
+<li>ClickSend – Send SMS notification instantly when a form is submitted</li>
+<li>CleverReach – Fluent Forms and CleverReach combo is a great way to grow your subscribers and manage email campaigns</li>
 </ul>
 
 == PAYMENT FORM, DONATION FORM, ORDER FORM, AND MORE ==
@@ -245,13 +249,13 @@ Business owners also use Fluent Forms to create custom product purchase forms li
 
 == Checkout The Documentation with video tutorial ==
 
-WP Fluent Forms Documentation comes with a detailed step-by-step instruction of how to use this Drag & Drop responsive WordPress form builder plugin. The following topics are covered in this documentation. Please check few of them as bellow:
+Fluent Forms Documentation comes with a detailed step-by-step instruction of how to use this Drag & Drop responsive WordPress form builder plugin. The following topics are covered in this documentation. Please check few of them as bellow:
 <ul>
 	<li><a href="https://wpmanageninja.com/docs/fluent-form/how-to-use-wp-fluent-form/create-fluent-form/" target="_blank">How to Create a Form in WordPress</a></li>
 	<li><a href="https://wpmanageninja.com/docs/fluent-form/how-to-use-wp-fluent-form/submission-confirmation-message/" target="_blank">Set up Form Submission Confirmation Message</a></li>
-	<li><a href="https://wpmanageninja.com/docs/fluent-form/how-to-use-wp-fluent-form/email-notification/" target="_blank">Setting up Email Notifications in WP Fluent Forms Plugin</a></li>
+	<li><a href="https://wpmanageninja.com/docs/fluent-form/how-to-use-wp-fluent-form/email-notification/" target="_blank">Setting up Email Notifications in Fluent Forms Plugin</a></li>
 	<li><a href="https://wpmanageninja.com/docs/fluent-form/how-to-use-wp-fluent-form/send-users-email-notification-wp-fluent-form/" target="_blank">Send Email Notifications on Form Submission</a></li>
-	<li><a href="https://wpmanageninja.com/docs/fluent-form/how-to-use-wp-fluent-form/managing-submitted-entries/" target="_blank">Managing the Submitted Entries in WP Fluent Forms</a></li>
+	<li><a href="https://wpmanageninja.com/docs/fluent-form/how-to-use-wp-fluent-form/managing-submitted-entries/" target="_blank">Managing the Submitted Entries in Fluent Forms</a></li>
 	<li><a href="https://wpmanageninja.com/docs/fluent-form/field-types/" target="_blank">Available Field Tyles in WordPress Forms</a></li>
 	<li><a href="https://wpmanageninja.com/docs/fluent-form/advanced-features-functionalities-in-wp-fluent-form/conditional-logic-fluent-form/" target="_blank">Set up Forms with Conditional Logic</a></li>
 	<li><a href="https://wpmanageninja.com/docs/fluent-form/advanced-features-functionalities-in-wp-fluent-form/form-restrictions/" target="_blank">WordPress Form Scheduling and Restriction Feature</a></li>
@@ -281,7 +285,7 @@ WP Fluent Forms Documentation comes with a detailed step-by-step instruction of 
 - By @seventhose
 
 >__Fluent Forms is just so excellent__
->I came in contact with wp fluent forms about 2weeks ago and has change my experience in using forms. The easiest and sweetest plugin available. Also Great support team.
+>I came in contact with Fluent Forms about 2weeks ago and has change my experience in using forms. The easiest and sweetest plugin available. Also Great support team.
 >Thanks excellent Hasanuzzaman for your support
 - By @austinigbe
 
@@ -310,13 +314,13 @@ e.g.
 1. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 == Frequently Asked Questions ==
-= Do I need coding skill to use WP Fluent Forms? =
+= Do I need coding skill to use Fluent Forms? =
 
 No, You don't need any pre-requisite programming knowledge to build beautiful forms. With Powerful drag and drop features you can build any simple or complex form.
 
-= Will WP Fluent Forms slow down my website? =
+= Will Fluent Forms slow down my website? =
 
-Absolutely not. We build WP Fluent Forms very carefully and maintained WP standards as well as we only load styles / scripts in the pages where you will use the WP Fluent Form. WP Fluent Forms is faster than any form builder plugin. WP Fluent Forms only load less than 30KB css and js combined.
+Absolutely not. We build Fluent Forms very carefully and maintained WP standards as well as we only load styles / scripts in the pages where you will use the Fluent Forms. Fluent Forms is faster than any form builder plugin. Fluent Forms only load less than 30KB css and js combined.
 
 = Can I use conditional logics when building a form? =
 
@@ -354,6 +358,18 @@ The entire source code is <a href="https://github.com/fluentform/fluentform">ava
 12. Asset Loading Comparison with Other Plugins
 
 == Changelog ==
+
+= 4.3.1 (Date: Feb 15, 2022) =
+- Adds advanced permission management system
+- Adds existing form to Conversational Forms converter
+- Adds Conversational Forms Key Hint configuration
+- Adds frontend PDF download shortcode after form submission for logged-in users
+- Adds line break support in PDF
+- Fixes multi-site permission issue
+- Fixes Conversational Forms Date Field bug
+- Fixes Numeric Field zero value issue
+- Fixes Mailchimp Address Field issue
+- Improves All Entries filters
 
 = 4.3.0 (Date: Jan 18, 2022) =
 - Adds other form plugins' migrator
@@ -415,11 +431,11 @@ The entire source code is <a href="https://github.com/fluentform/fluentform">ava
 = 3.6.72 (Date: May 22, 2021) =
 * Fixes Sanitize Data and Escaping on render for custom CSS and JS
 * Sub-Page Slug URL escaping issue fixed
-* MailChimp Data Sanitization Fixed
+* Mailchimp Data Sanitization Fixed
 * Includes Licenses txt files
 * Fix smart filter UI saving
 * Added Column Re-order and show and hide data for form entries
-* Added ReSubscribe option for MailChimp
+* Added ReSubscribe option for Mailchimp
 
 = 3.6.70 (Date: Mar 09, 2021) =
 * Fix Form Scheduling
@@ -433,7 +449,7 @@ The entire source code is <a href="https://github.com/fluentform/fluentform">ava
 = 3.6.67 (Date: Mar 05, 2021) =
 * Refactored VueJS build system, Form editor is now 40% faster.
 * Added Hooks for Smart Codes
-* MailChimp Integration Issue fixed
+* Mailchimp Integration Issue fixed
 * Added Week-days to Date Field
 * Nonce check issue fixed on admin ajax
 * Admin Panel icon load issue fixed
@@ -554,7 +570,7 @@ The entire source code is <a href="https://github.com/fluentform/fluentform">ava
 * Submission JS improvement
 
 = 3.5.0 (Date: March 30, 2020) =
-* MailChimp tags syncing bug fix
+* Mailchimp tags syncing bug fix
 * CleanTalk issue fix
 * Beaver Builder integration issue fix
 * Added indication icon for conditional fields
@@ -683,7 +699,7 @@ The entire source code is <a href="https://github.com/fluentform/fluentform">ava
 
 = 1.7.5 (Date: November 19, 2018) =
 * Small Fixes for COnditional Logic
-* Added option to give access of WP Fluent Forms to other user roles
+* Added option to give access of Fluent Forms to other user roles
 * Fix editor Sidebar Elements disorder
 * Added More hooks for developers
 
@@ -779,16 +795,16 @@ The entire source code is <a href="https://github.com/fluentform/fluentform">ava
 * Added More fields
 * Added more Field Customization options
 * Fix select and radio fields
-* MailChimp double opt-in support
+* Mailchimp double opt-in support
 
 = 1.1.3 =
-* Fix MailChimp List Selection
+* Fix Mailchimp List Selection
 
 = 1.1.2 =
-* Fix MailChimp Double Opt-In issue
+* Fix Mailchimp Double Opt-In issue
 
 = 1.1.0 =
-* Added MailChimp Integration
+* Added Mailchimp Integration
 * Added Slack Integration
 * Added Label positioning for each form element
 * Added Country Field

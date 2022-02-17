@@ -1,4 +1,7 @@
 <?php
+
+use FluentForm\App\Modules\Acl\Acl;
+
 $page = sanitize_text_field($_GET['page']);
 ?>
 <div class="ff_form_main_nav">
@@ -8,23 +11,28 @@ $page = sanitize_text_field($_GET['page']);
     <a href="<?php echo admin_url('admin.php?page=fluent_forms'); ?>" class="ninja-tab <?php echo ($page == 'fluent_forms') ? 'ninja-tab-active' : '' ?>">
         <?php _e('All Forms', 'fluentform'); ?>
     </a>
-    <a href="<?php echo admin_url('admin.php?page=fluent_forms_all_entries');?>" class="ninja-tab <?php echo ($page == 'fluent_forms_all_entries') ? 'ninja-tab-active' : '' ?>">
-        <?php _e('All Entries', 'fluentform'); ?>
-    </a>
+    <?php if (Acl::hasPermission('fluentform_entries_viewer')): ?>
+        <a href="<?php echo admin_url('admin.php?page=fluent_forms_all_entries');?>" class="ninja-tab <?php echo ($page == 'fluent_forms_all_entries') ? 'ninja-tab-active' : '' ?>">
+            <?php _e('All Entries', 'fluentform'); ?>
+        </a>
+    <?php endif; ?>
 
-    <?php if($show_payment_entries): ?>
+    <?php if ($show_payment_entries && Acl::hasPermission('fluentform_view_payments')): ?>
         <a href="<?php echo admin_url('admin.php?page=fluent_forms_payment_entries'); ?>" class="ninja-tab <?php echo ($page == 'fluent_forms_payment_entries') ? 'ninja-tab-active' : '' ?>">
             <?php _e('Payments', 'fluentform'); ?>
         </a>
     <?php endif; ?>
 
-    <a href="<?php echo admin_url('admin.php?page=fluent_forms_settings'); ?>" class="ninja-tab <?php echo ($page == 'fluent_forms_settings') ? 'ninja-tab-active' : '' ?>">
-        <?php _e('Global Settings', 'fluentform'); ?>
-    </a>
-    <a href="<?php echo admin_url('admin.php?page=fluent_forms_add_ons'); ?>" class="ninja-tab <?php echo ($page == 'fluent_forms_add_ons') ? 'ninja-tab-active' : '' ?>">
-        <?php _e('Integrations', 'fluentform'); ?>
-    </a>
-    <?php if($show_payment): ?>
+    <?php if (Acl::hasPermission('fluentform_settings_manager')): ?>
+        <a href="<?php echo admin_url('admin.php?page=fluent_forms_settings'); ?>" class="ninja-tab <?php echo ($page == 'fluent_forms_settings') ? 'ninja-tab-active' : '' ?>">
+            <?php _e('Global Settings', 'fluentform'); ?>
+        </a>
+        <a href="<?php echo admin_url('admin.php?page=fluent_forms_add_ons'); ?>" class="ninja-tab <?php echo ($page == 'fluent_forms_add_ons') ? 'ninja-tab-active' : '' ?>">
+            <?php _e('Integrations', 'fluentform'); ?>
+        </a>
+    <?php endif; ?>
+    
+    <?php if ($show_payment && Acl::hasPermission('fluentform_view_payments')): ?>
         <a href="<?php echo admin_url('admin.php?page=fluent_forms_settings&component=payment_settings'); ?>" class="ninja-tab">
             <?php _e('Payments', 'fluentform'); ?><span class="ff_new_badge">new</span>
         </a>

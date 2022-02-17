@@ -8,8 +8,8 @@ class SidebarWidgets extends \WP_Widget
     {
         parent::__construct(
             'fluentform_widget',
-            esc_html__('WP Fluent Forms Widget', 'fluentform'),
-            array('description' => esc_html__('Add your form by WP Fluent Forms', 'fluentform'),)
+            esc_html__('Fluent Forms Widget', 'fluentform'),
+            array('description' => esc_html__('Add your form by Fluent Forms', 'fluentform'),)
         );
     }
 

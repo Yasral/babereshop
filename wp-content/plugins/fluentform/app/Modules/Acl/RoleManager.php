@@ -97,7 +97,7 @@ class RoleManager
 
         $capabilities = get_option('_fluentform_form_permission');
         if (is_string($capabilities)) {
-            $capabilities = [];
+            $capabilities = (array) $capabilities;
         }
         if(!$capabilities) {
             return;

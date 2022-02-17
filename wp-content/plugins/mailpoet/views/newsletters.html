@@ -1,6 +1,7 @@
 <% extends 'layout.html' %>
 
 <% block content %>
+<% include('shared_config.html') %>
   <div id="newsletters_container"></div>
 
   <script type="text/javascript">
@@ -19,6 +20,7 @@
       var mailpoet_lists = <%= json_encode(lists) %>;
       var mailpoet_roles = <%= json_encode(roles) %>;
       var mailpoet_current_date = <%= json_encode(current_date) %>;
+      var mailpoet_tomorrow_date = <%= json_encode(tomorrow_date) %>;
       var mailpoet_current_time = <%= json_encode(current_time) %>;
       var mailpoet_schedule_time_of_day = <%= json_encode(schedule_time_of_day) %>;
       var mailpoet_date_display_format = "<%= wp_date_format() %>";
@@ -217,6 +219,11 @@
     'createFirstEmailTitle': __('Create your first email'),
     'seeVideoGuide': __('See video guide'),
     'premiumFeature': __('This is a Premium feature'),
+    'premiumFeatureDescription':  __('Your current MailPoet plan includes advanced features, but they require the MailPoet Premium plugin to be installed and activated.'),
+    'premiumFeatureButtonDownloadPremium':  __('Download MailPoet Premium plugin'),
+    'premiumFeatureButtonActivatePremium':  __('Activate MailPoet Premium plugin'),
+    'premiumFeatureDescriptionSubscribersLimitReached':  __('Congratulations, you now have [subscribersCount] subscribers! Your plan is limited to [subscribersLimit] subscribers. You need to upgrade now to be able to continue using MailPoet.'),
+    'premiumFeatureButtonUpgradePlan':  __('Upgrade your plan'),
     'learnMore': __('Learn more'),
     'regularNewsletterTypeTitle': __('Newsletter'),
     'regularNewsletterTypeDescription': __('Send a newsletter with images, buttons, dividers, and social bookmarks. Or, just send a basic text email.'),
