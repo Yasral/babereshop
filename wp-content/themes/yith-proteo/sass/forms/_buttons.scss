@@ -1,0 +1,192 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button,
+.widget a.button,
+.wishlist-submit.popup_button,
+.button-style-1:not(.wp-block-button),
+.button-style-1 a,
+a.wp-block-button__link:not(.has-background):not(.has-text-color),
+input[type="file"]::-webkit-file-upload-button,
+body.update-cart-button-style table.cart tbody tr td.actions button[name="update_cart"],
+body.update-cart-button-style td.actions .empty-cart,
+body.yith-proteo-add-to-cart-style-button_style_1 .wc-block-grid__product .add_to_cart_button,
+body.yith-proteo-add-to-cart-style-button_style_1 .added_to_cart.wc-forward,
+body .wpforms-form button[type=submit].wpforms-submit {
+	border: 1px solid;
+	border-color: var(--proteo-button_1_border_color, $color__border-button);
+	background: var(--proteo-button_1_bg_color, $color__background-button);
+	background-color: var(--proteo-button_1_bg_color, $color__background-button);
+	color: var(--proteo-button_1_font_color, #ffffff);
+	padding: calc(0.667em + 2px) calc(1.333em + 2px);
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+	transition: all ease 0.3s;
+	font-family: inherit;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	font-weight: 600;
+
+	&:hover {
+		border-color: var(--proteo-button_1_border_hover_color, $color__border-button-hover);
+		background: var(--proteo-button_1_bg_hover_color, $color__link-hover);
+		background-color: var(--proteo-button_1_bg_hover_color, $color__link-hover);
+		color: var(--proteo-button_1_font_hover_color, #ffffff);
+	}
+}
+/** Gutenberg buttons use same hover of button-style-1 **/
+a.wp-block-button__link {
+	transition: all ease 0.3s;
+}
+a.wp-block-button__link:hover {
+	border-color: var(--proteo-button_1_border_hover_color, $color__border-button-hover);
+	background: var(--proteo-button_1_bg_hover_color, $color__link-hover);
+	background-color: var(--proteo-button_1_bg_hover_color, $color__link-hover);
+	color: var(--proteo-button_1_font_hover_color, #ffffff);
+}
+
+.button.alt,
+button.alt,
+input[type="button"].alt,
+input[type="reset"].alt,
+input[type="submit"].alt,
+.widget-area .widget a.button.alt,
+.wishlist-submit.popup_button,
+.yith_wcwl_wishlist_footer input[name="add_all_to_cart"],
+.button-style-2:not(.wp-block-button),
+.button-style-2 a,
+body.yith-proteo-add-to-cart-style-button_style_2 .wc-block-grid__product .add_to_cart_button,
+.yith_wcbk_booking_product_form_widget .product .yith_wcbk_widget_booking_form_summary button.button.alt.yith-wcbk-add-to-cart-button {
+	text-decoration: none;
+	background-color: var(--proteo-button_2_bg_color_1, #00a79c);
+	background: linear-gradient(180deg, var(--proteo-button_2_bg_color_1, #00a79c) 0%, var(--proteo-button_2_bg_color_2, #01af8d ) 100%);
+	color: var(--proteo-button_2_font_color, #ffffff);
+	border: none;
+
+	&:hover {
+		text-decoration: none;
+		color: var(--proteo-button_2_font_hover_color, #ffffff);
+		background-color: var(--proteo-button_2_bg_hover_color, #30615e);
+		background: linear-gradient(
+			180deg,
+			var(--proteo-button_2_bg_hover_color, #30615e) 0%,
+			var(--proteo-button_2_bg_hover_color, #30615e) 100%
+		);
+	}
+}
+
+.comment-reply a {
+	text-transform: uppercase;
+	font-weight: bold;
+	color: var(--proteo-general_link_color, $color__accent);
+	text-decoration: none;
+	font-size: 0.875rem;
+
+	&:before {
+		content: "+";
+		display: inline-block;
+		margin-right: 5px;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.button.flat,
+.yith_wcwl_footer_additional_action .ask-an-estimate-button {
+	border: none;
+	text-align: center;
+	padding: 0.8em 1.5em 0.7em;
+	vertical-align: middle;
+	background-color: #eaeaea;
+	color: #393839;
+	transition: all ease 0.3s;
+	text-decoration: none;
+	margin-right: 15px;
+	font-weight: 600;
+
+	&:hover {
+		text-decoration: none;
+		background-color: var(--proteo-button_1_bg_hover_color, $color__link-hover);
+		color: var(--proteo-button_1_font_hover_color, #ffffff);
+	}
+}
+
+.yith_wcwl_footer_additional_action .ask-an-estimate-button {
+	display: inline-block;
+	line-height: 1;
+}
+
+.comment-respond #submit {
+	display: block;
+	margin-right: 0;
+}
+
+.button.ghost,
+.wishlist-title a.show-title-form,
+.wishlist-title a.hide-title-form,
+.submit-wishlist-changes,
+.yith_wcwl_wishlist_bulk_action input[type="submit"],
+.yith_wcwl_wishlist_footer .yith_wcwl_wishlist_update input[type="submit"],
+.wpcf7-form-control.ghost,
+.button.ywgc_apply_gift_card_button,
+.checkout_coupon button[name="apply_coupon"],
+body.update-cart-button-style td.actions .empty-cart,
+.wc-block-grid__products .wc-block-grid__product-image a.button.ghost {
+	margin-bottom: 15px;
+	border: 2px solid;
+	border-color: var(--proteo-main_color_shade, $color__accent);
+	text-align: center;
+	padding: 0.65em 1.5em 0.6em;
+	vertical-align: middle;
+	background-color: transparent;
+	color: var(--proteo-main_color_shade, $color__accent);
+	font-weight: 600;
+	display: inline-block;
+
+	&:hover {
+		background-color: var(--proteo-main_color_shade, $color__accent);
+		border-color: var(--proteo-main_color_shade, $color__accent);
+		color: #ffffff;
+		text-decoration: none;
+	}
+}
+
+.unstyled_button,
+.unstyled-button,
+.button.unstyled_button,
+body:not(.update-cart-button-style) table.cart tbody tr td.actions button[name="update_cart"],
+body:not(.update-cart-button-style) td.actions .empty-cart,
+body.yith-proteo-add-to-cart-style-unstyled_button .wc-block-grid__product .add_to_cart_button {
+	background: none;
+	background-color: transparent;
+	padding: 0;
+	border: none;
+	color: var(--proteo-general_link_color, $color__accent);
+	font-weight: 600;
+	text-decoration: none;
+	text-transform: none;
+
+	&:hover {
+		background: none;
+		background-color: transparent;
+		border: none;
+		color: var(--proteo-general_link_hover_color, $color__accent);
+	}
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button,
+.widget a.button,
+.wishlist-submit.popup_button,
+body.update-cart-button-style table.cart tbody tr td.actions button[name="update_cart"],
+body.update-cart-button-style td.actions .empty-cart,
+.wc-block-grid__product .add_to_cart_button {
+	border-radius: var(--proteo-buttons_border_radius);
+}

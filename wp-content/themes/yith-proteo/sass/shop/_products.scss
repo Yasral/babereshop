@@ -1,0 +1,331 @@
+/**
+ * Products
+ */
+ul.products,
+.wc-block-grid ul.wc-block-grid__products {
+	margin: 0 0 var(--proteo-catalog_product_vertical_spacing);
+	padding: 0;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: var(--proteo-catalog_product_horizontal_spacing);
+    grid-row-gap: var(--proteo-catalog_product_vertical_spacing);
+
+	&.list_products_layout {
+		display: block;
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	li.product,
+	li.wc-block-grid__product {
+		list-style: none;
+		position: relative;
+		padding: 0;
+		text-align: center;
+		max-width: none;
+		overflow: hidden;
+
+		.product-content {
+			//background: #ffffff;
+			position: relative;
+			text-align: center;
+		}
+
+		a {
+			text-decoration: none;
+			display: block;
+			text-align: center;
+
+			&.woocommerce-loop-product__link {
+				position: relative;
+			}
+			&.button {
+				display: table;
+				min-width: 50%;
+			}
+		}
+
+		.yith-wcwl-add-to-wishlist {
+			font-size: 0.875rem;
+
+			a {
+				display: inline-block;
+			}
+		}
+
+		.add_to_cart_button,
+		.add_to_cart_button:visited,
+		.added_to_cart,
+		.added_to_cart:visited,
+		.yith-wcqv-button.button:not(.inside-thumb),
+		.add_to_cart_button,
+		.view-details,
+		.product_type_grouped,
+		&.outofstock a {
+			transition: all ease 0.3s;
+			font-size: var(--proteo-catalog_product_add_to_cart_font_size, 0.875rem);
+			margin: 0 auto 15px;
+			display: table;
+			width: auto;
+
+			&.unstyled_button {
+				padding: 5px 0;
+				display: block;
+			}
+		}
+		.added_to_cart,
+		.wc-forward {
+			margin-top: 5px;
+			display: block;
+		}
+
+		img {
+			transition: all ease 0.3s;
+			position: relative;
+			z-index: 1;
+
+			& ~ img {
+				position: absolute;
+				top: 0;
+				opacity: 0;
+				z-index: 0;
+			}
+		}
+
+		&:hover {
+			.button,
+			.add_to_cart_button {
+				bottom: 0;
+			}
+		}
+
+		.woocommerce-loop-product__title,
+		.wc-block-grid__product-title {
+			font-size: var(--proteo-catalog_product_title_font_size, 0.875rem);
+			font-weight: 500;
+			margin-bottom: 5px;
+			margin-top: 15px;
+			color: var(--proteo-catalog_product_title_color, #404040);
+			text-align: center;
+
+			&:visited {
+				color: var(--proteo-catalog_product_title_color, #404040);
+			}
+		}
+
+		.woocommerce-loop-category__title {
+			text-transform: uppercase;
+			font-size: 1.125rem;
+			font-weight: normal;
+
+			mark {
+				background: none;
+			}
+		}
+
+		img {
+			display: block;
+			width: 100%;
+		}
+
+		.star-rating,
+		.wc-block-grid__product-rating {
+			margin-bottom: 5px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.price {
+			color: var(--proteo-catalog_product_price_color, #1f1f1f);
+			font-size: var(--proteo-catalog_product_price_font_size, 0.875rem);
+			font-weight: 500;
+			margin-bottom: 10px;
+			display: block;
+
+			del {
+				font-size: 90%;
+				font-weight: normal;
+				margin-right: 5px;
+			}
+
+			ins {
+				background: none;
+			}
+		}
+
+		.variations_form {
+			text-align: center;
+
+			.select_box {
+				display: inline-block;
+
+				.yith_wccl_value {
+					min-width: 25px;
+					height: 25px;
+					line-height: 22px;
+					width: auto;
+				}
+			}
+		}
+	}
+}
+
+ul.products.columns-1, .wc-block-grid.has-1-columns ul.wc-block-grid__products {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+ul.products.columns-2, .wc-block-grid.has-2-columns ul.wc-block-grid__products {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+body {
+	&.yith-proteo-products-hover-glow {
+		ul.products li.product:hover img,
+		ul.products li.wc-block-grid__product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.wc-block-grid__product:hover img {
+			filter: brightness(1.1);
+		}
+	}
+
+	&.yith-proteo-products-hover-zoom {
+		ul.products li.product:hover img,
+		ul.products li.wc-block-grid__product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.wc-block-grid__product:hover img {
+			transform: scale(1.05);
+		}
+	}
+
+	&.yith-proteo-products-hover-alt-image {
+		ul.products li.product:hover img,
+		ul.products li.wc-block-grid__product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.wc-block-grid__product:hover img {
+			z-index: 0;
+
+			& ~ img {
+				z-index: 1;
+				opacity: 1;
+			}
+		}
+	}
+
+	&.yith-proteo-products-hover-glow-alt-image {
+		ul.products li.product:hover img,
+		ul.products li.wc-block-grid__product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.product:hover img,
+		.wc-block-grid ul.wc-block-grid__products li.wc-block-grid__product:hover img {
+			filter: brightness(1.1);
+
+			z-index: 0;
+
+			& ~ img {
+				z-index: 1;
+				opacity: 1;
+			}
+		}
+	}
+
+	&.yith-proteo-product-loop-add-to-cart-position-hover {
+		ul.products li.product .yith-proteo-product-loop-image,
+		ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-image {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(0,0,0,0.6);
+				z-index: 5;
+				opacity: 0;
+				transition: opacity ease 0.3s;
+			}
+
+			&:hover::before {
+				opacity: 1;
+			}
+
+			a:not(.woocommerce-loop-product__link),
+			.wc-block-grid__product-add-to-cart,
+			.view-details, 
+			.added_to_cart.wc-forward {
+				position: absolute;
+				z-index: 101;
+				opacity: 0;
+				bottom: initial;
+
+				&.added {
+					display: none;
+				}
+			}
+
+			.view-details {
+				margin-top: 100px;
+
+				color: #ffffff;
+				border-color: #ffffff;
+
+				&:hover {
+					color: var(--proteo-main_color_shade, $color__accent);
+					background-color: #ffffff;
+				}
+
+				&.unstyled_button:hover {
+					background-color: transparent;
+				}
+			}
+
+			.wc-block-grid__product-add-to-cart .view-details {
+				margin-top: 15px;
+			}
+
+			.wc-block-grid__product-add-to-cart a {
+				position: initial;
+			}
+
+			&:hover a:not(.woocommerce-loop-product__link),
+			&:hover .wc-block-grid__product-add-to-cart,
+			&:hover .view-details {
+				opacity: 1;
+				bottom: initial;
+			}
+		}
+	}
+
+	&.yith-proteo-products-with-border {
+		ul.products,
+		.wc-block-grid ul.wc-block-grid__products {
+			li.product,
+			li.wc-block-grid__product {
+				border-style: solid;
+				border-width: var(--proteo-catalog_product_border_width);
+				border-color: var(--proteo-catalog_product_border_color);
+				border-radius: var(--proteo-catalog_product_border_radius);
+				background-color: #ffffff;
+			}
+		}
+	}
+}
+
+body.yith-proteo-product-loop-add-to-cart-position-hover {
+	ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-image {
+		a:not(.woocommerce-loop-product__link),
+		.wc-block-grid__product-add-to-cart,
+		.view-details {
+			min-width: 70%;
+		}
+	}
+}

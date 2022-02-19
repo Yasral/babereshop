@@ -1,0 +1,159 @@
+/*
+Theme Name: YITH Proteo
+Theme URI: https://proteo.yithemes.com/
+Author: YITH
+Author URI: https://yithemes.com
+Description: Proteo is a modern, fast and fully customizable WooCommerce theme. Designed and developed by YITH - a team of top developers of premium themes -  with a beautiful UI, a minimal design and an optimized code, is perfect for each kind of site or shop. With the Proteo Wizard you can import our demo content with just a few clicks - in less than 2 minutes! -  and easily customize it using the advanced front-end customizer. Proteo is the best solution if you want a complete WooCommerce theme that works perfectly also in mobile devices and start quickly to sell your products with WooCommerce without technical knowledge. Works perfectly with page builders like Elementor, Gutenberg & Visual composer. Key features: # WooCommerce Ready # Responsive with a perfect mobile design # Compatible with Elementor, Gutenberg, Visual Composer and others page builders # Translation Ready # Frontend customizer with hundred of options to customize header, footer, pages, typography, style, ecc.  # Google fonts support # Regularly updated and improved with new demos and advanced features # Support to all YITH plugins. Check all our Proteo demos: https://proteo.yithemes.com/
+
+Version: 1.8.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: yith-proteo
+Tested up to: 5.8
+Requires PHP: 5.6
+Tags: one-column, two-columns, left-sidebar, right-sidebar, wide-blocks, block-styles, buddypress, custom-background, custom-colors, custom-header, custom-logo, custom-menu, editor-style, featured-images, flexible-header, footer-widgets, full-width-template, rtl-language-support, theme-options, threaded-comments, translation-ready, blog, e-commerce, portfolio
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Bootstrap 4.2.1 Grid System
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Header
+# Accessibility
+# Alignments
+# Clearings
+# Full Screen Search
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Footer
+# WooCommerce
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+# Shortcodes
+# Third Party
+# Skins
+--------------------------------------------------------------*/
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "normalize";
+/*--------------------------------------------------------------
+# Bootstrap 4.2.1 Grid System
+--------------------------------------------------------------*/
+@import "third-party/bootstrap-grid";
+/*--------------------------------------------------------------
+# Bootstrap overrides
+--------------------------------------------------------------*/
+@import "layout/bootstrap_overrides";
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+@import "typography/typography";
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+@import "elements/elements";
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+@import "forms/forms";
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+@import "navigation/navigation";
+/*--------------------------------------------------------------
+# Header and Navigation
+--------------------------------------------------------------*/
+@import "layout/header";
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+@import "modules/accessibility";
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+@import "modules/alignments";
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+@import "modules/clearings";
+/*--------------------------------------------------------------
+# Full Screen Search
+--------------------------------------------------------------*/
+@import "modules/search-module";
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+@import "site/secondary/widgets";
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+@import "site/site";
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+@import "layout/footer";
+/*--------------------------------------------------------------
+# WooCommerce
+--------------------------------------------------------------*/
+@import "woocommerce";
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+@import "modules/infinite-scroll";
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+@import "media/media";
+/*--------------------------------------------------------------
+# Shortcodes
+--------------------------------------------------------------*/
+@import "modules/shortcodes";
+/*--------------------------------------------------------------
+# Third Party
+--------------------------------------------------------------*/
+@import "third-party/yith-easy-login-register-popup";
+@import "third-party/yith-recently-viewed-products";
+@import "third-party/yith-event-tickets";
+@import "third-party/yith-frequently-bought-together";
+@import "third-party/yith-added-to-cart";
+@import "third-party/yith-wishlist";
+@import "third-party/yith-authorize";
+@import "third-party/yith-brands-add-on";
+@import "third-party/yith-product-filter";
+@import "third-party/yith-zoom-magnifier";
+@import "third-party/yith-compare";
+@import "third-party/yith-gift-cards";
+@import "third-party/yith-request-a-quote";
+@import "third-party/yith-cart-messages";
+@import "third-party/yith-stripe";
+@import "third-party/yith-affiliates";
+@import "third-party/yith-deposits-and-down-payments";
+@import "third-party/yith-store-locator";
+@import "third-party/yith-subscription";
+@import "third-party/yith-product-slider-carousel.scss";
+@import "third-party/yith-booking.scss";
+@import "third-party/yith-ajax-product-filter.scss";
+@import "third-party/cf7";
+@import "third-party/berocket_list_grid";
+/*-------------------------------------------------------------
+# Skins
+-------------------------------------------------------------*/
+@import "skins/desire.scss";
+@import "skins/booking.scss";

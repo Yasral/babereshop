@@ -1,0 +1,95 @@
+#main-footer {
+	position: relative;
+	background-color: var(--proteo-footer_bg_color, #f7f7f7);
+	color: var(--proteo-footer_font_color, #404040);
+	font-size: var(--proteo-footer_font_size, 16px);
+	text-align: var(--proteo-footer_align, left);
+	background-image: var(--proteo-footer_bg_image);
+	background-size: var(--proteo-footer_bg_image_size, initial);
+	background-position: var(--proteo-footer_bg_image_position, center center);
+	background-repeat: var(--proteo-footer_bg_image_repeat, no-repeat);
+
+	a {
+		color: var(--proteo-footer_link_color, #448a85);
+		text-decoration: none;
+		&:hover {
+			color: var(--proteo-footer_link_hover_color, $color__link-hover);
+			text-decoration: underline;
+		}
+	}
+
+	.footer-sidebars {
+		padding-top: 80px;
+	}
+	.footer-sidebars:empty {
+		display: none;
+	}
+
+	.site-info {
+		padding: 15px 0;
+		background-color: var(--proteo-footer_credits_bg_color, #f0f0f0);
+		color: var(--proteo-footer_credits_font_color, #404040);
+		font-size: var(--proteo-footer_credits_font_size, 16px);
+		text-align: var(--proteo-footer_credits_align, left);
+
+		a {
+			color: var(--proteo-footer_credits_link_color, #448a85);
+			text-decoration: none;
+			&:hover {
+				color: var(--proteo-footer_credits_link_hover_color, $color__link-hover);
+				text-decoration: underline;
+			}
+		}
+	}
+
+	div[class^="footer-sidebar"] {
+		padding-bottom: 50px;
+
+		.widget, .widget.widget_text p {
+			color: var(--proteo-footer_font_color, #404040);
+			font-size: var(--proteo-footer_font_size, 16px);
+			h2, h3, .widget-title {
+				margin-bottom: 2rem;
+				color: var(--proteo-footer_widgets_title_color, var(--proteo-h2_font_color, #404040));
+				font-size: var(--proteo-footer_widgets_title_font_size, 24px);
+			}
+		}
+	}
+
+	.footer-sidebar-1 {
+		width: var(--proteo-footer_sidebar_1_width, 100%);
+	}
+	.footer-sidebar-2 {
+		width: var(--proteo-footer_sidebar_2_width, 100%);
+	}
+
+	.side-by-side-sidebars {
+		div[class^="footer-sidebar"] {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.footer-sidebar-1 {
+			padding-right: 30px;
+		}
+		.footer-sidebar-2 {
+			width: calc(var(--proteo-footer_sidebar_2_width) - 30px);
+		}
+	}
+}
+
+/**
+Sticky Footer
+**/
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+div#page {
+	flex: 1 0 auto;
+}
+footer#main-footer {
+	flex-shrink: 0;
+}

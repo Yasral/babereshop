@@ -1,0 +1,92 @@
+span.ywsbs-signup-fee,
+span.ywsbs-trial-period {
+    display: block;
+}
+
+.summary{
+
+    span.ywsbs-delivery-info,
+    span.ywsbs-synch-info {
+        font-size: 0.85rem;
+        color: var(--proteo-h1_font_color);
+        margin-top: 25px;
+    }
+
+    .ywsbs-price-detail{
+        span.ywsbs-signup-fee {
+            font-size: 20px;
+        }
+        span.ywsbs-trial-period {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    }
+}
+.products{
+    .ywsbs-price-detail{
+        span.ywsbs-fee-price {
+
+            font-size: 12px;
+        }
+        span.ywsbs-signup-fee {
+
+            font-size: 12px;
+        }
+    }
+
+}
+.woocommerce-cart-form{
+    .ywsbs-max-lenght,
+    .ywsbs-trial-price,
+    .ywsbs-fee-price {
+        display: block;
+        font-size: 11px;
+    }
+}
+
+#order_review{
+
+    .ywsbs-price {
+        font-weight: 600;
+        .ywsbs-max-lenght{
+            font-weight: 400;
+        }
+    }
+    .ywsbs-max-lenght,
+    .ywsbs-fee-price,
+    .ywsbs-trial-price {
+        display: block;
+        font-size:13px;
+    }
+
+
+}
+
+.ywsbs-recurring-totals-items{
+    .ywsbs-price {
+        font-weight: 600;
+    }
+
+}
+
+.woocommerce-mini-cart-item{
+    span.ywsbs-fee-price,
+    span.ywsbs-trial-price {
+        display: none;
+    }
+}
+
+
+body.woocommerce-order-received.ywsbs-thank-you-page-two-cols .entry-content{
+    padding:0;
+    border: 0;
+}
+
+.ywsbs-thank-you-page-box{
+    h3 {
+        font-weight: bold;
+        margin-bottom: 25px;
+        font-size:16px;
+        color: var(--proteo-main_color_shade, $color__accent);
+    }
+}

@@ -1,0 +1,19 @@
+a {
+	color: var(--proteo-general_link_color, $color__link);
+	text-decoration: var(--proteo-general_link_decoration, underline);
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: var(--proteo-general_link_hover_color, $color__link-hover);
+	}
+
+	&:focus {
+		outline: thin dotted;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}

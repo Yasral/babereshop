@@ -1,0 +1,67 @@
+.sidebar-position-top {
+	width: 100%;
+	z-index: 1;
+}
+
+section.widget {
+	position: relative;
+}
+
+.widget {
+	margin: 0 0 1.5em;
+	font-size: var(--proteo-widgets_content_font_size);
+	color: var(--proteo-widgets_content_font_color);
+
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+
+	ul {
+		padding: 0;
+		list-style-type: none;
+	}
+}
+
+h2.widget-title,
+h3.widget-title {
+	font-size: var(--proteo-widgets_title_font_size);
+	color: var(--proteo-widgets_title_font_color);
+}
+
+#secondary {
+	z-index: 1;
+	.widget {
+		margin-bottom: 50px;
+	}
+}
+
+#topbar,
+.header-sidebar {
+	.widget {
+		text-align: initial;
+		display: inline-block;
+		z-index: 10;
+		margin: 0 15px 5px 0;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+
+.header-sidebar {
+	.widget {
+		color: var(--proteo-header_menu_color, #404040);
+		font-size: var(--proteo-header_menu_font_size, 14px);
+	}
+}
+
+@import "widget_search";
+@import "widget_recent_posts";
+@import "widget_recent_comments";
+@import "widget_text";
+@import "widget_proteo_social_icons";
+@import "widget_proteo_account_widget";
+@import "widget_nav_menus";
+@import "widget_blocks";

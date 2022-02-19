@@ -1,0 +1,465 @@
+/**
+ * WooCommerce Price Filter
+ */
+.widget_price_filter {
+	.price_slider {
+		margin-bottom: 1.5em;
+	}
+
+	.price_slider_amount {
+		text-align: right;
+		line-height: 2.4em;
+
+		.button {
+			float: left;
+		}
+	}
+
+	.ui-slider {
+		position: relative;
+		text-align: left;
+	}
+
+	.ui-slider .ui-slider-handle {
+		position: absolute;
+		z-index: 2;
+		width: 1em;
+		height: 1em;
+		cursor: ew-resize;
+		outline: none;
+		background: var(--proteo-main_color_shade, $color__link);
+		box-sizing: border-box;
+		margin-top: -0.25em;
+		opacity: 1;
+
+		&:last-child {
+			margin-left: -1em;
+		}
+
+		&:hover,
+		&.ui-state-active {
+			box-shadow: 0 0 0 0.25em rgba(#000, 0.1);
+		}
+	}
+
+	.ui-slider .ui-slider-range {
+		position: absolute;
+		z-index: 1;
+		display: block;
+		border: 0;
+		background: var(--proteo-main_color_shade, $color__link);
+	}
+
+	.price_slider_wrapper .ui-widget-content {
+		background: rgba(0, 0, 0, 0.1);
+	}
+
+	.ui-slider-horizontal {
+		height: 0.5em;
+	}
+
+	.ui-slider-horizontal .ui-slider-range {
+		height: 100%;
+	}
+}
+
+/**
+Mini Cart Widget
+ */
+.widget_shopping_cart {
+	position: relative;
+
+	& > a {
+		display: block;
+		color: inherit;
+		font-size: 2rem;
+		text-decoration: none;
+	}
+
+	.widget_shopping_cart_content {
+		min-width: 45px;
+	}
+
+	.proceed-to-cart-icon {
+		color: inherit;
+		text-decoration: none;
+		display: block;
+
+		span.lnr {
+			font-size: 1.8rem;
+
+			& + span {
+				margin-left: 5px;
+			}
+		}
+
+		&:hover {
+			span.lnr {
+				color: var(--proteo-header_menu_hover_color, $color__accent);
+			}
+		}
+		img.custom-cart-icon {
+			display: inline;
+			vertical-align: middle;
+		}
+		img.custom-cart-icon + span {
+			margin-left: 5px;
+			vertical-align: middle;
+		}
+	}
+
+	.yith-proteo-mini-cart-content {
+		position: absolute;
+		min-width: 280px;
+		box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15);
+		right: 0;
+		padding: 15px;
+		background: var(--proteo-header_bg_color, #ffffff);
+		border-radius: 5px;
+		top: calc(100%);
+		opacity: 0;
+		visibility: hidden;
+		transition: all ease 0.3s;
+		font-size: 16px;
+
+		&:before {
+			content: "";
+			display: block;
+			width: 50px;
+			height: 15px;
+			top: -15px;
+			position: absolute;
+			right: 0;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0 0 20px;
+			max-height: 30vh;
+			overflow-y: scroll;
+			
+			&::-webkit-scrollbar {
+				-webkit-appearance: none;
+				width: 7px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				border-radius: 4px;
+				background-color: rgba(0, 0, 0, .4);
+				box-shadow: 0 0 1px rgba(255, 255, 255, .4);
+			}
+
+			li {
+				position: relative;
+				display: table;
+				width: 100%;
+				margin-bottom: 10px;
+				padding-left: 30px;
+
+				& > a:not(.remove) {
+					min-height: 60px;
+				}
+				img {
+					max-width: 50px;
+					vertical-align: top;
+					margin-right: 10px;
+				}
+				& > * {
+					display: inline-block;
+					font-size: 0.9375rem;
+					font-weight: bold;
+					color: var(--proteo-header_menu_color, #404040);
+					text-decoration: none;
+
+					
+
+					&:hover {
+						color: var(--proteo-general_link_color, $color__accent);
+					}
+
+					&.remove {
+						text-decoration: none;
+						background: transparent;
+						color: #9e9e9e;
+						display: inline-block;
+						font-size: 24px;
+						font-weight: normal;
+						position: absolute;
+						left: 0;
+						top: 0;
+						bottom: 0;
+						margin-top: auto;
+						margin-bottom: auto;
+						height: 2rem;
+						line-height: 2rem;
+
+						&:hover {
+							color: #000000;
+						}
+					}
+
+					&.quantity {
+						display: block;
+						float: none;
+						text-align: right;
+						position: absolute;
+						bottom: 10px;
+						left: 90px;
+						margin: 0;
+						font-weight: normal;
+						color: #9a9a9a;
+					}
+
+					&.variation {
+						display: none;
+					}
+				}
+			}
+		}
+
+		.woocommerce-mini-cart__total.total {
+			display: none;
+		}
+
+		.woocommerce-mini-cart__buttons {
+			margin-top: 0;
+			margin-bottom: 0;
+
+			a.wc-forward {
+				font-weight: bold;
+				padding: 5px 0;
+				margin-bottom: 20px;
+				border: none;
+				font-size: 0.75em;
+				margin-right: 0;
+				background: none;
+				color: var(--proteo-general_link_color, $color__accent);
+
+				&:after {
+					content: "\e876";
+					margin-left: 5px;
+					display: inline;
+					font-size: 0.8em;
+					font-family: Linearicons-Free;
+					font-style: normal;
+					font-weight: 800;
+					font-variant: normal;
+					text-transform: none;
+					line-height: 1;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+				}
+
+				&:hover {
+					text-decoration: underline;
+					color: var(--proteo-general_link_hover_color);
+				}
+			}
+
+			a.checkout {
+				display: block;
+				margin-bottom: 15px;
+				text-transform: uppercase;
+				font-weight: bold;
+				text-align: center;
+				padding: 0.9375rem 2.8125rem;
+				vertical-align: middle;
+				background-color: var(--proteo-main_color_shade, $color__accent);
+				color: #ffffff;
+
+				&:after {
+					display: none;
+				}
+
+				&:hover {
+					color: #ffffff;
+					background-color: var(--proteo-button_1_bg_hover_color, $color__link-hover);
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	&:hover {
+		.yith-proteo-mini-cart-content {
+			top: calc(100% + 15px);
+			opacity: 1;
+			visibility: visible;
+			z-index: 10;
+		}
+	}
+
+	p.items-count {
+		padding: 0 0 0 30px;
+		font-weight: 500;
+	}
+}
+
+#secondary .widget_shopping_cart {
+	.widget_shopping_cart_content {
+		.proceed-to-cart-icon {
+			display: none;
+		}
+		p.items-count {
+			padding: 0;
+		}
+	}
+	.yith-proteo-mini-cart-content {
+		position: static;
+		opacity: 1;
+		visibility: visible;
+		box-shadow: none;
+		padding: 0;
+	}
+}
+
+/**
+Products widget
+ */
+
+.widget_products,
+.widget_recently_viewed_products,
+.widget_top_rated_products {
+	ul.product_list_widget {
+		li {
+			display: table;
+			width: 100%;
+			margin-bottom: 40px;
+
+			.product-image,
+			.product-info {
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			.product-image {
+				width: 30%;
+				padding-right: 25px;
+				vertical-align: middle;
+
+				a {
+					font-size: 0;
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			.product-info {
+				.product-title {
+					display: block;
+					font-size: var(--proteo-catalog_product_title_font_size, 0.875rem);
+					color: var(--proteo-catalog_product_title_color, #404040);
+					line-height: normal;
+					margin-top: 0;
+					margin-bottom: 5px;
+					font-weight: 500;
+				}
+
+				.amount {
+					color: var(--proteo-catalog_product_price_color, #1f1f1f);
+					font-size: var(--proteo-catalog_product_price_font_size, 0.875rem);
+					font-weight: 600;
+				}
+
+				del .amount {
+					font-size: 1rem;
+					margin-right: 5px;
+				}
+
+				ins {
+					background: none;
+				}
+
+				.star-rating {
+					margin-bottom: 5px;
+				}
+
+				.widget-product-short-description {
+					margin-top: 10px;
+					font-size: 0.875rem;
+				}
+			}
+		}
+	}
+}
+
+.widget_recent_reviews {
+	ul.product_list_widget {
+		li {
+			margin-bottom: 15px;
+
+			img {
+				float: left;
+				max-width: 40%;
+				margin: 0 25px 25px 0;
+			}
+
+			.product-title {
+				line-height: normal;
+				margin-top: 0;
+				margin-bottom: 5px;
+				font-weight: 500;
+			}
+
+			.star-rating {
+				margin-bottom: 5px;
+			}
+			.reviewer {
+				font-size: 0.875rem;
+			}
+
+			&:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+		}
+	}
+}
+
+/**
+PRODUCT CATEGORIES
+**/
+.widget_product_categories {
+	ul.product-categories {
+		li.cat-item {
+			padding: 5px 0;
+		}
+		.count {
+			float: right;
+		}
+		ul.children {
+			padding-left: 15px;
+		}
+	}
+	.select2-container {
+		width: 100% !important;
+	}
+}
+
+/**
+FILTER BY RATING
+**/
+
+li.wc-layered-nav-rating {
+	margin-bottom: 5px;
+	a {
+		display: block;
+		text-decoration: none;
+		span.star-rating {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 15px;
+		}
+	}
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}

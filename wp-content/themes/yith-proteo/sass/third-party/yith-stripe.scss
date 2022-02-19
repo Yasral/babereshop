@@ -1,0 +1,18 @@
+ul.payment_methods {
+	list-style-type: none;
+	padding: 0;
+}
+
+#wc-yith-stripe-cc-form {
+	border: none;
+	padding: 0;
+	margin: 0;
+
+	.yith-stripe-form-container {
+		margin: 0 -15px;
+	}
+}
+
+.woocommerce-PaymentMethod--actions a:last-child {
+	margin-right: 0;
+}
