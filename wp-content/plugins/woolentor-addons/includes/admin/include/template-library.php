@@ -4,11 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
 class Woolentor_Template_Library{
 
-    const TRANSIENT_KEY = 'woolentor_template_info';
-
-    public static $endpoint = 'https://woolentor.com/library/wp-json/woolentor/v1/templates';
-    public static $templateapi = 'https://woolentor.com/library/wp-json/woolentor/v1/templates/%s';
-
     // Get Instance
     private static $_instance = null;
     public static function instance(){
@@ -32,32 +27,6 @@ class Woolentor_Template_Library{
 
     }
 
-    // Setter Endpoint
-    function set_api_endpoint( $endpoint ){
-        self::$endpoint = $endpoint;
-    }
-    
-    // Setter Template API
-    function set_api_templateapi( $templateapi ){
-        self::$templateapi = $templateapi;
-    }
-
-    // Get Endpoint
-    public static function get_api_endpoint(){
-        if( is_plugin_active('woolentor-addons-pro/woolentor_addons_pro.php') && function_exists('woolentor_pro_template_endpoint') ){
-            self::$endpoint = woolentor_pro_template_endpoint();
-        }
-        return self::$endpoint;
-    }
-    
-    // Get Template API
-    public static function get_api_templateapi(){
-        if( is_plugin_active('woolentor-addons-pro/woolentor_addons_pro.php') && function_exists('woolentor_pro_template_url') ){
-            self::$templateapi = woolentor_pro_template_url();
-        }
-        return self::$templateapi;
-    }
-
     // Plugins Library Register
     public function admin_menu() {
         add_submenu_page(
@@ -72,50 +41,6 @@ class Woolentor_Template_Library{
 
     public function library_render_html(){
         require_once WOOLENTOR_ADDONS_PL_PATH . 'includes/admin/include/templates_list.php';
-    }
-
-    public static function request_remote_templates_info( $force_update ) {
-        global $wp_version;
-
-        $timeout = ( $force_update ) ? 25 : 8;
-        $request = wp_remote_get(
-            self::get_api_endpoint(),
-            [
-                'timeout'    => $timeout,
-                'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url()
-            ]
-        );
-
-        if ( is_wp_error( $request ) || 200 !== (int) wp_remote_retrieve_response_code( $request ) ) {
-            return [];
-        }
-
-        $response = json_decode( wp_remote_retrieve_body( $request ), true );
-        return $response;
-
-    }
-
-    /**
-     * Retrieve template library and save as a transient.
-     */
-    public static function set_templates_info( $force_update = false ) {
-        $transient = get_transient( self::TRANSIENT_KEY );
-        if ( ! $transient || $force_update ) {
-            if( isset( $_GET['page'] ) && 'woolentor_templates' === $_GET['page'] ){
-                $info = self::request_remote_templates_info( $force_update );
-                set_transient( self::TRANSIENT_KEY, $info, DAY_IN_SECONDS );
-            }
-        }
-    }
-
-    /**
-     * Get template info.
-     */
-    public function get_templates_info( $force_update = false ) {
-        if ( !get_transient( self::TRANSIENT_KEY ) || $force_update ) {
-            self::set_templates_info( true );
-        }
-        return get_transient( self::TRANSIENT_KEY );
     }
 
     /**
@@ -169,8 +94,8 @@ class Woolentor_Template_Library{
                 $template_title     = sanitize_text_field( $_REQUEST['httitle'] );
                 $page_title         = sanitize_text_field( $_REQUEST['pagetitle'] );
 
-                $templateurl    = sprintf( self::get_api_templateapi(), $template_id );
-                $response_data  = $this->templates_get_content_remote_request( $templateurl );
+                $templateurl    = sprintf( \Woolentor_Template_Library_Manager::get_api_templateapi(), $template_id );
+                $response_data  = \Woolentor_Template_Library_Manager::get_content_remote_request( $templateurl );
                 $defaulttitle   = ucfirst( $template_parentid ) .' -> '.$template_title;
 
 
@@ -205,23 +130,6 @@ class Woolentor_Template_Library{
         }
 
         wp_die();
-    }
-
-    public function templates_get_content_remote_request( $templateurl ){
-        global $wp_version;
-
-        $response = wp_remote_get( $templateurl, array(
-            'timeout'    => 25,
-            'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url()
-        ) );
-
-        if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
-            return [];
-        }
-
-        $result = json_decode( wp_remote_retrieve_body( $response ), true );
-        return $result;
-
     }
 
     /*

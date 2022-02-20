@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooLentor - WooCommerce Elementor Addons + Builder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-12 04:28+0000\n"
+"POT-Creation-Date: 2022-02-19 06:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -152,8 +152,8 @@ msgstr ""
 msgid "Action Button Style"
 msgstr ""
 
-#: includes/admin/include/template-library.php:262
-#: includes/admin/include/template-library.php:314
+#: includes/admin/include/template-library.php:170
+#: includes/admin/include/template-library.php:222
 #: includes/admin/include/class.extension-manager.php:172
 #: includes/admin/include/class.extension-manager.php:239
 msgid "Activate"
@@ -167,8 +167,8 @@ msgstr ""
 msgid "Activate WooCommerce"
 msgstr ""
 
-#: includes/admin/include/template-library.php:273
-#: includes/admin/include/template-library.php:325
+#: includes/admin/include/template-library.php:181
+#: includes/admin/include/template-library.php:233
 #: includes/admin/include/class.extension-manager.php:183
 #: includes/admin/include/class.extension-manager.php:250
 msgid "Activated"
@@ -284,11 +284,11 @@ msgid "ALL"
 msgstr ""
 
 #: includes/addons/wb_wc_multicurrency.php:54
-#: includes/admin/include/class.template-manager.php:279
+#: includes/admin/include/class.template-manager.php:280
 msgid "All"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:379
+#: includes/admin/include/class.template-manager.php:380
 msgid "All Assigned Template has been imported"
 msgstr ""
 
@@ -300,7 +300,7 @@ msgstr ""
 msgid "All Categories"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:367
+#: includes/admin/include/class.template-manager.php:368
 msgid "All Data Saved"
 msgstr ""
 
@@ -341,7 +341,7 @@ msgstr ""
 msgid "Archive Product"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:382
+#: includes/admin/include/class.template-manager.php:383
 msgid "Are you sure?"
 msgstr ""
 
@@ -382,7 +382,7 @@ msgstr ""
 msgid "Ascending"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:378
+#: includes/admin/include/class.template-manager.php:379
 msgid "Assigned Template Importing.."
 msgstr ""
 
@@ -821,8 +821,8 @@ msgid "Buy"
 msgstr ""
 
 #: classes/class.assest_management.php:354
-#: includes/admin/include/template-library.php:281
-#: includes/admin/include/template-library.php:333
+#: includes/admin/include/template-library.php:189
+#: includes/admin/include/template-library.php:241
 #: includes/admin/include/class.extension-manager.php:203
 #: includes/admin/templates/dashboard-popup.php:14
 msgid "Buy Now"
@@ -832,7 +832,7 @@ msgstr ""
 msgid "BUY PRO"
 msgstr ""
 
-#: includes/class.sale_notification.php:230
+#: includes/modules/sales-notification/class.sale_notification.php:230
 msgid "By"
 msgstr ""
 
@@ -842,7 +842,7 @@ msgstr ""
 msgid "Call For Price"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:385
+#: includes/admin/include/class.template-manager.php:386
 msgid "Cancel"
 msgstr ""
 
@@ -852,6 +852,7 @@ msgid "Carolina Monntoya"
 msgstr ""
 
 #: includes/modules/shopify-like-checkout/templates/form-checkout.php:49
+#: includes/modules/shopify-like-checkout/templates/form-checkout.php:218
 msgid "Cart"
 msgstr ""
 
@@ -1350,20 +1351,20 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: includes/admin/include/template-library.php:201
+#: includes/admin/include/template-library.php:126
 msgid "Edit Page"
 msgstr ""
 
-#: includes/admin/include/template-library.php:201
+#: includes/admin/include/template-library.php:126
 #: includes/admin/include/class.template_cpt.php:34
 msgid "Edit Template"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:357
+#: includes/admin/include/class.template-manager.php:358
 msgid "Edit With Elementor"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:361
+#: includes/admin/include/class.template-manager.php:362
 msgid "Edit With Gutenberg"
 msgstr ""
 
@@ -1377,7 +1378,7 @@ msgstr ""
 msgid "Element Information"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:373
+#: includes/admin/include/class.template-manager.php:374
 #: includes/admin/include/templates_list.php:41
 msgid "Elementor"
 msgstr ""
@@ -1431,7 +1432,7 @@ msgstr ""
 msgid "Enter a different address"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:349
+#: includes/admin/include/class.template-manager.php:350
 msgid "Enter a template name"
 msgstr ""
 
@@ -1929,7 +1930,7 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:290
+#: includes/admin/include/class.template-manager.php:291
 msgid "Import Previously Assigned Templates"
 msgstr ""
 
@@ -1950,6 +1951,7 @@ msgid "in this package"
 msgstr ""
 
 #: includes/modules/shopify-like-checkout/templates/form-checkout.php:52
+#: includes/modules/shopify-like-checkout/templates/form-checkout.php:221
 msgid "Information"
 msgstr ""
 
@@ -1978,8 +1980,8 @@ msgstr ""
 msgid "Install Elementor"
 msgstr ""
 
-#: includes/admin/include/template-library.php:268
-#: includes/admin/include/template-library.php:320
+#: includes/admin/include/template-library.php:176
+#: includes/admin/include/template-library.php:228
 #: includes/admin/include/class.extension-manager.php:178
 #: includes/admin/include/class.extension-manager.php:245
 msgid "Install Now"
@@ -1993,7 +1995,7 @@ msgstr ""
 msgid "Installing.."
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:383
+#: includes/admin/include/class.template-manager.php:384
 msgid ""
 "It will import those templates that were created from the \"Templates\" menu "
 "of Elementor and assigned to corresponding WooCommerce pages."
@@ -2373,7 +2375,7 @@ msgstr ""
 #: includes/addons/wb_customer_review.php:76
 #: includes/addons/wb_customer_review.php:388
 #: includes/addons/product_tabs.php:164
-#: includes/admin/include/class.template-manager.php:348
+#: includes/admin/include/class.template-manager.php:349
 msgid "Name"
 msgstr ""
 
@@ -2450,7 +2452,7 @@ msgstr ""
 msgid "No related products are available."
 msgstr ""
 
-#: includes/widgets/ajax-search/base.php:59
+#: includes/modules/ajax-search/base.php:59
 msgid "No Results Found"
 msgstr ""
 
@@ -2468,10 +2470,10 @@ msgstr ""
 msgid "No upsell products are available."
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:407
-#: includes/admin/include/class.template-manager.php:542
-#: includes/admin/include/class.template-manager.php:578
-#: includes/admin/include/class.template-manager.php:627
+#: includes/admin/include/class.template-manager.php:408
+#: includes/admin/include/class.template-manager.php:543
+#: includes/admin/include/class.template-manager.php:579
+#: includes/admin/include/class.template-manager.php:628
 msgid "Nonce Varification Faild !"
 msgstr ""
 
@@ -2716,6 +2718,7 @@ msgid "Pause on Hover?"
 msgstr ""
 
 #: includes/modules/shopify-like-checkout/templates/form-checkout.php:58
+#: includes/modules/shopify-like-checkout/templates/form-checkout.php:227
 msgid "Payment"
 msgstr ""
 
@@ -2772,11 +2775,11 @@ msgstr ""
 msgid "Please Select Filter Type"
 msgstr ""
 
-#: includes/admin/include/template-library.php:356
+#: includes/admin/include/template-library.php:264
 msgid "Plugin Not Found"
 msgstr ""
 
-#: includes/admin/include/template-library.php:376
+#: includes/admin/include/template-library.php:284
 msgid "Plugin Successfully Activated"
 msgstr ""
 
@@ -2795,7 +2798,7 @@ msgstr ""
 msgid "Position"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:436
+#: includes/admin/include/class.template-manager.php:437
 msgid "Post request dose not found"
 msgstr ""
 
@@ -2825,7 +2828,7 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: includes/class.sale_notification.php:229
+#: includes/modules/sales-notification/class.sale_notification.php:229
 msgid "Price :"
 msgstr ""
 
@@ -2865,7 +2868,7 @@ msgid "Pricing"
 msgstr ""
 
 #: classes/class.assest_management.php:343
-#: includes/admin/include/class.template-manager.php:374
+#: includes/admin/include/class.template-manager.php:375
 #: includes/admin/include/admin_field-manager.php:99
 #: includes/admin/include/admin_field-manager.php:218
 #: includes/admin/include/admin_field-manager.php:334
@@ -3295,7 +3298,7 @@ msgstr ""
 msgid "Sale!"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:372
+#: includes/admin/include/class.template-manager.php:373
 msgid "Sample Design"
 msgstr ""
 
@@ -3307,11 +3310,11 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:365
+#: includes/admin/include/class.template-manager.php:366
 msgid "Save Settings"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:366
+#: includes/admin/include/class.template-manager.php:367
 msgid "Saving..."
 msgstr ""
 
@@ -3402,7 +3405,7 @@ msgstr ""
 msgid "Separator Border Color"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:352
+#: includes/admin/include/class.template-manager.php:353
 msgid "Set Default"
 msgstr ""
 
@@ -3433,6 +3436,7 @@ msgstr ""
 #: includes/modules/shopify-like-checkout/class.shopify-like-checkout.php:283
 #: includes/modules/shopify-like-checkout/templates/review-order.php:26
 #: includes/modules/shopify-like-checkout/templates/form-checkout.php:55
+#: includes/modules/shopify-like-checkout/templates/form-checkout.php:224
 msgid "Shipping"
 msgstr ""
 
@@ -3508,7 +3512,7 @@ msgstr ""
 msgid "Show items"
 msgstr ""
 
-#: includes/widgets/ajax-search/widget-product-search-ajax.php:42
+#: includes/modules/ajax-search/widget-product-search-ajax.php:42
 msgid "Show Number of Product:"
 msgstr ""
 
@@ -3634,10 +3638,10 @@ msgstr ""
 msgid "Sold:"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:484
-#: includes/admin/include/class.template-manager.php:559
-#: includes/admin/include/class.template-manager.php:597
-#: includes/admin/include/class.template-manager.php:667
+#: includes/admin/include/class.template-manager.php:485
+#: includes/admin/include/class.template-manager.php:560
+#: includes/admin/include/class.template-manager.php:598
+#: includes/admin/include/class.template-manager.php:668
 msgid "Some thing is worng !"
 msgstr ""
 
@@ -3675,7 +3679,7 @@ msgid ""
 "arrangements."
 msgstr ""
 
-#: includes/admin/include/template-library.php:391
+#: includes/admin/include/template-library.php:299
 msgid "Sorry, you are not allowed to install themes on this site."
 msgstr ""
 
@@ -3833,7 +3837,7 @@ msgstr ""
 msgid "Submit Button"
 msgstr ""
 
-#: includes/widgets/ajax-search/base.php:119
+#: includes/modules/ajax-search/base.php:119
 msgctxt "submit button"
 msgid "Search"
 msgstr ""
@@ -3939,25 +3943,25 @@ msgstr ""
 msgid "Template Builder"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:660
+#: includes/admin/include/class.template-manager.php:661
 msgid "Template has been imported"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:460
+#: includes/admin/include/class.template-manager.php:461
 msgid "Template has been inserted"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:524
-#: includes/admin/include/class.template-manager.php:589
+#: includes/admin/include/class.template-manager.php:525
+#: includes/admin/include/class.template-manager.php:590
 msgid "Template has been updated"
 msgstr ""
 
-#: includes/admin/include/template-library.php:65
-#: includes/admin/include/template-library.php:66
+#: includes/admin/include/template-library.php:34
+#: includes/admin/include/template-library.php:35
 msgid "Template Library"
 msgstr ""
 
-#: includes/admin/include/class.template-manager.php:354
+#: includes/admin/include/class.template-manager.php:355
 msgid "Template Settings"
 msgstr ""
 
@@ -4042,7 +4046,7 @@ msgid ""
 "WordPress."
 msgstr ""
 
-#: includes/admin/include/template-library.php:402
+#: includes/admin/include/template-library.php:310
 msgid "Theme Activated"
 msgstr ""
 
@@ -4136,7 +4140,7 @@ msgstr ""
 msgid "Title HTML Tag"
 msgstr ""
 
-#: includes/widgets/ajax-search/widget-product-search-ajax.php:38
+#: includes/modules/ajax-search/widget-product-search-ajax.php:38
 msgid "Title:"
 msgstr ""
 
@@ -4181,7 +4185,7 @@ msgid "Two"
 msgstr ""
 
 #: includes/admin/include/class.template-manager.php:86
-#: includes/admin/include/class.template-manager.php:351
+#: includes/admin/include/class.template-manager.php:352
 msgid "Type"
 msgstr ""
 
@@ -4591,7 +4595,7 @@ msgstr ""
 msgid "Woolentor Addons"
 msgstr ""
 
-#: includes/widgets/ajax-search/widget-product-search-ajax.php:12
+#: includes/modules/ajax-search/widget-product-search-ajax.php:12
 msgid "WooLentor Ajax Product Search Widget"
 msgstr ""
 
@@ -4622,7 +4626,7 @@ msgstr ""
 msgid "Woolentor trustpilot rating"
 msgstr ""
 
-#: includes/widgets/ajax-search/widget-product-search-ajax.php:14
+#: includes/modules/ajax-search/widget-product-search-ajax.php:14
 msgid "WooLentor: Product Search Ajax"
 msgstr ""
 
@@ -4663,11 +4667,11 @@ msgstr ""
 #: includes/addons/wl_category_grid.php:149
 #: includes/addons/wl_category_grid.php:210
 #: includes/addons/wl_category_grid.php:296
-#: includes/admin/include/class.template-manager.php:384
+#: includes/admin/include/class.template-manager.php:385
 msgid "Yes"
 msgstr ""
 
-#: includes/admin/include/template-library.php:161
+#: includes/admin/include/template-library.php:86
 msgid "You are not permitted to import the template."
 msgstr ""
 

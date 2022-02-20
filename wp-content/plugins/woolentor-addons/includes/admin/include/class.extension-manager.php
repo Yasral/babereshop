@@ -14,7 +14,7 @@ class Woolentor_Extension_Manager{
 
     function __construct(){
     	if( is_admin() ){
-    		add_action( 'admin_menu', [ $this, 'admin_menu' ], 225 );
+    		add_action( 'admin_menu', [ $this, 'admin_menu' ], 226 );
     		add_action( 'admin_enqueue_scripts', [ $this, 'scripts' ] );
     	}
     }

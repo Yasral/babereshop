@@ -61,12 +61,12 @@ class Dashboard {
     public function add_menu(){
 
         self::$admin_menu_hook = add_submenu_page(
-            'woolentor_page', 
-            esc_html__( 'Wishlist', 'woolentor' ), 
-            esc_html__( 'Wishlist', 'woolentor' ), 
-            'manage_options', 
+            'woolentor_page',
+            esc_html__( 'Wishlist', 'woolentor' ),
+            esc_html__( 'Wishlist', 'woolentor' ),
+            'manage_options',
             self::MENU_PAGE_SLUG,
-            [ $this,'dashboard' ], 
+            [ $this,'dashboard' ]
         );
 
         add_action( 'load-' . self::$admin_menu_hook, [ $this, 'init_hooks'] );

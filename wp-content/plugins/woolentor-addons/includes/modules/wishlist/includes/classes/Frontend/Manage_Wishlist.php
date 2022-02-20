@@ -229,7 +229,7 @@ class Manage_Wishlist {
     }
 
     /**
-     * [count_html] Wishlist Counter HTML
+     * [counter_html] Wishlist counter HTML
      * @return [HTML]
      */
     public function count_html( $atts ) {

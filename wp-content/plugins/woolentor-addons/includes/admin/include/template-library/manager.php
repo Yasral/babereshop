@@ -37,7 +37,7 @@ class Woolentor_Template_Library_Manager{
         $transient = get_transient( self::TRANSIENT_KEY );
         if ( ! $transient || $force_update ) {
             $info = self::get_content_remote_request( $url );
-            set_transient( self::TRANSIENT_KEY, $info, DAY_IN_SECONDS );
+            set_transient( self::TRANSIENT_KEY, wp_json_encode( $info ) , DAY_IN_SECONDS );
         }
     }
 
@@ -46,7 +46,7 @@ class Woolentor_Template_Library_Manager{
         if ( !get_transient( self::TRANSIENT_KEY ) || $force_update ) {
             self::set_templates_info( self::get_api_endpoint(), true );
         }
-        return get_transient( self::TRANSIENT_KEY );
+        return is_array( get_transient( self::TRANSIENT_KEY ) ) ? get_transient( self::TRANSIENT_KEY ) : json_decode( get_transient( self::TRANSIENT_KEY ), JSON_OBJECT_AS_ARRAY );
     }
 
     // Request remote data

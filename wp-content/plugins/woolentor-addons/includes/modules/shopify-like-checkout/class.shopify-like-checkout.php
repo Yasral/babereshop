@@ -376,7 +376,7 @@ class Woolentor_Shopify_Like_Checkout extends \WC_Checkout{
         }
 
         if( strpos( $href, '/themes/' ) ){
-            return;
+            return '';
         }
 
         return $tag;

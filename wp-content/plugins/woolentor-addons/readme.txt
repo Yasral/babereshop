@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht
 Tags: Elementor, WooCommerce, WooCommerce Elementor, WooCommerce Builder, WooCommerce Product
 Requires at least: 4.7
 Tested up to: 5.9
-Stable tag: 2.1.9
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -344,6 +344,12 @@ Feel free to [Contact us](https://hasthemes.com/contact-us/)
 Elementor Pro is not required. But you can use wooLentor with Elementor free & Pro.
 
 == Changelog ==
+
+= Version: 2.2.0 - Date: 20-02-2022 =
+* Solved : Shopify style checkout page conflict issue with redux  template.
+* Solved : Wishlist and compare dashboard menu syntax issue.
+* Solved: Template library showing issue.
+* Solved : Sale Notification style issue in shopify style checkout page.
 
 = Version: 2.1.9 - Date: 12-02-2022 =
 * Added : Wishlist Counter addon.

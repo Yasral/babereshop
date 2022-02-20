@@ -103,8 +103,8 @@ final class Base {
          * [$template_info] Assign template data
          * @var [type]
          */
-        if( is_admin() && class_exists('\Woolentor_Template_Library') ){
-            self::$template_info = \Woolentor_Template_Library::instance()->get_templates_info();
+        if( is_admin() && class_exists('\Woolentor_Template_Library_Manager') ){
+            self::$template_info = \Woolentor_Template_Library_Manager::instance()->get_templates_info();
         }
 
         // Promo Banner
@@ -305,11 +305,10 @@ final class Base {
             }
 
             // Fetch Template Library Data
-            $transient = get_transient( \Woolentor_Template_Library::TRANSIENT_KEY );
-            if ( ! $transient ) {
-                $info = \Woolentor_Template_Library::request_remote_templates_info( true );
-                set_transient( \Woolentor_Template_Library::TRANSIENT_KEY, $info, DAY_IN_SECONDS );
-            }
+            // $transient = get_transient( \Woolentor_Template_Library_Manager::TRANSIENT_KEY );
+            // if ( ! $transient ) {
+            //     self::$template_info = \Woolentor_Template_Library_Manager::instance()->get_templates_info();
+            // }
 
         }
     }
@@ -366,14 +365,6 @@ final class Base {
         if( is_admin() ){
             require( WOOLENTOR_ADDONS_PL_PATH.'includes/custom-metabox.php' );
             require( WOOLENTOR_ADDONS_PL_PATH.'includes/admin/admin-init.php' );
-
-            // Post Duplicator
-            if( !is_plugin_active('ht-mega-for-elementor/htmega_addons_elementor.php') ){
-                if( woolentor_get_option( 'postduplicator', 'woolentor_others_tabs', 'off' ) === 'on' ){
-                    require_once ( WOOLENTOR_ADDONS_PL_PATH.'classes/class.post-duplicator.php' );
-                }
-            }
-
         }
 
         // Builder File
@@ -381,36 +372,7 @@ final class Base {
             require( WOOLENTOR_ADDONS_PL_PATH.'includes/wl_woo_shop.php' );
             require( WOOLENTOR_ADDONS_PL_PATH.'includes/archive_product_render.php' );           
             require( WOOLENTOR_ADDONS_PL_PATH.'includes/class.product_video_gallery.php' );
-            if( !is_admin() && woolentor_get_option( 'enablerenamelabel', 'woolentor_rename_label_tabs', 'off' ) == 'on' ){
-                require( WOOLENTOR_ADDONS_PL_PATH.'includes/rename_label.php' );
-            }
             require( WOOLENTOR_ADDONS_PL_PATH.'classes/class.product_query.php' );
-        }
-
-        // Search
-        if( woolentor_get_option( 'ajaxsearch', 'woolentor_others_tabs', 'off' ) == 'on' ){
-            require( WOOLENTOR_ADDONS_PL_PATH. 'includes/widgets/ajax-search/base.php' );
-        }
-
-        // Sale Notification
-        if( woolentor_get_option( 'enableresalenotification', 'woolentor_sales_notification_tabs', 'off' ) == 'on' && woolentor_get_option( 'notification_content_type', 'woolentor_sales_notification_tabs', 'actual' ) != 'fakes'){
-            
-        }
-
-        // Sale Notification
-        if( woolentor_get_option( 'enableresalenotification', 'woolentor_sales_notification_tabs', 'off' ) == 'on' ){
-            if( woolentor_get_option( 'notification_content_type', 'woolentor_sales_notification_tabs', 'actual' ) == 'fakes' ){
-                include( WOOLENTOR_ADDONS_PL_PATH. 'includes/class.sale_notification_fake.php' );
-            }else{
-                require( WOOLENTOR_ADDONS_PL_PATH. 'includes/class.sale_notification.php' );
-            }
-        }
-
-        // Single Product Ajax cart
-        if( woolentor_get_option( 'ajaxcart_singleproduct', 'woolentor_others_tabs', 'off' ) == 'on' ){
-            if ( 'yes' === get_option('woocommerce_enable_ajax_add_to_cart') ) {
-                require( WOOLENTOR_ADDONS_PL_PATH. 'classes/class.single_product_ajax_add_to_cart.php' );
-            }
         }
 
         // Page Action

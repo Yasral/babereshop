@@ -1641,6 +1641,16 @@ class Woolentor_Admin_Fields {
                     ),
 
                     array(
+                        'name'   => 'size_chartp',
+                        'label'  => esc_html__( 'Size Chart', 'woolentor' ),
+                        'desc'   => esc_html__( 'Size Chart Module', 'woolentor' ),
+                        'type'   => 'module',
+                        'default'=> 'off',
+                        'require_settings' => true,
+                        'is_pro' => true
+                    ),
+
+                    array(
                         'name'   => 'gtm_conversion_trackingp',
                         'label'  => esc_html__( 'GTM Conversion Tracking', 'woolentor' ),
                         'desc'   => esc_html__( 'GTM Conversion Tracking Module', 'woolentor' ),

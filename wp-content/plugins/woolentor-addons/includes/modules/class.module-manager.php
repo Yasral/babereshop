@@ -19,7 +19,25 @@ class Woolentor_Module_Manager{
      * Constructor
      */
     public function __construct(){
+        if( is_admin() ){
+            $this->include_under_admin();
+        }
         $this->include_file();
+    }
+
+    /**
+     * [include_under_admin] Nessary File Required if admin page.
+     * @return [void]
+     */
+    public function include_under_admin(){
+
+        // Post Duplicator
+        if( !is_plugin_active('ht-mega-for-elementor/htmega_addons_elementor.php') ){
+            if( woolentor_get_option( 'postduplicator', 'woolentor_others_tabs', 'off' ) === 'on' ){
+                require_once ( WOOLENTOR_ADDONS_PL_PATH.'includes/modules/post-duplicator/class.post-duplicator.php' );
+            }
+        }
+
     }
 
     /**
@@ -27,6 +45,32 @@ class Woolentor_Module_Manager{
      * @return [void]
      */
     public function include_file(){
+
+        // Rename Label
+        if( !is_admin() && woolentor_get_option( 'enablerenamelabel', 'woolentor_rename_label_tabs', 'off' ) == 'on' ){
+            require( WOOLENTOR_ADDONS_PL_PATH.'includes/modules/rename-label/rename_label.php' );
+        }
+
+        // Search
+        if( woolentor_get_option( 'ajaxsearch', 'woolentor_others_tabs', 'off' ) == 'on' ){
+            require( WOOLENTOR_ADDONS_PL_PATH. 'includes/modules/ajax-search/base.php' );
+        }
+
+        // Sale Notification
+        if( woolentor_get_option( 'enableresalenotification', 'woolentor_sales_notification_tabs', 'off' ) == 'on' ){
+            if( woolentor_get_option( 'notification_content_type', 'woolentor_sales_notification_tabs', 'actual' ) == 'fakes' ){
+                include( WOOLENTOR_ADDONS_PL_PATH. 'includes/modules/sales-notification/class.sale_notification_fake.php' );
+            }else{
+                require( WOOLENTOR_ADDONS_PL_PATH. 'includes/modules/sales-notification/class.sale_notification.php' );
+            }
+        }
+
+        // Single Product Ajax cart
+        if( woolentor_get_option( 'ajaxcart_singleproduct', 'woolentor_others_tabs', 'off' ) == 'on' ){
+            if ( 'yes' === get_option('woocommerce_enable_ajax_add_to_cart') ) {
+                require( WOOLENTOR_ADDONS_PL_PATH. 'includes/modules/single-product-ajax-add-to-cart/class.ajax_add_to_cart.php' );
+            }
+        }
 
         // Wishlist
         if( woolentor_get_option( 'wishlist', 'woolentor_others_tabs', 'off' ) == 'on' ){
@@ -59,6 +103,7 @@ class Woolentor_Module_Manager{
             require_once( WOOLENTOR_ADDONS_PL_PATH .'includes/modules/backorder/class.backorder.php' );
         }
 
+        // Pro-Modules
         if( is_plugin_active('woolentor-addons-pro/woolentor_addons_pro.php') ){
 
             // Partial payment
@@ -75,6 +120,12 @@ class Woolentor_Module_Manager{
             if( ( woolentor_get_option( 'enable', 'woolentor_gtm_convertion_tracking_settings', 'off' ) == 'on' ) ){
                 require_once( WOOLENTOR_ADDONS_PL_PATH_PRO .'includes/modules/gtm-conversion-tracking/gtm-conversion-tracking.php' );
             }
+
+            // Size Chart
+            if( (  woolentor_get_option( 'enable', 'woolentor_size_chart_settings', 'off' ) == 'on' ) ){
+                require_once( WOOLENTOR_ADDONS_PL_PATH_PRO .'includes/modules/size-chart/class.size-chart.php' );
+            }
+            
 
         }
         

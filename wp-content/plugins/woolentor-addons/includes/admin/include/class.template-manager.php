@@ -222,7 +222,8 @@ class Woolentor_Template_Manager{
 			delete_option('woolentor_do_activation_library_cache');
         }
 
-		$get_data = get_transient( 'woolentor_template_info' ) ? get_transient( 'woolentor_template_info' ) : Woolentor_Template_Library_Manager::get_templates_info( true );
+		// $get_data = get_transient( 'woolentor_template_info' ) ? get_transient( 'woolentor_template_info' ) : Woolentor_Template_Library_Manager::get_templates_info( true );
+		$get_data = Woolentor_Template_Library_Manager::get_templates_info();
 		$data = [];
 
 		if( !empty( $get_data['templates'] ) ){

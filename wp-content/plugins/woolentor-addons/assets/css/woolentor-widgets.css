@@ -2289,7 +2289,6 @@ span.woolentor-order-item-title .product-thumbnail{
 .woolentor-order-review-product .woolentor-order-item-title {
   display: flex;
   overflow: hidden;
-  flex-flow: row wrap;
 }
 .woolentor_current_theme_storefront .elementor-widget-wl-checkout-order-review table.woocommerce-checkout-review-order-table .product-name{
   width: auto !important;
@@ -2354,6 +2353,7 @@ span.woolentor-order-item-title .product-thumbnail{
 }
 .wlnotification_image img{
   border-radius: 5px;
+  width: 100%;
 }
 .woolentor-notification-content.imageright .wlnotification_image {
   padding-right: 0;
